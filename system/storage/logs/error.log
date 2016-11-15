@@ -1,0 +1,17 @@
+2016-11-08 16:16:45 - PHP Notice:  Undefined variable: column_left in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 2
+2016-11-08 16:16:45 - PHP Notice:  Undefined variable: column_left in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 3
+2016-11-08 16:16:45 - PHP Notice:  Undefined variable: column_left in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 5
+2016-11-08 16:16:45 - PHP Notice:  Undefined variable: column_right in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 5
+2016-11-08 16:16:45 - PHP Notice:  Undefined variable: content_top in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 10
+2016-11-08 16:16:45 - PHP Notice:  Undefined variable: content_bottom in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 10
+2016-11-08 16:16:45 - PHP Notice:  Undefined variable: column_right in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 11
+2016-11-08 16:56:50 - PHP Notice:  Undefined variable: category in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 89
+2016-11-08 16:56:50 - PHP Notice:  Undefined variable: child in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 93
+2016-11-08 16:57:29 - PHP Notice:  Undefined variable: child in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 93
+2016-11-08 16:57:45 - PHP Notice:  Undefined variable: child in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 93
+2016-11-08 17:00:34 - PHP Notice:  Undefined variable: child in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 95
+2016-11-08 17:00:46 - PHP Notice:  Undefined variable: child in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 95
+2016-11-08 17:00:52 - PHP Notice:  Undefined variable: child in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 95
+2016-11-10 21:37:44 - PHP Notice:  Undefined variable: text_description in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 72
+2016-11-11 22:07:58 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\wamp64\www\hermaprove\upload\system\library\mail.php on line 158
+2016-11-11 22:07:59 - PHP Warning:  sprintf(): Too few arguments in C:\wamp64\www\hermaprove\upload\catalog\controller\account\success.php on line 32

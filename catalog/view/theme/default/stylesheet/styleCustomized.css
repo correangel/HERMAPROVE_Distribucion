@@ -1,0 +1,121 @@
+
+/*------------------------RULES OVERWRITEN IN OPENCART CSS----------------------*/
+#top {
+	background-color: white;
+}
+
+
+#logo {
+     margin: 0;
+}
+
+
+#search {
+	margin-bottom: 10px;
+}
+#search .input-lg {
+	height: 40px;
+	line-height: 20px;
+	padding: 0 10px;
+}
+#search .btn-lg {
+	font-size: 15px;
+	line-height: 18px;
+	padding: 10px 35px;
+	text-shadow: 0;
+}
+
+
+/*------------------------RULES OVERWRITEN IN BOOTSTRAP CSS----------------------*/
+
+.nav-pills>li>a {
+    border-radius: 0px;
+}
+
+.dropdown-menu {
+    margin: 0px 0 0; 
+    border-radius: 0px;
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    
+    background-clip: padding-box;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    /*
+    transform: perspective(200px) rotate3d(1, 0, 0, -90deg);
+    transform-origin: 50% 0 0;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)*/
+ }
+
+
+/*------------------------HERMAPROVE RULES----------------------*/
+
+.colorVerdeHermaprove{
+	color: #74b65e;
+}
+
+#menuSuperior>li>a {
+	color:black;
+	border-right: 1px ridge #F1F1F1;
+	padding: 0px 25px;
+	margin: 10px 0px;
+	text-transform: uppercase;
+}
+
+#menuSuperior>li>a>span{
+	margin-left: 20px
+}
+
+#menuSuperior>li>a:hover, #menuSuperior>li>a:focus,#menuSuperior>li>a.active{
+	color:#74B75E;
+	background-color: white
+}
+
+#menuSuperior .open>a, #menuSuperior .open>a:focus, #menuSuperior .open>a:hover {
+    color:#74B75E;
+	background-color: white
+}
+
+
+#menuSuperior>li>div>form>div>button {
+	color:black !important;
+	border-right: 1px ridge #F1F1F1;
+	padding: 0px 25px;
+	margin: 10px 0px;
+	text-transform: uppercase;
+}
+
+#menuSuperior>li>div>form>div>button:hover {
+	color:#74B75E !important;
+	background-color: white !important;
+}
+
+
+/*------------------------IDS RULES----------------------*/
+#company_description{
+	margin-top: 8px
+}
+
+
+/*------------------------GENERAL RULES----------------------*/
+
+.rightPadding0{
+	padding-right: 0px
+}
+
+.topMargin10{
+	margin-top: 10px
+}
+
+.padding-right25{
+	padding-right: 25px
+}
+
+
+.padding-right-none {
+    padding-right: 0;
+}
+
+.padding-left-none {
+    padding-left: 0;
+}
