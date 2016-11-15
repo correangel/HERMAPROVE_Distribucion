@@ -15,3 +15,5 @@
 2016-11-10 21:37:44 - PHP Notice:  Undefined variable: text_description in C:\wamp64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 72
 2016-11-11 22:07:58 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\wamp64\www\hermaprove\upload\system\library\mail.php on line 158
 2016-11-11 22:07:59 - PHP Warning:  sprintf(): Too few arguments in C:\wamp64\www\hermaprove\upload\catalog\controller\account\success.php on line 32
+2016-11-15 4:33:20 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\wampx64\www\hermaprove\upload\system\library\mail.php on line 158
+2016-11-15 4:33:20 - PHP Warning:  sprintf(): Too few arguments in C:\wampx64\www\hermaprove\upload\catalog\controller\account\success.php on line 32
