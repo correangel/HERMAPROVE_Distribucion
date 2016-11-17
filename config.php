@@ -1,9 +1,9 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://localhost/hermaprove/upload/');
+define('HTTP_SERVER', 'http://localhost:8080/hermaprove/upload/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://localhost/hermaprove/upload/');
+define('HTTPS_SERVER', 'http://localhost:8080/hermaprove/upload/');
 
 
 // DIR

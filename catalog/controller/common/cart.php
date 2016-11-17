@@ -56,6 +56,14 @@ class ControllerCommonCart extends Controller {
 
 		$data['button_remove'] = $this->language->get('button_remove');
 
+		$this->load->language('checkout/cart');
+
+		$data['column_image'] = $this->language->get('column_image');
+		$data['column_name'] = $this->language->get('column_name');
+		$data['column_quantity'] = $this->language->get('column_quantity');
+		$data['column_total'] = $this->language->get('column_total');
+
+
 		$this->load->model('tool/image');
 		$this->load->model('tool/upload');
 

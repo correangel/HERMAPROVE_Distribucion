@@ -6,7 +6,7 @@ $_['heading_title']    = 'Carro de Compras';
 $_['text_success']     = 'Se ha Agregado <a href="%s">%s</a> al <a href="%s">Carro de Compras</a>.';
 $_['text_remove']      = 'Se ha modificado el Carro de Compras.';
 $_['text_login']       = 'Se debe <a href="%s">Iniciar Sesi&oacute;n</a> o <a href="%s">crear una cuenta</a> para poder ver los precios.';
-$_['text_items']       = '%s producto(s) - %s';
+$_['text_items']       = '%s Art&iacute;culo(s) &nbsp;|&nbsp; %s';
 $_['text_points']      = 'Puntos de Recompensa: %s';
 $_['text_next']        = 'Qu&eacute; hacer a continuaci&oacute;n?';
 $_['text_next_choice'] = 'Elegir si se tiene un Descuento o C&oacute;digo o se desea estimar el Costo de entrega.';
