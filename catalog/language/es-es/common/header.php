@@ -19,3 +19,5 @@ $_['text_all']           = 'Ver Todo';
 
 
 $_['text_company_description']	='EMPRESA L&Iacute;DER EN VENTA DE PRODUCTOS';
+$_['text_client_service']        = 'SERVICIO AL CLIENTE';
+$_['text_request_promoter']        = 'SOLICITAR ASISTENCIA';

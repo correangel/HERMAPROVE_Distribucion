@@ -72,7 +72,7 @@ class ControllerCommonHeader extends Controller {
 
 		//Texts Customized
 		$data['text_company_description'] = $this->language->get('text_company_description');
-
+		$data['text_client_service'] = $this->language->get('text_client_service');
 
 		$data['home'] = $this->url->link('common/home');
 		$data['wishlist'] = $this->url->link('account/wishlist', '', true);

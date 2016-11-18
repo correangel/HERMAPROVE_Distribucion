@@ -49,9 +49,17 @@
             <li class="hidden-xs top_menu_li"><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><?php echo $text_checkout; ?> <i class="fa fa-share"></i> </a></li>
              
             <?php if ($logged) { ?>
-             <li class="dropdown top_menu_li"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $text_account; ?><span class="fa fa-chevron-down""></span></a>
+             <li class="dropdown top_menu_li">
+
+             <a class= "hidden-xs" href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $text_account; ?><span class="fa fa-chevron-down""></span></a>
+            <a class="visible-xs" href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> &nbsp;<span class="fa fa-chevron-down""></span></a>
+
+
                 <ul class="dropdown-menu dropdown-menu-right" id="dropdown-menu-ac">
-                  <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?>&nbsp;<i class="fa fa-user"></i></a></li>
+                  <li>
+                  <a href="<?php echo $account; ?>"><?php echo $text_account; ?>&nbsp;<i class="fa fa-user"></i></a>
+                 
+                  </li>
                   <li><a href="<?php echo $wishlist; ?>"><?php echo $text_wishlist; ?>&nbsp;<i class="fa fa-heart"></i></a></li>
                   <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?>&nbsp;<i class="fa fa-history"></i></a></li>
                   <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?>&nbsp;<i class="fa fa-credit-card"></i></a></li>
@@ -68,7 +76,7 @@
           </ul>
       </div>
     </div>
-     <div class="row">
+    <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="row visible-xs visible-sm">
           <div class="col-sm-6 col-xs-8 col-xs-offset-2">
@@ -98,58 +106,71 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <div class="row">
-          <div class="col-sm-5 col-xs-5 pull-right"><?php echo $cart; ?></div>
-          <div class="col-sm-5 col-xs-7 pull-right"><?php echo $search; ?></div>
+          <div class="col-sm-5 col-xs-6 pull-right"><?php echo $cart; ?></div>
+          <div class="col-sm-5 col-xs-6 pull-right"><?php echo $search; ?></div>
         </div>
-      </div>
+    </div>
     </div>
   </div>
 </header>
 
 
-<nav >
-  <div class="container">
-    <div class="nav pull-right">
-      <ul class="list-inline">
-        <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span></li>
-        <!--<li><?php echo $currency; ?></li>
-
-        <li><a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_shopping_cart; ?></span></a></li>-->
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<?php if ($categories) { ?>
 <div class="container">
-  <nav id="menu" class="navbar">
-    <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
-      <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+  <div class="row">
+    <div class="col-sm-9">      
+
+
+    <?php if ($categories) { ?>
+      <nav id="menu" class="navbar">
+        <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
+          <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <?php foreach ($categories as $category) { ?>
+            <?php if ($category['children']) { ?>
+            <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
+              <div class="dropdown-menu">
+                <div class="dropdown-inner">
+                  <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
+                  <ul class="list-unstyled">
+                    <?php foreach ($children as $child) { ?>
+                    <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                    <?php } ?>
+                  </ul>
+                  <?php } ?>
+                </div>
+                <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a> </div>
+            </li>
+            <?php } else { ?>
+            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+            <?php } ?>
+            <?php } ?>
+          </ul>
+        </div>
+      </nav>
+    <?php } ?>
+
     </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav">
-        <?php foreach ($categories as $category) { ?>
-        <?php if ($category['children']) { ?>
-        <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
-          <div class="dropdown-menu">
-            <div class="dropdown-inner">
-              <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
-              <ul class="list-unstyled">
-                <?php foreach ($children as $child) { ?>
-                <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-                <?php } ?>
-              </ul>
-              <?php } ?>
-            </div>
-            <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a> </div>
-        </li>
-        <?php } else { ?>
-        <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-        <?php } ?>
-        <?php } ?>
-      </ul>
+    <div class="col-sm-3">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+            <a href="<?php echo $contact; ?>">
+            <img src="image/icon_call.png" alt="<?php echo $telephone; ?>" title="<?php echo $telephone; ?>">
+            </a>          
+            <span class="hidden-xs hidden-sm hidden-md colorGrayDarkDarkHermaprove" style="font-size: 11px">
+              <?php echo $text_client_service; ?>:
+            </span> 
+            <span class="hidden-xs hidden-sm hidden-md colorBlue h5">
+              <solid><?php echo $telephone; ?> </solid>
+            </span>
+        </div>
+        <div class="col-sm-12 text-center">
+          <a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span>
+        </div>
+      </div>      
     </div>
-  </nav>
+  
+  </div>
 </div>
-<?php } ?>
+

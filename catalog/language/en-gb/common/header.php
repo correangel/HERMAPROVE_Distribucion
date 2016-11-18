@@ -19,3 +19,5 @@ $_['text_all']           = 'Show All';
 
 //Customing text
 $_['text_company_description']	='LEADERSHIP IN PRODUCTS SALES';
+$_['text_client_service']        = 'CUSTOMER SERVICE';
+$_['text_request_promoter']        = 'SOLICITAR PROMOTOR';

@@ -5,9 +5,13 @@
 green Hermaprove                #74B65E
 dark green Hermaprove           #5BA83F
 dark dark green Hermaprove      #51A525
+
 brown Hermaprove                #5F4828
+dark dark dark gray             #66667D
 dark gray                       #9999AF
 light gray                      #F1F1F1
+
+dark blue                       #35499B
 
 
 */
@@ -77,10 +81,18 @@ light gray                      #F1F1F1
 .colorVerdeHermaprove{
 	color: #74b65e;
 }
+
+.colorGrayDarkDarkHermaprove{
+  color: #66667D;
+}
+
+.colorBlue{
+  color: #35499B;
+}
+
 #company_description{
     margin-top: 8px
 }
-
 
 
 /*------------------------GENERAL RULES----------------------*/
