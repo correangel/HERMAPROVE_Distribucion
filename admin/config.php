@@ -1,11 +1,11 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://localhost/hermaprove/upload/admin/');
-define('HTTP_CATALOG', 'http://localhost/hermaprove/upload/');
+define('HTTP_SERVER', 'http://localhost:8080/hermaprove/upload/admin/');
+define('HTTP_CATALOG', 'http://localhost:8080/hermaprove/upload/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://localhost/hermaprove/upload/admin/');
-define('HTTPS_CATALOG', 'http://localhost/hermaprove/upload/');
+define('HTTPS_SERVER', 'http://localhost:8080/hermaprove/upload/admin/');
+define('HTTPS_CATALOG', 'http://localhost:8080/hermaprove/upload/');
 
 // DIR
 define('DIR_APPLICATION', 'C:/wampx64/www/hermaprove/upload/admin/');

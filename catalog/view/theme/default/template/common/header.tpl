@@ -44,70 +44,76 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-          <ul class="nav nav-pills pull-right" id="dropdown-menu-account">
-            <li ><?php echo $language; ?></li>
-            <li class="hidden-xs top_menu_li"><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><?php echo $text_checkout; ?> <i class="fa fa-share"></i> </a></li>
-             
+          <ul class="nav nav-pills pull-right" id="topbar">
+            <li class=""><?php echo $language; ?></li>
+
+
             <?php if ($logged) { ?>
-             <li class="dropdown top_menu_li">
 
-             <a class= "hidden-xs" href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $text_account; ?><span class="fa fa-chevron-down""></span></a>
-            <a class="visible-xs" href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> &nbsp;<span class="fa fa-chevron-down""></span></a>
+            <li ><a href="<?php echo $wishlist; ?>" title="<?php echo $text_wishlist; ?>"><?php echo $text_wishlist; ?> &nbsp;<i class="fa fa-heart"></i> </a></li>
 
+            <!--<li class="hidden-xs border-left"><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><?php echo $text_checkout; ?> <i class="fa fa-share"></i> </a></li>-->
+             
+            <li class="dropdown border-left">
 
+            <a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $text_account; ?><span class="fa fa-chevron-down""></span></a>
                 <ul class="dropdown-menu dropdown-menu-right" id="dropdown-menu-ac">
                   <li>
                   <a href="<?php echo $account; ?>"><?php echo $text_account; ?>&nbsp;<i class="fa fa-user"></i></a>
-                 
                   </li>
-                  <li><a href="<?php echo $wishlist; ?>"><?php echo $text_wishlist; ?>&nbsp;<i class="fa fa-heart"></i></a></li>
                   <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?>&nbsp;<i class="fa fa-history"></i></a></li>
                   <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?>&nbsp;<i class="fa fa-credit-card"></i></a></li>
+                  <hr>
+                  <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
                 </ul>
               </li>
             <?php } ?>
-              <li class="top_menu_li">
-                <?php if ($logged) { ?>
-                  <a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a>
-                <?php } else { ?>
+             <?php if ($logged==False) { ?>
+              <li>
                   <a href="<?php echo $login; ?>"><?php echo $text_login; ?></a>
-                <?php } ?>
               </li>
+              <li class="border-left" ><a id="link_registrar" href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
+                <?php } ?>
           </ul>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="row visible-xs visible-sm">
-          <div class="col-sm-6 col-xs-8 col-xs-offset-2">
-            <div id="logo" >
-              <?php if ($logo) { ?>
-              <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
-              <?php } else { ?>
-              <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
-              <?php } ?>
+      <?php if ($logged) { ?>
+        <div class="col-md-6 col-sm-12">
+       <?php } else { ?>
+        <div class="col-md-7 col-sm-7">
+        <?php } ?>
+          <div class="row">
+            <div class="col-sm-6">
+              <div id="logo" >
+                <?php if ($logo) { ?>
+                <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
+                <?php } else { ?>
+                <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
+                <?php } ?>
+              </div>
             </div>
+             <div class="col-sm-6 hidden-xs hidden-sm">
+                <div id='company_description' style="color:#FECE4E"><?php echo $text_company_description; ?></div>
+              </div>
           </div>
-        </div>    
-        <div class="row hidden-xs hidden-sm">
-          <div class="col-sm-6">
-            <div id="logo" >
-              <?php if ($logo) { ?>
-              <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
-              <?php } else { ?>
-              <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
-              <?php } ?>
-            </div>
+        </div>
+     
+      <?php if ($logged) { ?>
+        <div class="col-md-6 col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-sm-4 hidden-xs pull-right"><?php echo $cart; ?></div>
+            <div class="col-sm-7 col-xs-12 pull-right"><?php echo $search; ?></div>
           </div>
-          <div class="col-sm-6 colorVerdeHermaprove hidden-xs hidden-sm">
-            <div id='company_description' class=""><?php echo $text_company_description; ?></div>             
+          <div class="row visible-xs">
+            <div class="col-xs-7 pull-right"><?php echo $cart; ?></div>
           </div>
-        </div>           
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <div class="row">
-          <div class="col-sm-5 col-xs-6 pull-right"><?php echo $cart; ?></div>
-          <div class="col-sm-5 col-xs-6 pull-right"><?php echo $search; ?></div>
+
+        <?php } else { ?>
+        <div class="col-md-5 col-sm-5 col-xs-12">
+          <div class="row">
+            <div class="col-sm-10 col-xs-12 pull-right"><?php echo $search; ?></div>
+          <?php } ?>
         </div>
     </div>
     </div>
@@ -119,37 +125,37 @@
   <div class="row">
     <div class="col-sm-9">      
 
-
-    <?php if ($categories) { ?>
       <nav id="menu" class="navbar">
-        <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
-          <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+        <div class="navbar-header"><span id="category" class="visible-xs"></span>
+          <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-menu"><i class="fa fa-bars"></i></button>
         </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="collapse navbar-collapse navbar-collapse-menu">
           <ul class="nav navbar-nav">
-            <?php foreach ($categories as $category) { ?>
-            <?php if ($category['children']) { ?>
-            <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
-              <div class="dropdown-menu">
-                <div class="dropdown-inner">
-                  <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
-                  <ul class="list-unstyled">
-                    <?php foreach ($children as $child) { ?>
-                    <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-                    <?php } ?>
-                  </ul>
-                  <?php } ?>
-                </div>
-                <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a> </div>
+            <li class="hidden-xs"><a href="" style="padding-left: 0px">Inicio</a>
+            <li class="visible-xs"><a href="">Inicio</a>
             </li>
-            <?php } else { ?>
-            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-            <?php } ?>
-            <?php } ?>
+
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><?php echo $text_category; ?>&nbsp;&nbsp; <span class="fa fa-chevron-down"></span></a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li><a href="#">Categoria 1</a></li> 
+                  <li><a href="#">Categoria 2</a></li> 
+                  <li><a href="#">Categoria 3</a></li> 
+                  <li><a href="#">Categoria 4</a></li> 
+
+                </ul>          
+            </li>
+
+            <li><a href="">Novedades</a>
+            </li>
+
+            <li><a href="">Locales</a>
+            </li>
+            <li><a href="">Cont&aacute;ctenos</a>
+            </li>
           </ul>
         </div>
       </nav>
-    <?php } ?>
 
     </div>
     <div class="col-sm-3">
@@ -161,7 +167,7 @@
             <span class="hidden-xs hidden-sm hidden-md colorGrayDarkDarkHermaprove" style="font-size: 11px">
               <?php echo $text_client_service; ?>:
             </span> 
-            <span class="hidden-xs hidden-sm hidden-md colorBlue h5">
+            <span class="colorBlue h5">
               <solid><?php echo $telephone; ?> </solid>
             </span>
         </div>
