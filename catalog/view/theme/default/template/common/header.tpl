@@ -53,9 +53,19 @@
 
             <?php if ($logged) { ?>
 
-            <li ><a href="<?php echo $wishlist; ?>" title="<?php echo $text_wishlist; ?>"><?php echo $text_wishlist; ?> &nbsp;<i class="fa fa-heart"></i> </a></li>
+
+            
 
             <!--<li class="hidden-xs border-left"><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><?php echo $text_checkout; ?> <i class="fa fa-share"></i> </a></li>-->
+
+            <li>
+              <a href="#" style="font-weight: 500">Pedido express</a>
+            </li>
+            <li class="border-left">
+              <a href="#">Cotizaciones</a>
+            </li>
+            
+
              
             <li class="dropdown border-left">
 
@@ -64,12 +74,20 @@
                   <li>
                   <a href="<?php echo $account; ?>"><?php echo $text_account; ?>&nbsp;<i class="fa fa-user"></i></a>
                   </li>
-                  <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?>&nbsp;<i class="fa fa-history"></i></a></li>
+
+                  <li ><a href="<?php echo $order; ?>" title="<?php echo $text_order; ?>"><?php echo $text_order; ?> &nbsp;<i class="fa fa-history"></i> </a></li>
+
+                   <li><a href="<?php echo $wishlist; ?>" title="<?php echo $text_wishlist; ?>"><?php echo $text_wishlist; ?>&nbsp;<i class="fa fa-heart"></i></a></li>
+
+
                   <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?>&nbsp;<i class="fa fa-credit-card"></i></a></li>
+
+                   
+
                   <hr>
                   <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
                 </ul>
-              </li>
+            </li>
             <?php } ?>
              <?php if ($logged==False) { ?>
               <li>
@@ -126,7 +144,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-9">      
+    <div class="col-sm-12 col-md-9">      
 
       <nav id="menu" class="navbar">
         <div class="navbar-header"><span id="category" class="visible-xs"></span>
@@ -142,33 +160,61 @@
             
                 <ul id="menu_categorias" class="dropdown-menu" role="menu">
                     <li data-submenu-id="submenu-patas">
-                        <a href="#" class="hidden-xs"><span class="menu_categoria_titulo">Patas</span><span class="fa fa-chevron-right"></span></a>
+                        <a href="#" class="hidden-xs"><span class="menucat_span">Patas</span><span class="fa fa-chevron-right"></span></a>
                         <a href="#" class="visible-xs">Patas</a>
 
-                        <div id="submenu-patas" class=" hidden-xs popover">
+                        <div id="submenu-patas" class="container hidden-xs popover" style="
+  background-image: url('image/catalog/categories/tools.jpg');">
                             <h3 class="popover-title">Patas</h3>
                             <div class="popover-content">
-                              
-
+                              <ul>
+                                <li>
+                                  <a href="">Subcategoria1</a><br>
+                                  <span style="font-size: 10px">Lorem ipsum dolor sit amet</span>
+                                </li>
+                                <li>
+                                  <a href="">Subcategoria1</a><br>
+                                  <span style="font-size: 10px">Lorem ipsum dolor sit amet</span>
+                                </li>
+                                
+                              </ul>  
                             </div>
                         </div>
                     </li>
                     <li data-submenu-id="submenu-snub-nosed">
-                      <a href="#" class="hidden-xs"><span class="menu_categoria_titulo">Golden Snub-Nosed</span><span class="fa fa-chevron-right"></span></a>
+                      <a href="#" class="hidden-xs"><span class="menucat_span">Golden Snub-Nosed</span><span class="fa fa-chevron-right"></span></a>
                         <a href="#" class="visible-xs">Golden Snub-Nosed</a>
 
-                        <div id="submenu-snub-nosed" class=" hidden-xs popover">
+                        <div id="submenu-snub-nosed" class="container hidden-xs popover">
                             <h3 class="popover-title">Golden Snub-Nosed</h3>
                             <div class="popover-content">
-                              
+                              <ul>
+                                <li>
+                                  Subcategoria1<br>
+                                  <span style="font-size: 10px">Lorem ipsum dolor sit amet</span>
+
+                                </li>
+
+                                <li>
+                                  Subcategoria1<br>
+                                  <span style="font-size: 10px">Lorem ipsum dolor sit amet</span>
+
+                                </li>
+                                <li>
+                                  Subcategoria1<br>
+                                  <span style="font-size: 10px">Lorem ipsum dolor sit amet</span>
+
+                                </li>
+                                
+                              </ul>  
                             </div>
                         </div>
                     </li>
                     <li data-submenu-id="submenu-duoc-langur">
-                      <a href="#" class="hidden-xs"><span class="menu_categoria_titulo">Duoc Langur</span><span class="fa fa-chevron-right"></span></a>
+                      <a href="#" class="hidden-xs"><span class="menucat_span">Duoc Langur</span><span class="fa fa-chevron-right"></span></a>
                         <a href="#" class="visible-xs">Duoc Langur</a>
 
-                        <div id="submenu-duoc-langur" class="hidden-xs popover">
+                        <div id="submenu-duoc-langur" class="container hidden-xs popover">
                             <h3 class="popover-title">Duoc Langur</h3>
                             <div class="popover-content">
                               
@@ -176,7 +222,29 @@
                         </div>
                     </li>
                     <li data-submenu-id="submenu-pygmy">
-                      <a href="#" class="hidden-xs"><span class="menu_categoria_titulo">Baby Pygmy Marmoset</span><span class="fa fa-chevron-right"></span></a>
+                      <a href="#" class="hidden-xs"><span class="menucat_span">Baby Pygmy Marmoset</span><span class="fa fa-chevron-right"></span></a>
+                        <a href="#" class="visible-xs">Baby Pygmy Marmoset</a>
+
+                        <div id="submenu-pygmy" class="container hidden-xs popover">
+                            <h3 class="popover-title">Baby Pygmy Marmoset</h3>
+                            <div class="popover-content">
+                              
+                            </div>
+                        </div>
+                    </li>
+                     <li data-submenu-id="submenu-pygmy">
+                      <a href="#" class="hidden-xs"><span class="menucat_span">Baby Pygmy Marmoset</span><span class="fa fa-chevron-right"></span></a>
+                        <a href="#" class="visible-xs">Baby Pygmy Marmoset</a>
+
+                        <div id="submenu-pygmy" class="container hidden-xs popover">
+                            <h3 class="popover-title">Baby Pygmy Marmoset</h3>
+                            <div class="popover-content">
+                              
+                            </div>
+                        </div>
+                    </li>
+                     <li data-submenu-id="submenu-pygmy">
+                      <a href="#" class="hidden-xs"><span class="menucat_span">Baby Pygmy Marmoset</span><span class="fa fa-chevron-right"></span></a>
                         <a href="#" class="visible-xs">Baby Pygmy Marmoset</a>
 
                         <div id="submenu-pygmy" class="hidden-xs popover">
@@ -189,34 +257,45 @@
                 </ul>
             </li>
 
-            <li><a href="">Novedades</a>
+          
+            <li><a href="">Promociones <i class="fa fa-star" aria-hidden="true" style="color:#efef00"></i></a>
             </li>
 
-            <li><a href="">Locales</a>
+            <li><a href="">Blog</a>
             </li>
-            <li><a href="">Cont&aacute;ctenos</a>
+
+            <li><a href="">Contacto</a>
             </li>
+
           </ul>
         </div>
       </nav>
 
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-12 col-md-3">
       <div class="row">
-        <div class="col-sm-12 text-center">
+        <div class="col-sm-12 text-center" id="contacto_telefono">
             <a href="<?php echo $contact; ?>">
             <img src="image/icon_call.png" alt="<?php echo $telephone; ?>" title="<?php echo $telephone; ?>">
             </a>          
-            <span class="hidden-xs hidden-sm hidden-md colorGrayDarkDarkHermaprove" style="font-size: 11px">
+            <span class="hidden-xs hidden-md colorGrayDarkDarkHermaprove" style="font-size: 11px">
               <?php echo $text_client_service; ?>:
             </span> 
             <span class="colorBlue h5">
               <solid><?php echo $telephone; ?> </solid>
             </span>
         </div>
-        <div class="col-sm-12 text-center">
-          <a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span>
+
+
+          <?php if ($logged==False) { ?>
+        <div class="col-sm-12 text-center" id="link_opcionprincipal">
+
+            <a href="#" class="solicitarpromotor btn">SOLICITAR PROMOTOR</a>
         </div>
+              
+           <?php } ?>
+          
+        
       </div>      
     </div>
   
@@ -226,19 +305,11 @@
 <script>
 
         var $menu = $("#menu_categorias");
-
-        // jQuery-menu-aim: <meaningful part of the example>
-        // Hook up events to be fired on menu row activation.
         $menu.menuAim({
             activate: activateSubmenu,
             deactivate: deactivateSubmenu
         });
         // jQuery-menu-aim: </meaningful part of the example>
-
-        // jQuery-menu-aim: the following JS is used to show and hide the submenu
-        // contents. Again, this can be done in any number of ways. jQuery-menu-aim
-        // doesn't care how you do this, it just fires the activate and deactivate
-        // events at the right times so you know when to show and hide your submenus.
         function activateSubmenu(row) {
             var $row = $(row),
                 submenuId = $row.data("submenuId"),
@@ -250,11 +321,11 @@
             $submenu.css({
                 display: "block",
                 top: -1,
-                left: width - 3,  // main should overlay submenu
-                height: height - 4  // padding for main dropdown's arrow
+                left: width - 1,  // main should overlay submenu
+                //overflow:'auto'
+                //height: height - 4  // padding for main dropdown's arrow
             });
 
-            // Keep the currently activated row's highlighted look
             $row.find("a").addClass("maintainHover");
         }
 
@@ -263,22 +334,14 @@
                 submenuId = $row.data("submenuId"),
                 $submenu = $("#" + submenuId);
 
-            // Hide the submenu and remove the row's highlighted look
             $submenu.css("display", "none");
             $row.find("a").removeClass("maintainHover");
         }
-
-        // Bootstrap's dropdown menus immediately close on document click.
-        // Don't let this event close the menu if a submenu is being clicked.
-        // This event propagation control doesn't belong in the menu-aim plugin
-        // itself because the plugin is agnostic to bootstrap.
         $("#menu_categorias li").click(function(e) {
             e.stopPropagation();
         });
 
         $(document).click(function() {
-            // Simply hide the submenu on any click. Again, this is just a hacked
-            // together menu/submenu structure to show the use of jQuery-menu-aim.
             $(".popover").css("display", "none");
             $("a.maintainHover").removeClass("maintainHover");
         });

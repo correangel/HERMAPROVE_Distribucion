@@ -170,6 +170,10 @@ div.required .control-label:before {
     border-color: #74B65E;
 }
 
+.popover {
+  font-family: "Poppins", sans-serif;
+}
+
 /*-------------------------------------SECTION TOP------------------------------*/
 
 /* top */
@@ -357,7 +361,7 @@ div.required .control-label:before {
 	z-index: 1001;
   top: 110%;
   text-transform: none;
-  min-width: 400px;
+  min-width: 300px;
   padding: 30px;
 }
 
@@ -405,47 +409,89 @@ div.required .control-label:before {
   padding-left: 0px
 }
 
-#menu_categorias > li> .popover{
-  border-radius: 0px;
-  -webkit-box-shadow:4px 6px 12px rgba(0, 0, 0, 0.4);
-  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.4);
-  border: 0px solid #ededed;
-  border-top: 1px solid #ededed;
-  padding: 0px 20px;
-  font-size: 12px;
-  width:400px;
-  height:100.5% !important;
+#menu_categorias{
+  padding: 10px
 }
 
-@media (min-width: 768px) {
-
-  #menu_categorias > li> .popover{
-    padding: 20px 20px 60px 20px
-  }
+#menu_categorias>li>a{
+  padding: 10px 0px 10px 50px;
+  cursor:default
 }
 
 #menu_categorias>li>a>.fa{
   color:#EAEAEA;
 }
 
-#menu_categorias > li > a.maintainHover>.menu_categoria_titulo {
-    color: #74B65E;
-    background-color: transparent;
-    font-weight: 600;
-    font-size: 12px
+@media (min-width:768px) {
+  #menu_categorias{
+    padding: 20px 20px 100px 20px
+  }
+
+  #menu_categorias>li>a{
+    padding: 10px 0px 10px 6px
+  }  
 }
 
-#menu_categorias > li > a.maintainHover>.fa {
-    color: #5F4828;
-    background-color: transparent;
-    font-weight: bold;
-    font-size: 12px
-}
-
-#menu_categorias .menu_categoria_titulo{
+#menu_categorias .menucat_span{
   width: 170px !important;
   float: left;
 }
+
+#menu_categorias > li > a:hover{
+  background-color: transparent;
+  font-weight: bold;
+  color: #5F4828;
+  font-size: 12px
+}
+
+#menu_categorias > li > a:hover>.fa {
+    font-size: 13px;
+    color: #5F4828;
+}
+
+#menu_categorias > li > a:active,#menu_categorias > li > a:focus{
+  background-color: transparent;
+}
+
+
+
+
+#menu_categorias > li> .popover{
+  border-radius: 0px;
+  -webkit-box-shadow:4px 6px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.4);
+  border: 0px solid #ededed;
+  border-top: 1px solid #ededed;
+  padding:20px;
+  height:100.4% !important;
+}
+
+
+#menu_categorias >li >.popover>.popover-title{
+  background-color:transparent;
+  font-weight: bold;
+  font-size: 13px;
+  color: #5F4828;
+  border-bottom: 0px solid #ebebeb;
+}
+
+#menu_categorias >li >.popover{
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size:40%
+
+}
+
+#menu_categorias >li >.popover>.popover-content>ul{
+  list-style-type: none;
+  padding-left:0px;
+}
+
+
+#menu_categorias >li >.popover>.popover-content>ul>li{
+  padding-bottom: 12px;
+}
+
 
 
 

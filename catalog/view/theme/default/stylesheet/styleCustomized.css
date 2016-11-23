@@ -66,3 +66,35 @@ dark blue                       #35499B
 #link_registrar{
   font-weight: bold
 }
+
+
+#link_opcionprincipal{
+  padding: 0px 15px;
+  margin:10px 0px;
+}
+
+#link_opcionprincipal>a{
+  font-size: 13px;
+  font-weight: bold;
+  
+}
+
+#link_opcionprincipal>.solicitarpromotor{
+  border: 1px solid #5F4828;
+  color: #5F4828;  
+  padding: 6px 12%;
+}
+
+#link_opcionprincipal>.solicitarpromotor:hover{
+  color: white;
+  background-color: #5F4828;
+}
+
+#contacto_telefono {
+  margin-top: 0px
+}
+@media (min-width: 991px) {
+    #contacto_telefono {
+      margin-top: 15px
+    }
+}
