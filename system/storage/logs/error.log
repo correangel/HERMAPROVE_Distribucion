@@ -21,3 +21,26 @@
 2016-11-19 4:16:33 - PHP Warning:  sprintf(): Too few arguments in C:\wampx64\www\hermaprove\upload\catalog\controller\account\success.php on line 32
 2016-11-19 4:16:42 - PHP Warning:  sprintf(): Too few arguments in C:\wampx64\www\hermaprove\upload\catalog\controller\account\success.php on line 32
 2016-11-22 4:09:11 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\wampx64\www\hermaprove\upload\system\library\mail.php on line 158
+2016-11-24 4:49:23 - PHP Notice:  Undefined variable: column_left in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\column_right.tpl on line 3
+2016-11-24 4:55:54 - PHP Notice:  A non well formed numeric value encountered in C:\wampx64\www\hermaprove\upload\system\library\image.php on line 105
+2016-11-24 4:55:54 - PHP Notice:  A non well formed numeric value encountered in C:\wampx64\www\hermaprove\upload\system\library\image.php on line 116
+2016-11-24 4:55:54 - PHP Notice:  A non well formed numeric value encountered in C:\wampx64\www\hermaprove\upload\system\library\image.php on line 105
+2016-11-24 4:55:54 - PHP Notice:  A non well formed numeric value encountered in C:\wampx64\www\hermaprove\upload\system\library\image.php on line 116
+2016-11-24 4:55:54 - PHP Notice:  A non well formed numeric value encountered in C:\wampx64\www\hermaprove\upload\system\library\image.php on line 105
+2016-11-24 4:55:54 - PHP Notice:  A non well formed numeric value encountered in C:\wampx64\www\hermaprove\upload\system\library\image.php on line 116
+2016-11-24 9:20:01 - PHP Notice:  Undefined variable: child in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 180
+2016-11-24 9:20:01 - PHP Notice:  Undefined variable: children in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 183
+2016-11-24 9:20:01 - PHP Warning:  Invalid argument supplied for foreach() in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 183
+2016-11-24 9:20:29 - PHP Notice:  Undefined variable: children in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 183
+2016-11-24 9:20:29 - PHP Warning:  Invalid argument supplied for foreach() in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 183
+2016-11-24 9:28:16 - PHP Notice:  Array to string conversion in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 185
+2016-11-24 9:28:16 - PHP Notice:  Array to string conversion in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 185
+2016-11-24 9:28:16 - PHP Notice:  Array to string conversion in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 185
+2016-11-24 9:28:16 - PHP Notice:  Array to string conversion in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 185
+2016-11-24 9:36:52 - PHP Unknown:  Object of class stdClass could not be converted to string in C:\wampx64\www\hermaprove\upload\catalog\model\catalog\category.php on line 12
+2016-11-24 9:36:52 - PHP Unknown:  Object of class stdClass could not be converted to string in C:\wampx64\www\hermaprove\upload\catalog\model\catalog\category.php on line 12
+2016-11-24 9:36:52 - PHP Unknown:  Object of class stdClass could not be converted to string in C:\wampx64\www\hermaprove\upload\catalog\model\catalog\category.php on line 12
+2016-11-24 9:37:47 - PHP Notice:  Undefined index: category in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 186
+2016-11-24 9:37:47 - PHP Notice:  Undefined index: category in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 186
+2016-11-24 9:37:47 - PHP Notice:  Undefined index: category in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 186
+2016-11-24 9:37:47 - PHP Notice:  Undefined index: category in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\common\header.tpl on line 186

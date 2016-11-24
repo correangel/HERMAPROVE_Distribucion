@@ -464,6 +464,7 @@ div.required .control-label:before {
   border-top: 1px solid #ededed;
   padding:20px;
   height:100.4% !important;
+  max-width: 500px; 
 }
 
 

@@ -62,7 +62,7 @@
               <a href="#" style="font-weight: 500">Pedido express</a>
             </li>
             <li class="border-left">
-              <a href="#">Cotizaciones</a>
+              <a href="#">Cotizar</a>
             </li>
             
 
@@ -155,107 +155,57 @@
             <li class="hidden-xs"><a href="" style="padding-left: 0px">Inicio</a></li>
             <li class="visible-xs"><a href="">Inicio</a></li>
 
+
+
+        <?php if ($categories) { ?>
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Cat&aacute;logo de productos&nbsp;&nbsp; <span class="fa fa-chevron-down"></span></a>
-            
+
+
+
+
+
                 <ul id="menu_categorias" class="dropdown-menu" role="menu">
-                    <li data-submenu-id="submenu-patas">
-                        <a href="#" class="hidden-xs"><span class="menucat_span">Patas</span><span class="fa fa-chevron-right"></span></a>
-                        <a href="#" class="visible-xs">Patas</a>
 
-                        <div id="submenu-patas" class="container hidden-xs popover" style="
-  background-image: url('image/catalog/categories/tools.jpg');">
-                            <h3 class="popover-title">Patas</h3>
+                   <?php foreach ($categories as $category) { ?>
+
+                    <?php if ($category['children']) { ?>
+
+                    <li data-submenu-id="submenu-<?php echo $category['name']; ?>">
+                        <a class="hidden-xs"><span class="menucat_span"><?php echo $category['name']; ?></span><span class="fa fa-chevron-right"></span></a>
+                        <a class="visible-xs"><?php echo $category['name']; ?></a>
+
+                        <div id="submenu-<?php echo $category['name']; ?>" class="container hidden-xs popover" style="
+  background-image: url('image/<?php echo $category['image']; ?>');">
+                            <a class="popover-title h3" href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
                             <div class="popover-content">
+                             <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
                               <ul>
+                                <?php foreach ($children as $child) { ?>
                                 <li>
-                                  <a href="">Subcategoria1</a><br>
-                                  <span style="font-size: 10px">Lorem ipsum dolor sit amet</span>
+                                  <a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a><br>
+                                  <span style="font-size: 10px"><?php echo $child['description']; ?></span>
                                 </li>
-                                <li>
-                                  <a href="">Subcategoria1</a><br>
-                                  <span style="font-size: 10px">Lorem ipsum dolor sit amet</span>
-                                </li>
-                                
+                                <?php } ?>
                               </ul>  
+                            <?php } ?>
                             </div>
                         </div>
+
+
+                        
+
                     </li>
-                    <li data-submenu-id="submenu-snub-nosed">
-                      <a href="#" class="hidden-xs"><span class="menucat_span">Golden Snub-Nosed</span><span class="fa fa-chevron-right"></span></a>
-                        <a href="#" class="visible-xs">Golden Snub-Nosed</a>
 
-                        <div id="submenu-snub-nosed" class="container hidden-xs popover">
-                            <h3 class="popover-title">Golden Snub-Nosed</h3>
-                            <div class="popover-content">
-                              <ul>
-                                <li>
-                                  Subcategoria1<br>
-                                  <span style="font-size: 10px">Lorem ipsum dolor sit amet</span>
+                    <?php } ?>
 
-                                </li>
-
-                                <li>
-                                  Subcategoria1<br>
-                                  <span style="font-size: 10px">Lorem ipsum dolor sit amet</span>
-
-                                </li>
-                                <li>
-                                  Subcategoria1<br>
-                                  <span style="font-size: 10px">Lorem ipsum dolor sit amet</span>
-
-                                </li>
-                                
-                              </ul>  
-                            </div>
-                        </div>
-                    </li>
-                    <li data-submenu-id="submenu-duoc-langur">
-                      <a href="#" class="hidden-xs"><span class="menucat_span">Duoc Langur</span><span class="fa fa-chevron-right"></span></a>
-                        <a href="#" class="visible-xs">Duoc Langur</a>
-
-                        <div id="submenu-duoc-langur" class="container hidden-xs popover">
-                            <h3 class="popover-title">Duoc Langur</h3>
-                            <div class="popover-content">
-                              
-                            </div>
-                        </div>
-                    </li>
-                    <li data-submenu-id="submenu-pygmy">
-                      <a href="#" class="hidden-xs"><span class="menucat_span">Baby Pygmy Marmoset</span><span class="fa fa-chevron-right"></span></a>
-                        <a href="#" class="visible-xs">Baby Pygmy Marmoset</a>
-
-                        <div id="submenu-pygmy" class="container hidden-xs popover">
-                            <h3 class="popover-title">Baby Pygmy Marmoset</h3>
-                            <div class="popover-content">
-                              
-                            </div>
-                        </div>
-                    </li>
-                     <li data-submenu-id="submenu-pygmy">
-                      <a href="#" class="hidden-xs"><span class="menucat_span">Baby Pygmy Marmoset</span><span class="fa fa-chevron-right"></span></a>
-                        <a href="#" class="visible-xs">Baby Pygmy Marmoset</a>
-
-                        <div id="submenu-pygmy" class="container hidden-xs popover">
-                            <h3 class="popover-title">Baby Pygmy Marmoset</h3>
-                            <div class="popover-content">
-                              
-                            </div>
-                        </div>
-                    </li>
-                     <li data-submenu-id="submenu-pygmy">
-                      <a href="#" class="hidden-xs"><span class="menucat_span">Baby Pygmy Marmoset</span><span class="fa fa-chevron-right"></span></a>
-                        <a href="#" class="visible-xs">Baby Pygmy Marmoset</a>
-
-                        <div id="submenu-pygmy" class="hidden-xs popover">
-                            <h3 class="popover-title">Baby Pygmy Marmoset</h3>
-                            <div class="popover-content">
-                              
-                            </div>
-                        </div>
-                    </li>
+                    <?php } ?>
                 </ul>
+
+
             </li>
+
+          <?php } ?>
 
           
             <li><a href="">Promociones <i class="fa fa-star" aria-hidden="true" style="color:#efef00"></i></a>
@@ -273,15 +223,15 @@
 
     </div>
     <div class="col-sm-12 col-md-3">
-      <div class="row">
-        <div class="col-sm-12 text-center" id="contacto_telefono">
+      <div class="row  pull-right">
+        <div class="col-sm-12" id="contacto_telefono">
             <a href="<?php echo $contact; ?>">
             <img src="image/icon_call.png" alt="<?php echo $telephone; ?>" title="<?php echo $telephone; ?>">
             </a>          
             <span class="hidden-xs hidden-md colorGrayDarkDarkHermaprove" style="font-size: 11px">
               <?php echo $text_client_service; ?>:
             </span> 
-            <span class="colorBlue h5">
+            <span class="colorBlue h5" >
               <solid><?php echo $telephone; ?> </solid>
             </span>
         </div>

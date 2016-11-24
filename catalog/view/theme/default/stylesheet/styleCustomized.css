@@ -20,24 +20,10 @@ dark blue                       #35499B
 /*------------------------RULES OVERWRITEN IN OPENCART CSS----------------------*/
 
 
-#search {
-	margin-bottom: 10px;
-}
-#search .input-lg {
-	height: 40px;
-	line-height: 20px;
-	padding: 0 10px;
-}
-#search .btn-lg {
-	font-size: 15px;
-	line-height: 18px;
-	padding: 10px 35px;
-	text-shadow: 0;
-}
-
+/*
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
     vertical-align: middle;
-}
+}*/
 
 
 
