@@ -23,14 +23,14 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="well">
-            <h2><?php echo $text_new_customer; ?></h2>
-            <p><strong><?php echo $text_register; ?></strong></p>
+            <h3><?php echo $text_register; ?></h3>
+            <p><strong><?php echo $text_new_customer; ?></strong></p>
             <p><?php echo $text_register_account; ?></p>
             <a href="<?php echo $register; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
         </div>
         <div class="col-sm-6">
           <div class="well">
-            <h2><?php echo $text_returning_customer; ?></h2>
+            <h3><?php echo $text_returning_customer; ?></h3>
             <p><strong><?php echo $text_i_am_returning_customer; ?></strong></p>
             <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
               <div class="form-group">

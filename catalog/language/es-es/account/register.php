@@ -1,13 +1,14 @@
 <?php
 // Heading
-$_['heading_title']        = 'Registrar cuenta';
+$_['heading_title']        = 'Crea tu cuenta';
 
 // Text
 $_['text_account']         = 'Cuenta';
-$_['text_register']        = 'Registrar';
-$_['text_account_already'] = 'Si la cuenta ya ha sido registrada ingresar <a href="%s">aqu&iacute;</a>.';
+$_['text_register']        = 'Regístrate';
+$_['text_account_already'] = 'Si ya tienes una cuenta registrada, ingresa <a href="%s">aqu&iacute;</a>.';
 $_['text_your_details']    = 'Datos Personales';
-$_['text_your_address']    = 'Direcci&oacute;n';
+$_['text_your_address']    = 'Informaci&oacute;n empresarial';
+#$_['text_your_address']    = 'Direcci&oacute;n';
 $_['text_newsletter']      = 'Bolet&iacute;n';
 $_['text_your_password']   = 'Contrase&ntilde;a';
 $_['text_agree']           = 'He le&iacute;do y estoy de acuerdo con el <a href="%s" class="agree"> <b>% s </ b> </a>';
@@ -20,8 +21,8 @@ $_['entry_email']          = 'Email';
 $_['entry_telephone']      = 'Tel&eacute;fono';
 $_['entry_fax']            = 'Fax';
 $_['entry_company']        = 'Empresa';
-$_['entry_address_1']      = 'Direcci&oacute;n 1';
 $_['entry_address_2']      = 'Direcci&oacute;n 2';
+$_['entry_address_1']      = 'Direcci&oacute;n';
 $_['entry_postcode']       = 'C&oacute;digo Postal';
 $_['entry_city']           = 'Ciudad';
 $_['entry_country']        = 'Pa&iacute;s';
@@ -44,4 +45,4 @@ $_['error_zone']           = 'Seleccionar Provincia/Estado.';
 $_['error_custom_field']   = '%s Obligatorio.';
 $_['error_password']       = 'La Contrase&ntilde;a debe contener entre 4 y 20 caracteres.';
 $_['error_confirm']        = 'La Contrase&ntilde;a y su Confirmaci&oacute;n no coinciden.';
-$_['error_agree']          = 'Se debe aceptar el %s.';
+$_['error_agree']          = 'Acepta nuestras %s.';

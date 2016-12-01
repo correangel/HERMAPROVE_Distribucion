@@ -45,6 +45,10 @@ dark blue                       #35499B
     margin-top: 8px
 }
 
+.form-control-feedback {
+    pointer-events: auto;
+}
+
 
 /*------------------------GENERAL RULES----------------------*/
 
@@ -55,8 +59,8 @@ dark blue                       #35499B
 
 
 #link_opcionprincipal{
-  padding: 0px 15px;
   margin:10px 0px;
+   padding-right: 0px;
 }
 
 #link_opcionprincipal>a{
@@ -65,14 +69,16 @@ dark blue                       #35499B
   
 }
 
-#link_opcionprincipal>.solicitarpromotor{
-  border: 1px solid #5F4828;
-  color: #5F4828;  
-  padding: 6px 12%;
+#solicitarpromotor{
+  /*border: 1px solid #A67C52;*/
+  color: #5C4423 !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  font-weight: bold
 }
 
-#link_opcionprincipal>.solicitarpromotor:hover{
-  color: white;
+#solicitarpromotor:hover{
+  color: white !important;
   background-color: #5F4828;
 }
 

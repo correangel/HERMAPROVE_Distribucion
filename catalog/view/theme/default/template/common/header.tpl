@@ -23,6 +23,9 @@
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
+<script src="catalog/view/javascript/jquery/jquery-validate/jquery.validate.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/jquery/jquery-validate/messages_es.js" type="text/javascript"></script>
+
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
 <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
@@ -61,7 +64,7 @@
             <li>
               <a href="#" style="font-weight: 500">Pedido express</a>
             </li>
-            <li class="border-left">
+            <li class="border-left hidden-xs">
               <a href="#">Cotizar</a>
             </li>
             
@@ -82,19 +85,19 @@
 
                   <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?>&nbsp;<i class="fa fa-credit-card"></i></a></li>
 
-                   
-
                   <hr>
                   <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
                 </ul>
             </li>
             <?php } ?>
              <?php if ($logged==False) { ?>
-              <li>
+             <li >
+                  <a href="<?php echo $register; ?>" id="solicitarpromotor" class="btn"><?php echo $text_register; ?></a>
+              </li>
+              <li class="border-left">
                   <a href="<?php echo $login; ?>"><?php echo $text_login; ?></a>
               </li>
-              <li class="border-left" ><a id="link_registrar" href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
-                <?php } ?>
+              <?php } ?>
           </ul>
       </div>
     </div>
@@ -133,7 +136,7 @@
         <?php } else { ?>
         <div class="col-md-5 col-sm-5 col-xs-12">
           <div class="row">
-            <div class="col-sm-10 col-xs-12 pull-right"><?php echo $search; ?></div>
+            <div class="col-sm-9 col-xs-12 pull-right"><?php echo $search; ?></div>
           <?php } ?>
         </div>
     </div>
@@ -160,10 +163,6 @@
         <?php if ($categories) { ?>
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Cat&aacute;logo de productos&nbsp;&nbsp; <span class="fa fa-chevron-down"></span></a>
-
-
-
-
 
                 <ul id="menu_categorias" class="dropdown-menu" role="menu">
 
@@ -223,28 +222,22 @@
 
     </div>
     <div class="col-sm-12 col-md-3">
-      <div class="row  pull-right">
+      <div class="row">
         <div class="col-sm-12" id="contacto_telefono">
-            <a href="<?php echo $contact; ?>">
+        <div class="pull-right">
+          <a href="<?php echo $contact; ?>">
             <img src="image/icon_call.png" alt="<?php echo $telephone; ?>" title="<?php echo $telephone; ?>">
             </a>          
-            <span class="hidden-xs hidden-md colorGrayDarkDarkHermaprove" style="font-size: 11px">
+            <span class="colorGrayDarkDarkHermaprove" style="font-size: 11px">
               <?php echo $text_client_service; ?>:
             </span> 
             <span class="colorBlue h5" >
               <solid><?php echo $telephone; ?> </solid>
             </span>
         </div>
-
-
-          <?php if ($logged==False) { ?>
-        <div class="col-sm-12 text-center" id="link_opcionprincipal">
-
-            <a href="#" class="solicitarpromotor btn">SOLICITAR PROMOTOR</a>
+            
         </div>
-              
-           <?php } ?>
-          
+                 
         
       </div>      
     </div>

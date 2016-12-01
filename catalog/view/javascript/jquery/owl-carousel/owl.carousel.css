@@ -61,7 +61,8 @@
 	user-select: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-	margin-top: -50px
+	margin-top: -50px;
+	margin-bottom:50px;
 }
 /* mouse grab icon */
 .grabbing {
