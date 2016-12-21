@@ -9,9 +9,12 @@ class ControllerExtensionModuleTltBlog extends Controller {
 
 		$this->load->model('extension/module');
 		$this->load->model('localisation/language');
-		
+
+
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+
 			if (!isset($this->request->get['module_id'])) {
+
 				$this->model_extension_module->addModule('tltblog', $this->request->post);
 			} else {
 				$this->model_extension_module->editModule($this->request->get['module_id'], $this->request->post);
@@ -23,6 +26,7 @@ class ControllerExtensionModuleTltBlog extends Controller {
 
 			$this->response->redirect($this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=module', true));
 		}
+		$data['user'] ='HOLA';
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
@@ -35,6 +39,7 @@ class ControllerExtensionModuleTltBlog extends Controller {
 		$data['text_no'] = $this->language->get('text_no');
 
 		$data['entry_name'] = $this->language->get('entry_name');
+		$data['entry_author'] = $this->language->get('entry_author');
 		$data['entry_title'] = $this->language->get('entry_title');
 		$data['entry_show_title'] = $this->language->get('entry_show_title');
 		$data['entry_show_blogs'] = $this->language->get('entry_show_blogs');
@@ -155,7 +160,7 @@ class ControllerExtensionModuleTltBlog extends Controller {
 			$data['module_description'] = array();
 		}
 
-		if (isset($this->request->post['show_title'])) {
+		if (isset($this->request->post['show_title'])){
 			$data['show_title'] = $this->request->post['show_title'];
 		} elseif (!empty($module_info)) {
 			$data['show_title'] = $module_info['show_title'];

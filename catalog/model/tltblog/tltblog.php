@@ -1,8 +1,7 @@
 <?php
 class ModelTltBlogTltBlog extends Model {
 	public function getTltBlog($tltblog_id) {
-		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "tltblog b LEFT JOIN " . DB_PREFIX . "tltblog_description bd ON (b.tltblog_id = bd.tltblog_id) LEFT JOIN " . DB_PREFIX . "tltblog_to_store b2s ON (b.tltblog_id = b2s.tltblog_id) WHERE b.tltblog_id = '" . (int)$tltblog_id . "' AND bd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND b.status = '1' AND b2s.store_id = '" . (int)$this->config->get('config_store_id') . "'");
-
+		$query = $this->db->query("SELECT DISTINCT b.*,bd.*,b2s.*,u.firstname,u.lastname FROM " . DB_PREFIX . "tltblog b LEFT JOIN " . DB_PREFIX . "tltblog_description bd ON (b.tltblog_id = bd.tltblog_id) LEFT JOIN " . DB_PREFIX . "tltblog_to_store b2s ON (b.tltblog_id = b2s.tltblog_id) LEFT JOIN " . DB_PREFIX . "user u ON (b.show_author = u.user_id) WHERE b.tltblog_id = '" . (int)$tltblog_id . "' AND bd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND b.status = '1' AND b2s.store_id = '" . (int)$this->config->get('config_store_id') . "'");
 		return $query->row;
 	}
 
@@ -209,3 +208,6 @@ class ModelTltBlogTltBlog extends Model {
 		return $count;
 	}
 }
+
+
+

@@ -58,9 +58,7 @@ final class Tax {
 	public function calculate($value, $tax_class_id, $calculate = true) {
 		if ($tax_class_id && $calculate) {
 			$amount = 0;
-
 			$tax_rates = $this->getRates($value, $tax_class_id);
-
 			foreach ($tax_rates as $tax_rate) {
 				if ($calculate != 'P' && $calculate != 'F') {
 					$amount += $tax_rate['amount'];
@@ -69,6 +67,7 @@ final class Tax {
 				}
 			}
 
+			
 			return $value + $amount;
 		} else {
 			return $value;

@@ -6,6 +6,10 @@ class ControllerTltBlogTltTag extends Controller {
 		$this->load->model('tltblog/tltblog');
 		$this->load->model('setting/setting');
 		$this->load->model('tool/image');
+		$this->load->model('user/user');
+
+		$this->document->addScript('catalog/view/javascript/jquery/dotdotdot/jquery.dotdotdot.min.js');
+
 
 		if ($this->config->get('tltblog_seo')) {
 			require_once(DIR_APPLICATION . 'controller/tltblog/tltblog_seo.php');
@@ -93,7 +97,9 @@ class ControllerTltBlogTltTag extends Controller {
 				'href' => $this->url->link('tltblog/tlttag', 'tltpath=' . $path)
 			);
 		} 
-		
+
+		#print_r($data['breadcrumbs']);
+
 		if ($tltblogs) {
 			$this->document->setTitle($meta_title);
 			$this->document->setDescription($meta_description);
@@ -117,6 +123,8 @@ class ControllerTltBlogTltTag extends Controller {
 					$image = '';
 				}
 
+				$user=$this->model_user_user->getUser($tltblog['show_author']);
+
 				if ($tltblog['show_description']) {
 					$data['tltblogs'][] = array(
 						'tltblog_id'  		=> $tltblog['tltblog_id'],
@@ -124,6 +132,8 @@ class ControllerTltBlogTltTag extends Controller {
 						'title'       		=> $tltblog['title'],
 						'intro'       		=> html_entity_decode($tltblog['intro'], ENT_QUOTES, 'UTF-8'),
 						'show_description' 	=> $tltblog['show_description'],
+						'show_author'		=> $user['firstname']." ".$user['lastname'],
+						'created_at'		=> date_create($tltblog['created_at'])->format('d/m/y H:i'),
 						'href'        		=> $this->url->link('tltblog/tltblog', 'tltpath=' . $path . '&tltblog_id=' . $tltblog['tltblog_id'])
 					);
 				} else {
@@ -133,6 +143,8 @@ class ControllerTltBlogTltTag extends Controller {
 						'title'       		=> $tltblog['title'],
 						'intro'       		=> html_entity_decode($tltblog['intro'], ENT_QUOTES, 'UTF-8'),
 						'show_description' 	=> $tltblog['show_description'],
+						'show_author'		=> $user['firstname']." ".$user['lastname'],
+						'created_at'		=> date_create($tltblog['created_at'])->format('d/m/y H:i'),
 						'href'        		=> ''
 					);
 				}

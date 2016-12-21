@@ -142,10 +142,12 @@ class ControllerInformationContact extends Controller {
 		}
 
 		// Captcha
-		if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {
-			$data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'), $this->error);
-		} else {
-			$data['captcha'] = '';
+		if(!$this->customer->isLogged()){
+			if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {
+				$data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'), $this->error);
+			} else {
+				$data['captcha'] = '';
+			}
 		}
 
 		$data['column_left'] = $this->load->controller('common/column_left');
@@ -154,6 +156,8 @@ class ControllerInformationContact extends Controller {
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
+
+		$data['logged'] = $this->customer->isLogged();
 
 		$this->response->setOutput($this->load->view('information/contact', $data));
 	}

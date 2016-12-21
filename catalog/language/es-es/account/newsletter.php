@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']    = 'Suscribirse al Bolet&iacute;n';
+$_['heading_title']    = 'Suscribirse al Bolet&iacute;n de noticias';
 
 // Text
 $_['text_account']     = 'Cuenta';

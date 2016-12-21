@@ -194,7 +194,7 @@ class ControllerAccountLogin extends Controller {
 		$customer_info = $this->model_account_customer->getCustomerByEmail($this->request->post['email']);
 
 		if ($customer_info && !$customer_info['approved']) {
-			$this->error['warning'] = $this->language->get('error_approved');
+			$this->error['warning'] = sprintf($this->language->get('error_approved'), $this->url->link('information/contact'));
 		}
 
 		if (!$this->error) {

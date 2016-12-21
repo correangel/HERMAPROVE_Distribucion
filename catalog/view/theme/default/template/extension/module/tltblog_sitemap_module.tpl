@@ -1,39 +1,39 @@
-<?php if ($show_path) { ?>
-<h2><?php echo $path_title; ?></h2>
-<?php } ?>
-<?php if ($type == 'blogs') { ?>
-    <ul>
-    <?php foreach ($tltblogs as $tltblog) { ?>
-    <li><a href="<?php echo $tltblog['href']; ?>"><?php echo $tltblog['title']; ?></a></li>
+<div class="row" style="margin-top: 15px" id="blog_SiteMap">
+    <div class="col-sm-12">
+    <?php if ($show_path) { ?>
+    <h4 class="blog_title"><?php echo $path_title; ?></h4>
     <?php } ?>
-    </ul>
-<?php } elseif ($type == 'tags') { ?>
-    <ul>
-    <?php foreach ($tlttags as $tlttag) { ?>
-    <li><a href="<?php echo $tlttag['href']; ?>"><?php echo $tlttag['title']; ?></a></li>
-    <?php } ?>
-    </ul>
-<?php } else { ?>
-    <div class="row">
-        <div class="col-sm-6">
-            <ul>
-                <li><?php echo $heading_blogs; ?></li>
+    <?php if ($type == 'blogs') { ?>
+        <ul>
+            <?php foreach ($tltblogs as $tltblog) { ?>
+                <li><a href="<?php echo $tltblog['href']; ?>"><?php echo $tltblog['title']; ?></a></li>
+            <?php } ?>
+        </ul>
+    <?php } elseif ($type == 'tags') { ?>
+        <ul>
+            <?php foreach ($tlttags as $tlttag) { ?>
+                <li><a href="<?php echo $tlttag['href']; ?>"><?php echo $tlttag['title']; ?></a></li>
+            <?php } ?>
+        </ul>
+    <?php } else { ?>
+        <div class="row">
+            <div class="col-sm-12">
+                <h5><?php echo $heading_blogs; ?></h5>
                 <ul>
                     <?php foreach ($tltblogs as $tltblog) { ?>
-                    <li><a href="<?php echo $tltblog['href']; ?>"><?php echo $tltblog['title']; ?></a></li>
+                        <li><a href="<?php echo $tltblog['href']; ?>"><?php echo $tltblog['title']; ?></a></li>
                     <?php } ?>
                 </ul>
-            </ul>
-        </div>
-        <div class="col-sm-6">
-    		<ul>
-            	<li><?php echo $heading_tags; ?></li>
+            </div>
+            <div class="col-sm-12">
+        		<h5><?php echo $heading_tags; ?></h5>
                 <ul>
                     <?php foreach ($tlttags as $tlttag) { ?>
-                    <li><a href="<?php echo $tlttag['href']; ?>"><?php echo $tlttag['title']; ?></a></li>
+                        <li><a href="<?php echo $tlttag['href']; ?>"><?php echo $tlttag['title']; ?></a></li>
                     <?php } ?>
                 </ul>
-    		</ul>
-    	</div>
+        	</div>
+        </div>
+    <?php } ?>
     </div>
-<?php } ?>
+</div>

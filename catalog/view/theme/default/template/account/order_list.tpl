@@ -14,12 +14,12 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?></h1>
-      <?php if ($orders) { ?>
+      <h3><?php echo $heading_title; ?></h3>
+     
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
           <thead>
-            <tr>
+            <tr class="active">
               <td class="text-right"><?php echo $column_order_id; ?></td>
               <td class="text-left"><?php echo $column_customer; ?></td>
               <td class="text-right"><?php echo $column_product; ?></td>
@@ -30,6 +30,7 @@
             </tr>
           </thead>
           <tbody>
+           <?php if ($orders) { ?>
             <?php foreach ($orders as $order) { ?>
             <tr>
               <td class="text-right">#<?php echo $order['order_id']; ?></td>
@@ -41,6 +42,13 @@
               <td class="text-right"><a href="<?php echo $order['view']; ?>" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
             </tr>
             <?php } ?>
+             <?php } else { ?>
+             <tr>
+               <td class="text-center" colspan=7>
+                 <?php echo $text_empty; ?>
+               </td>
+             </tr>
+            <?php } ?>
           </tbody>
         </table>
       </div>
@@ -48,9 +56,7 @@
         <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
         <div class="col-sm-6 text-right"><?php echo $results; ?></div>
       </div>
-      <?php } else { ?>
-      <p><?php echo $text_empty; ?></p>
-      <?php } ?>
+      
       <div class="buttons clearfix">
         <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
       </div>

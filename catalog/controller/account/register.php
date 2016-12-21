@@ -75,10 +75,12 @@ class ControllerAccountRegister extends Controller {
 		$data['entry_customer_group'] = $this->language->get('entry_customer_group');
 		$data['entry_firstname'] = $this->language->get('entry_firstname');
 		$data['entry_lastname'] = $this->language->get('entry_lastname');
+		$data['entry_identitynumber'] = $this->language->get('entry_identitynumber');
 		$data['entry_email'] = $this->language->get('entry_email');
 		$data['entry_telephone'] = $this->language->get('entry_telephone');
 		$data['entry_fax'] = $this->language->get('entry_fax');
 		$data['entry_company'] = $this->language->get('entry_company');
+		$data['entry_RUC'] = $this->language->get('entry_RUC');
 		$data['entry_address_1'] = $this->language->get('entry_address_1');
 		$data['entry_address_2'] = $this->language->get('entry_address_2');
 		$data['entry_postcode'] = $this->language->get('entry_postcode');
@@ -110,6 +112,12 @@ class ControllerAccountRegister extends Controller {
 			$data['error_lastname'] = '';
 		}
 
+		if (isset($this->error['identitynumber'])) {
+			$data['error_identitynumber'] = $this->error['identitynumber'];
+		} else {
+			$data['error_identitynumber'] = '';
+		}
+
 		if (isset($this->error['email'])) {
 			$data['error_email'] = $this->error['email'];
 		} else {
@@ -120,6 +128,12 @@ class ControllerAccountRegister extends Controller {
 			$data['error_telephone'] = $this->error['telephone'];
 		} else {
 			$data['error_telephone'] = '';
+		}
+
+		if (isset($this->error['RUC'])) {
+			$data['error_RUC'] = $this->error['RUC'];
+		} else {
+			$data['error_RUC'] = '';
 		}
 
 		if (isset($this->error['address_1'])) {
@@ -204,6 +218,12 @@ class ControllerAccountRegister extends Controller {
 			$data['lastname'] = '';
 		}
 
+		if (isset($this->request->post['identitynumber'])) {
+			$data['identitynumber'] = $this->request->post['identitynumber'];
+		} else {
+			$data['identitynumber'] = '';
+		}
+
 		if (isset($this->request->post['email'])) {
 			$data['email'] = $this->request->post['email'];
 		} else {
@@ -227,6 +247,13 @@ class ControllerAccountRegister extends Controller {
 		} else {
 			$data['company'] = '';
 		}
+
+		if (isset($this->request->post['RUC'])) {
+			$data['RUC'] = $this->request->post['RUC'];
+		} else {
+			$data['RUC'] = '';
+		}
+
 
 		if (isset($this->request->post['address_1'])) {
 			$data['address_1'] = $this->request->post['address_1'];
@@ -361,7 +388,11 @@ class ControllerAccountRegister extends Controller {
 			$this->error['lastname'] = $this->language->get('error_lastname');
 		}
 
-		if ((utf8_strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
+		if (utf8_strlen(trim($this->request->post['identitynumber'])) != 10 && (!is_numeric($this->request->post['RUC'])) ){
+			$this->error['identitynumber'] = $this->language->get('error_identitynumber');
+		}
+
+		if ((utf8_strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'],FILTER_VALIDATE_EMAIL)) {
 			$this->error['email'] = $this->language->get('error_email');
 		}
 
@@ -371,6 +402,10 @@ class ControllerAccountRegister extends Controller {
 
 		if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
 			$this->error['telephone'] = $this->language->get('error_telephone');
+		}
+
+		if ( (utf8_strlen(trim($this->request->post['RUC'])) != 13) && (!is_numeric($this->request->post['RUC'])) ) {
+			$this->error['RUC'] = $this->language->get('error_RUC');
 		}
 
 		if ((utf8_strlen(trim($this->request->post['address_1'])) < 3) || (utf8_strlen(trim($this->request->post['address_1'])) > 128)) {

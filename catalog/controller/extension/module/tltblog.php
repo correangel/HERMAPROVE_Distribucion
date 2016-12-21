@@ -15,6 +15,7 @@ class ControllerExtensionModuleTltBlog extends Controller {
 			$this->load->model('tltblog/tltblog');
 			$this->load->model('setting/setting');
 			$this->load->model('tool/image');
+			$this->load->model('user/user');
 			
 			if ($this->config->get('tltblog_seo')) {
 				require_once(DIR_APPLICATION . 'controller/tltblog/tltblog_seo.php');
@@ -54,6 +55,7 @@ class ControllerExtensionModuleTltBlog extends Controller {
 				}
 			}
 			
+
 			if ($results) {
 				if (isset($this->request->get['tltpath'])) {
 					$path = $this->request->get['tltpath'];
@@ -69,6 +71,8 @@ class ControllerExtensionModuleTltBlog extends Controller {
 					} else {
 						$image = $this->model_tool_image->resize('placeholder.png', $setting['width'], $setting['height']);
 					}
+
+					$user=$this->model_user_user->getUser($result['show_author']);
 					
 					if ($data['show_blogs'] && $result['show_description']) {
 						$data['tltblogs'][] = array(
@@ -77,6 +81,8 @@ class ControllerExtensionModuleTltBlog extends Controller {
 							'title'       		=> $result['title'],
 							'intro'       		=> html_entity_decode($result['intro'], ENT_QUOTES, 'UTF-8'),
 							'show_description' 	=> $result['show_description'],
+							'show_author'		=> $user['firstname']." ".$user['lastname'],
+							'created_at'		=> date_create($result['created_at'])->format('d/m/y H:i'),
 							'href'        		=> $this->url->link('tltblog/tltblog', 'tltpath=' . $path . '&tltblog_id=' . $result['tltblog_id'])
 						);
 					} else {
@@ -86,6 +92,8 @@ class ControllerExtensionModuleTltBlog extends Controller {
 							'title'       		=> $result['title'],
 							'intro'       		=> html_entity_decode($result['intro'], ENT_QUOTES, 'UTF-8'),
 							'show_description' 	=> '0',
+							'show_author'		=> $user['firstname']." ".$user['lastname'],
+							'created_at'		=> date_create($result['created_at'])->format('d/m/y H:i'),
 							'href'        		=> ''
 						);
 					}
@@ -108,4 +116,19 @@ class ControllerExtensionModuleTltBlog extends Controller {
 			}
 		}
 	}
+
+
+	function SpanishDate($FechaStamp)
+	{
+		$FechaStamp=date_create($FechaStamp);
+
+
+	   $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
+	#$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+	   $meses = array("ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC");
+			 
+		#return  $dias[$FechaStamp->format('w')]." ".$FechaStamp->format('d')." de ".$meses[$FechaStamp->format('n')-1]. " del ".$FechaStamp->format('Y') ;
+
+		return  $FechaStamp->format('d')." ".$meses[$FechaStamp->format('n')-1]. " ".$FechaStamp->format('Y') ;
+	}  
 }

@@ -18,9 +18,8 @@ class ControllerTltBlogTltBlog extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('tltblog/tltblog');
-
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_tltblog_tltblog->addTltBlog($this->request->post);
+			$this->model_tltblog_tltblog->addTltBlog($this->request->post,$this->session->data['user_id']);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 

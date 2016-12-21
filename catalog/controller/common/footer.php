@@ -47,10 +47,30 @@ class ControllerCommonFooter extends Controller {
 
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 
+		$this->load->model('tool/image');
+
+		if ($this->config->get('config_image')) {
+			$data['image'] = $this->model_tool_image->resize($this->config->get('config_image'), $this->config->get($this->config->get('config_theme') . '_image_location_width'), $this->config->get($this->config->get('config_theme') . '_image_location_height'));
+		} else {
+			$data['image'] = false;
+		}
+
+		$data['store'] = $this->config->get('config_name');
+		$data['address'] = nl2br($this->config->get('config_address'));
+		$data['geocode'] = $this->config->get('config_geocode');
+		$data['geocode_hl'] = $this->config->get('config_language');
+		$data['telephone'] = $this->config->get('config_telephone');
+		$data['fax'] = $this->config->get('config_fax');
+		$data['open'] = nl2br($this->config->get('config_open'));
+		$data['comment'] = $this->config->get('config_comment');
+		$data['email'] = $this->config->get('config_email');
+
+
+		$data['blog'] = $this->url->link('tltblog/tlttag');
+
 		// Whos Online
 		if ($this->config->get('config_customer_online')) {
 			$this->load->model('tool/online');
-
 			if (isset($this->request->server['REMOTE_ADDR'])) {
 				$ip = $this->request->server['REMOTE_ADDR'];
 			} else {

@@ -13,7 +13,6 @@ class ControllerTltBlogTltBlog extends Controller {
 			$tltblog_seo = new ControllerTltBlogTltBlogSeo($this->registry);
 			$this->url->addRewrite($tltblog_seo);
 		}
-
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -75,7 +74,8 @@ class ControllerTltBlogTltBlog extends Controller {
 			} else {
 				$data['blog_image'] = $this->config->get('config_url') . 'image/' . $tltblog_info['image'];
 			}
-			
+			$data['created_at']=  date_format(date_create($tltblog_info['created_at']),'d/m/y H:m');
+			$data['author']= $tltblog_info['firstname']." ".$tltblog_info['lastname'];
 			$data['description'] = html_entity_decode($tltblog_info['description'], ENT_QUOTES, 'UTF-8');
 			$data['button_cart'] = $this->language->get('button_cart');
 			$data['button_wishlist'] = $this->language->get('button_wishlist');
@@ -86,6 +86,8 @@ class ControllerTltBlogTltBlog extends Controller {
 			$data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
 
 			$data['products'] = array();
+
+			$data['logged'] = $this->customer->isLogged();
 
 			$tltblog_relateds = $this->model_tltblog_tltblog->getTltBlogRelated($tltblog_id);
 
@@ -126,6 +128,7 @@ class ControllerTltBlogTltBlog extends Controller {
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
+					'manufacturer'=> $result['manufacturer'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,

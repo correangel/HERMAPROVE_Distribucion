@@ -5,8 +5,8 @@ $_['heading_title']        = 'Lista de Direcciones';
 // Text
 $_['text_account']         = 'Cuenta';
 $_['text_address_book']    = 'Lista de Direcciones';
-$_['text_edit_address']    = 'Modificar Direcciones';
-$_['text_add']             = 'La direcci&oacute;n se ha introducido con &eacute;xito';
+$_['text_edit_address']    = 'Direcci&oacute;n';
+$_['text_add']             = 'La direcci&oacute;n se ha agregado con &eacute;xito';
 $_['text_edit']            = 'La direcci&oacute;n ha sido actualizado con &eacute;xito';
 $_['text_delete']          = 'La direcci&oacute;n se ha eliminado correctamente';
 $_['text_empty']           = 'Sin direcciones en la cuenta.';

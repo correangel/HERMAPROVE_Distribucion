@@ -9,17 +9,13 @@ class ControllerAccountPassword extends Controller {
 			$this->response->redirect($this->url->link('account/login', '', true));
 		}
 
+		$this->load->model('account/customer'); 
 		$this->load->language('account/password');
-
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->load->model('account/customer');
-
 			$this->model_account_customer->editPassword($this->customer->getEmail(), $this->request->post['password']);
-
 			$this->session->data['success'] = $this->language->get('text_success');
-
 			// Add to activity log
 			if ($this->config->get('config_customer_activity')) {
 				$this->load->model('account/activity');
@@ -28,10 +24,8 @@ class ControllerAccountPassword extends Controller {
 					'customer_id' => $this->customer->getId(),
 					'name'        => $this->customer->getFirstName() . ' ' . $this->customer->getLastName()
 				);
-
 				$this->model_account_activity->addActivity('password', $activity_data);
 			}
-
 			$this->response->redirect($this->url->link('account/account', '', true));
 		}
 
@@ -54,13 +48,21 @@ class ControllerAccountPassword extends Controller {
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
+		$data['text_password_old'] = $this->language->get('text_password_old');
 		$data['text_password'] = $this->language->get('text_password');
-
+		
+		$data['entry_password_old'] = $this->language->get('entry_password_old');
 		$data['entry_password'] = $this->language->get('entry_password');
 		$data['entry_confirm'] = $this->language->get('entry_confirm');
 
 		$data['button_continue'] = $this->language->get('button_continue');
 		$data['button_back'] = $this->language->get('button_back');
+
+		if (isset($this->error['password_old'])) {
+			$data['error_password_old'] = $this->error['password_old'];
+		} else {
+			$data['error_password_old'] = '';
+		}
 
 		if (isset($this->error['password'])) {
 			$data['error_password'] = $this->error['password'];
@@ -75,6 +77,12 @@ class ControllerAccountPassword extends Controller {
 		}
 
 		$data['action'] = $this->url->link('account/password', '', true);
+
+		if (isset($this->request->post['password_old'])) {
+			$data['password_old'] = $this->request->post['password_old'];
+		} else {
+			$data['password_old'] = '';
+		}
 
 		if (isset($this->request->post['password'])) {
 			$data['password'] = $this->request->post['password'];
@@ -101,11 +109,18 @@ class ControllerAccountPassword extends Controller {
 	}
 
 	protected function validate() {
+		if ( !$this->model_account_customer->verifyCurrentPassword($this->customer->getEmail(),$this->request->post['password_old']) ) {
+			$this->error['password_old'] = $this->language->get('error_password_old');
+		}
+
 		if ((utf8_strlen($this->request->post['password']) < 4) || (utf8_strlen($this->request->post['password']) > 20)) {
+			$this->request->post['password']="";
 			$this->error['password'] = $this->language->get('error_password');
 		}
 
+
 		if ($this->request->post['confirm'] != $this->request->post['password']) {
+			$this->request->post['confirm']="";
 			$this->error['confirm'] = $this->language->get('error_confirm');
 		}
 

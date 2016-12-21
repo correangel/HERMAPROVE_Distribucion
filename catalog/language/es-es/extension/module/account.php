@@ -3,14 +3,14 @@
 $_['heading_title']    = 'Cuenta';
 
 // Text
-$_['text_register']    = 'Registro';
+$_['text_register']    = 'Reg&iacute;strate';
 $_['text_login']       = 'Iniciar Sesi&oacute;n';
-$_['text_logout']      = 'Salir';
-$_['text_forgotten']   = 'Contrase&ntilde;a Olvidada';
+$_['text_logout']      = 'Cerrar Sesi&oacute;n';
+$_['text_forgotten']   = 'Recuperar Contrase&ntilde;a';
 $_['text_account']     = 'Cuenta';
 $_['text_edit']        = 'Editar Cuenta';
-$_['text_password']    = 'Contrase&ntilde;a';
-$_['text_address']     = 'Libreta de Direcciones';
+$_['text_password']    = 'Actualizar contrase&ntilde;a';
+$_['text_address']     = 'Lista de Direcciones';
 $_['text_wishlist']    = 'Favoritos';
 $_['text_order']       = 'Historial de Pedidos';
 $_['text_download']    = 'Descargas';

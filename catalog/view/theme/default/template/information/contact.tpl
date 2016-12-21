@@ -14,13 +14,14 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?></h1>
-      <h3><?php echo $text_location; ?></h3>
+      <h3><?php echo $heading_title; ?></h3>
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
             <?php if ($image) { ?>
-            <div class="col-sm-3"><img src="<?php echo $image; ?>" alt="<?php echo $store; ?>" title="<?php echo $store; ?>" class="img-thumbnail" /></div>
+            <div class="col-sm-3">
+              <img src="<?php echo $image; ?>" alt="<?php echo $store; ?>" title="<?php echo $store; ?>" class="img-thumbnail" />
+            </div>
             <?php } ?>
             <div class="col-sm-3"><strong><?php echo $store; ?></strong><br />
               <address>
@@ -100,44 +101,63 @@
         <?php } ?>
       </div>
       <?php } ?>
-      <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+      <form id="form_contact" action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
         <fieldset>
           <legend><?php echo $text_contact; ?></legend>
           <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-name"><?php echo $entry_name; ?></label>
-            <div class="col-sm-10">
-              <input type="text" name="name" value="<?php echo $name; ?>" id="input-name" class="form-control" />
+            <label class="col-sm-3 control-label" for="input-name"><?php echo $entry_name; ?></label>
+            <div class="col-sm-4">
+              <input required minlength="3" maxlength="32" type="text" name="name" value="<?php echo $name; ?>" id="input-name" class="form-control" />
               <?php if ($error_name) { ?>
               <div class="text-danger"><?php echo $error_name; ?></div>
               <?php } ?>
             </div>
           </div>
           <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-email"><?php echo $entry_email; ?></label>
-            <div class="col-sm-10">
-              <input type="text" name="email" value="<?php echo $email; ?>" id="input-email" class="form-control" />
+            <label class="col-sm-3 control-label" for="input-email"><?php echo $entry_email; ?></label>
+            <div class="col-sm-4">
+              <input required type="text" name="email" value="<?php echo $email; ?>" id="input-email" class="form-control" />
               <?php if ($error_email) { ?>
               <div class="text-danger"><?php echo $error_email; ?></div>
               <?php } ?>
             </div>
           </div>
           <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-enquiry"><?php echo $entry_enquiry; ?></label>
-            <div class="col-sm-10">
-              <textarea name="enquiry" rows="10" id="input-enquiry" class="form-control"><?php echo $enquiry; ?></textarea>
+            <label class="col-sm-3 control-label" for="input-enquiry"><?php echo $entry_enquiry; ?></label>
+            <div class="col-sm-5">
+              <textarea minlength="15" maxlength="3000" required name="enquiry" rows="4" id="input-enquiry" class="form-control" style="resize: none;"><?php echo $enquiry; ?></textarea>
               <?php if ($error_enquiry) { ?>
               <div class="text-danger"><?php echo $error_enquiry; ?></div>
               <?php } ?>
             </div>
           </div>
-          <?php echo $captcha; ?>
-        </fieldset>
-        <div class="buttons">
-          <div class="pull-right">
-            <input class="btn btn-primary" type="submit" value="<?php echo $button_submit; ?>" />
+          <?php if (!$logged) { ?>
+           <?php echo $captcha; ?>
+          <?php } ?>
+          <div class="col-sm-8 buttons">
+            <div class="pull-right">
+              <input class="btn btn-primary" type="submit" value="<?php echo $button_submit; ?>" />
+            </div>
           </div>
-        </div>
+                        
+         
+        </fieldset>
+        
       </form>
+
+       <script>
+          $("#form_contact").validate({
+              errorClass: 'text-danger',
+              highlight: function(element) {
+                  $(element).closest(".form-group").addClass('has-error');
+                  console.log(element);
+
+              }, unhighlight: function(element) {
+                  $(element).closest(".form-group").removeClass('has-error');
+              }
+          });
+      </script>
+
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>

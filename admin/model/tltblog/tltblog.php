@@ -1,7 +1,7 @@
 <?php
 class ModelTltBlogTltBlog extends Model {
-	public function addTltBlog($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "tltblog SET sort_order = '" . (int)$data['sort_order'] . "', image = '" . (isset($data['image']) ? $this->db->escape($data['image']) : '') . "', bottom = '" . (isset($data['bottom']) ? (int)$data['bottom'] : 0) . "', show_title = '" . (isset($data['show_title']) ? (int)$data['show_title'] : 0) . "', status = '" . (int)$data['status'] . "', show_description = '" . (isset($data['show_description']) ? (int)$data['show_description'] : 0) . "'");
+	public function addTltBlog($data,$user_id) {
+		$this->db->query("INSERT INTO " . DB_PREFIX . "tltblog SET sort_order = '" . (int)$data['sort_order'] . "', image = '" . (isset($data['image']) ? $this->db->escape($data['image']) : '') . "', bottom = '" . (isset($data['bottom']) ? (int)$data['bottom'] : 0) . "', show_title = '" . (isset($data['show_title']) ? (int)$data['show_title'] : 0) . "', status = '" . (int)$data['status'] . "', show_description = '" . (isset($data['show_description']) ? (int)$data['show_description'] : 0) ."', show_author = '".(int)$user_id. "'");
 
 		$tltblog_id = $this->db->getLastId();
 

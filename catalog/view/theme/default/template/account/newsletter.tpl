@@ -14,7 +14,8 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?></h1>
+      <h3><?php echo $heading_title; ?></h3>
+      <p>Al suscribirte al bolet&iacute;n podrás recibir noticias, promociones o recomendaciones por correo. No te pierdas nuestras fabulosas ofertas!</p>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
         <fieldset>
           <div class="form-group">

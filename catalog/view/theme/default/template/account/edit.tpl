@@ -17,49 +17,50 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?></h1>
-      <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+      <h3><?php echo $heading_title; ?></h3>
+      <p>Edita los datos personales de tu cuenta, recuerda verificar que esten correctos para que nos podamos contactar contigo.</p>
+      <form id="form_editaccount" action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
         <fieldset>
           <legend><?php echo $text_your_details; ?></legend>
           <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-firstname"><?php echo $entry_firstname; ?> </label>
-            <div class="col-sm-10">
-              <input type="text" name="firstname" value="<?php echo $firstname; ?>" placeholder="<?php echo $entry_firstname; ?>" id="input-firstname" class="form-control" />
+            <label class="col-sm-3 control-label" for="input-firstname"><?php echo $entry_firstname; ?> </label>
+            <div class="col-sm-6">
+              <input required type="text" name="firstname" value="<?php echo $firstname; ?>" placeholder="<?php echo $entry_firstname; ?>" id="input-firstname" class="form-control" />
               <?php if ($error_firstname) { ?>
               <div class="text-danger"><?php echo $error_firstname; ?></div>
               <?php } ?>
             </div>
           </div>
           <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-lastname"><?php echo $entry_lastname; ?></label>
-            <div class="col-sm-10">
-              <input type="text" name="lastname" value="<?php echo $lastname; ?>" placeholder="<?php echo $entry_lastname; ?>" id="input-lastname" class="form-control" />
+            <label class="col-sm-3 control-label" for="input-lastname"><?php echo $entry_lastname; ?></label>
+            <div class="col-sm-6">
+              <input required type="text" name="lastname" value="<?php echo $lastname; ?>" placeholder="<?php echo $entry_lastname; ?>" id="input-lastname" class="form-control" />
               <?php if ($error_lastname) { ?>
               <div class="text-danger"><?php echo $error_lastname; ?></div>
               <?php } ?>
             </div>
           </div>
           <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-email"><?php echo $entry_email; ?></label>
-            <div class="col-sm-10">
-              <input type="email" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" class="form-control" />
+            <label class="col-sm-3 control-label" for="input-email"><?php echo $entry_email; ?></label>
+            <div class="col-sm-6">
+              <input readonly required type="email" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" class="form-control" />
               <?php if ($error_email) { ?>
               <div class="text-danger"><?php echo $error_email; ?></div>
               <?php } ?>
             </div>
           </div>
           <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-telephone"><?php echo $entry_telephone; ?></label>
-            <div class="col-sm-10">
-              <input type="tel" name="telephone" value="<?php echo $telephone; ?>" placeholder="<?php echo $entry_telephone; ?>" id="input-telephone" class="form-control" />
+            <label class="col-sm-3 control-label" for="input-telephone"><?php echo $entry_telephone; ?></label>
+            <div class="col-sm-6">
+              <input required type="tel" name="telephone" value="<?php echo $telephone; ?>" placeholder="<?php echo $entry_telephone; ?>" id="input-telephone" class="form-control" />
               <?php if ($error_telephone) { ?>
               <div class="text-danger"><?php echo $error_telephone; ?></div>
               <?php } ?>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-fax"><?php echo $entry_fax; ?></label>
-            <div class="col-sm-10">
+            <label class="col-sm-3 control-label" for="input-fax"><?php echo $entry_fax; ?></label>
+            <div class="col-sm-6">
               <input type="text" name="fax" value="<?php echo $fax; ?>" placeholder="<?php echo $entry_fax; ?>" id="input-fax" class="form-control" />
             </div>
           </div>
@@ -227,7 +228,41 @@
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
-<script type="text/javascript"><!--
+
+
+
+<script>
+
+$('#input-telephone').bind('keypress', function (event) {
+  var charCode = event.charCode;
+    if (charCode != 0) {
+      if (charCode < 48 || charCode > 57) {
+        event.preventDefault();
+      }
+    }
+});
+
+$('#input-fax').bind('keypress', function (event) {
+  var charCode = event.charCode;
+    if (charCode != 0) {
+      if (charCode < 48 || charCode > 57) {
+        event.preventDefault();
+      }
+    }
+});
+
+
+$("#form_editaccount").validate({
+      errorClass: 'text-danger',
+      highlight: function(element) {
+          $(element).closest(".form-group").addClass('has-error');
+          console.log(element);
+
+      }, unhighlight: function(element) {
+          $(element).closest(".form-group").removeClass('has-error');
+      }
+  });
+
 // Sort the custom fields
 $('.form-group[data-sort]').detach().each(function() {
 	if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('.form-group').length) {

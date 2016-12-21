@@ -11,7 +11,6 @@ class ControllerExtensionModuleTltBlogSitemapModule extends Controller {
 			$tltblog_seo = new ControllerTltBlogTltBlogSeo($this->registry);
 			$this->url->addRewrite($tltblog_seo);
 		}
-
 		$data['heading_blogs'] = $this->language->get('heading_blogs');
 		$data['heading_tags'] = $this->language->get('heading_tags');
 

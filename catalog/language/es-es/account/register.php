@@ -17,10 +17,12 @@ $_['text_agree']           = 'He le&iacute;do y estoy de acuerdo con el <a href=
 $_['entry_customer_group'] = 'Tipo de Cliente';
 $_['entry_firstname']      = 'Nombre';
 $_['entry_lastname']       = 'Apellido';
+$_['entry_identitynumber'] = 'Cedula';
 $_['entry_email']          = 'Email';
 $_['entry_telephone']      = 'Tel&eacute;fono';
 $_['entry_fax']            = 'Fax';
-$_['entry_company']        = 'Empresa';
+$_['entry_company']        = 'Raz&oacute;n social';
+$_['entry_RUC']        = 'RUC';
 $_['entry_address_2']      = 'Direcci&oacute;n 2';
 $_['entry_address_1']      = 'Direcci&oacute;n';
 $_['entry_postcode']       = 'C&oacute;digo Postal';

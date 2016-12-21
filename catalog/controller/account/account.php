@@ -7,6 +7,8 @@ class ControllerAccountAccount extends Controller {
 			$this->response->redirect($this->url->link('account/login', '', true));
 		}
 
+		$this->load->model('account/customer');
+		$this->load->model('account/address');
 		$this->load->language('account/account');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -36,7 +38,7 @@ class ControllerAccountAccount extends Controller {
 		$data['text_my_account'] = $this->language->get('text_my_account');
 		$data['text_my_orders'] = $this->language->get('text_my_orders');
 		$data['text_my_newsletter'] = $this->language->get('text_my_newsletter');
-		$data['text_edit'] = $this->language->get('text_edit');
+		$data['text_edit_info'] = $this->language->get('text_edit');
 		$data['text_password'] = $this->language->get('text_password');
 		$data['text_address'] = $this->language->get('text_address');
 		$data['text_credit_card'] = $this->language->get('text_credit_card');
@@ -51,8 +53,9 @@ class ControllerAccountAccount extends Controller {
 
 		$data['edit'] = $this->url->link('account/edit', '', true);
 		$data['password'] = $this->url->link('account/password', '', true);
-		$data['address'] = $this->url->link('account/address', '', true);
-		
+		$data['address_edit'] = $this->url->link('account/address', '', true);
+
+	
 		$data['credit_cards'] = array();
 		
 		$files = glob(DIR_APPLICATION . 'controller/extension/credit_card/*.php');
@@ -91,8 +94,21 @@ class ControllerAccountAccount extends Controller {
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
+
+		if ($this->request->server['REQUEST_METHOD'] != 'POST') {
+			$data['customer_info'] = $this->model_account_customer->getCustomer($this->customer->getId());
+		}
 		
-		$this->response->setOutput($this->load->view('account/account', $data));
+		$data['addresses'] = $this->model_account_address->getAddresses();
+
+		$data['url_edit']=$this->url->link('account/address/edit', 'address_id=', true);
+		$data['url_delete']= $this->url->link('account/address/delete', 'address_id=', true);
+
+		$this->load->language('account/address');
+		$data['button_new_address'] = $this->language->get('button_new_address');
+		$data['url_add'] = $this->url->link('account/address/add', '', true);
+
+		return $this->response->setOutput($this->load->view('account/account', $data));
 	}
 
 	public function country() {
@@ -120,4 +136,5 @@ class ControllerAccountAccount extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
 }

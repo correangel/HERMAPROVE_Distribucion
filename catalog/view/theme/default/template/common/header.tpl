@@ -24,12 +24,15 @@
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
 <script src="catalog/view/javascript/jquery/jquery-validate/jquery.validate.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/jquery/jquery-validate/additional-methods.min.js" type="text/javascript"></script>
 <script src="catalog/view/javascript/jquery/jquery-validate/messages_es.js" type="text/javascript"></script>
+
 
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
 <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/styleCustomized.css" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/animate.css" rel="stylesheet">
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
@@ -92,7 +95,7 @@
             <?php } ?>
              <?php if ($logged==False) { ?>
              <li >
-                  <a href="<?php echo $register; ?>" id="solicitarpromotor" class="btn"><?php echo $text_register; ?></a>
+                  <a href="<?php echo $register; ?>" id="solicitarpromotor" class="btn"><?php echo $text_register_button; ?></a>
               </li>
               <li class="border-left">
                   <a href="<?php echo $login; ?>"><?php echo $text_login; ?></a>
@@ -155,8 +158,8 @@
         </div>
         <div class="collapse navbar-collapse navbar-collapse-menu">
           <ul class="nav navbar-nav">
-            <li class="hidden-xs"><a href="" style="padding-left: 0px">Inicio</a></li>
-            <li class="visible-xs"><a href="">Inicio</a></li>
+            <li class="hidden-xs"><a href="<?php echo $home; ?>" style="padding-left: 0px">Inicio</a></li>
+            <li class="visible-xs"><a href="<?php echo $home; ?>">Inicio</a></li>
 
 
 
@@ -191,9 +194,6 @@
                             </div>
                         </div>
 
-
-                        
-
                     </li>
 
                     <?php } ?>
@@ -210,11 +210,10 @@
             <li><a href="">Promociones <i class="fa fa-star" aria-hidden="true" style="color:#efef00"></i></a>
             </li>
 
-            <li><a href="">Blog</a>
-            </li>
+            <li><a href="<?php echo $blog; ?>">Novedades</a></li>
 
-            <li><a href="">Contacto</a>
-            </li>
+            <!--<li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a>
+            </li>-->
 
           </ul>
         </div>
@@ -290,3 +289,87 @@
         });
 
     </script>
+
+
+
+<?php if (!$logged) { ?>
+<!--Este modal es el que se usa en todos los productos para que cuando un usuario no ha ingresado a la sesion deba ingresar o registrarse-->
+<div class="modal fade" id="modalAddCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Registra o accede a tu cuenta</h4>
+      </div>
+      <div class="modal-body">
+
+           <div class="row">
+            <div class="col-sm-8 col-sm-push-4">
+            <div class="well" style=" border-left: 1px solid #e3e3e3">
+              <h3><?php echo $text_returning_customer; ?></h3>
+              <p><strong style="font-weight: 600;"><?php echo $text_i_am_returning_customer; ?></strong></p>
+              <form id="form_login" action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label class="control-label" for="input-email"><?php echo $entry_email; ?></label>
+                  <input required type="email" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" class="form-control" />
+                </div>
+                <div class="form-group" style="margin-bottom:0px">
+                  <label class="control-label" for="input-password"><?php echo $entry_password; ?></label>
+                  <input required type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password" class="form-control" />
+                </div>
+                 <div class="row">
+                  <div class="col-sm-12">
+                  <p class="pull-right"><a href="<?php echo $forgotten; ?>"><?php echo $text_forgotten; ?></a></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <input type="submit" value="<?php echo $button_login; ?>" class="btn btn-primary pull-right" />
+                  </div>   
+                </div>
+                
+                <?php if ($redirect) { ?>
+                <input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />
+                <?php } ?>
+              </form>
+
+              <script>
+                  $("#form_login").validate({
+                      errorClass: 'text-danger',
+                      highlight: function(element) {
+                          $(element).closest(".form-group").addClass('has-error');
+                          console.log(element);
+
+                      }, unhighlight: function(element) {
+                          $(element).closest(".form-group").removeClass('has-error');
+                      }
+                  });
+              </script>
+
+
+            </div>
+        </div>
+        <div class="col-sm-4 col-sm-pull-8">
+          <div class="well">
+            <h3><?php echo $text_register; ?></h3>
+            <p><strong style="font-weight: 600;"><?php echo $text_new_customer; ?></strong></p>
+            <p align="justify"><?php echo $text_register_account; ?></p>
+            <div class="row">
+                <div class="col-sm-12">
+                 <a href="<?php echo $register; ?>" class="btn btn-primary pull-right"><?php echo $button_continue; ?></a></div>
+                </div>   
+              </div>
+
+           
+        </div>
+
+      </div>
+
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+             <?php } ?>    

@@ -60,7 +60,7 @@ class ControllerCommonHeader extends Controller {
 		$data['text_logged'] = sprintf($this->language->get('text_logged'), $this->url->link('account/account', '', true), $this->customer->getFirstName(), $this->url->link('account/logout', '', true));
 
 		$data['text_account'] = $this->language->get('text_account');
-		$data['text_register'] = $this->language->get('text_register');
+		$data['text_register_button'] = $this->language->get('text_register');
 		$data['text_login'] = $this->language->get('text_login');
 		$data['text_order'] = $this->language->get('text_order');
 		$data['text_transaction'] = $this->language->get('text_transaction');
@@ -71,6 +71,7 @@ class ControllerCommonHeader extends Controller {
 		$data['text_all'] = $this->language->get('text_all');
 
 		//Texts Customized
+		$data['text_contact'] = $this->language->get('text_contact');
 		$data['text_company_description'] = $this->language->get('text_company_description');
 		$data['text_client_service'] = $this->language->get('text_client_service');
 
@@ -89,6 +90,19 @@ class ControllerCommonHeader extends Controller {
 		$data['contact'] = $this->url->link('information/contact');
 		$data['telephone'] = $this->config->get('config_telephone');
 
+		/*
+		if (isset($this->request->get['tltpath'])) {
+			$path = $this->request->get['tltpath'];
+		} elseif ($this->config->has('tltblog_path')) {
+			$path = $this->config->get('tltblog_path');
+		} else {
+			$path = 'blogs';
+		}
+		
+		*/
+
+		$data['blog'] = $this->url->link('tltblog/tlttag');
+
 		// Menu
 		$this->load->model('catalog/category');
 
@@ -97,6 +111,51 @@ class ControllerCommonHeader extends Controller {
 		$data['categories'] = array();
 
 		$categories = $this->model_catalog_category->getCategories(0);
+
+		//Esta comprobacion es para el modal de iniciar sesion al querer agregar un producto al carro de compras
+		if (!$this->customer->isLogged()) {
+			$this->load->language('account/login');
+
+			$data['text_register'] = $this->language->get('text_register');
+			$data['text_new_customer'] = $this->language->get('text_new_customer');
+			$data['text_register_account'] = $this->language->get('text_register_account');
+			$data['text_returning_customer'] = $this->language->get('text_returning_customer');
+			$data['text_i_am_returning_customer'] = $this->language->get('text_i_am_returning_customer');
+			$data['entry_email'] = $this->language->get('entry_email');
+			$data['entry_password'] = $this->language->get('entry_password');
+			$data['text_forgotten'] = $this->language->get('text_forgotten');
+			$data['button_login'] = $this->language->get('button_login');
+			$data['button_continue'] = $this->language->get('button_continue');
+
+			$data['action'] = $this->url->link('account/login', '', true);
+			$data['forgotten'] = $this->url->link('account/forgotten', '', true);
+			
+
+			if (isset($this->request->post['email'])) {
+				$data['email'] = $this->request->post['email'];
+			} else {
+				$data['email'] = '';
+			}
+
+			if (isset($this->request->post['password'])) {
+				$data['password'] = $this->request->post['password'];
+			} else {
+				$data['password'] = '';
+			}
+
+			if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], $this->config->get('config_url')) !== false || strpos($this->request->post['redirect'], $this->config->get('config_ssl')) !== false)) {
+				$data['redirect'] = $this->request->post['redirect'];
+			} elseif (isset($this->session->data['redirect'])) {
+				$data['redirect'] = $this->session->data['redirect'];
+
+				unset($this->session->data['redirect']);
+			} else {
+				$data['redirect'] = '';
+			}
+
+		}
+
+
 
 		foreach ($categories as $category) {
 			if ($category['top']) {

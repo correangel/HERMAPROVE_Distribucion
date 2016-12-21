@@ -19,12 +19,12 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h2><?php echo $heading_title; ?></h2>
-      <?php if ($products) { ?>
+      <h3><?php echo $heading_title; ?></h3>
+      
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
           <thead>
-            <tr>
+            <tr  class="active">
               <td class="text-center"><?php echo $column_image; ?></td>
               <td class="text-left"><?php echo $column_name; ?></td>
               <td class="text-left"><?php echo $column_model; ?></td>
@@ -34,6 +34,7 @@
             </tr>
           </thead>
           <tbody>
+          <?php if ($products) { ?>
             <?php foreach ($products as $product) { ?>
             <tr>
               <td class="text-center"><?php if ($product['thumb']) { ?>
@@ -55,12 +56,18 @@
                 <a href="<?php echo $product['remove']; ?>" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-times"></i></a></td>
             </tr>
             <?php } ?>
+             <?php } else { ?>
+             <tr>
+               <td colspan="6" class="text-center">
+                 <?php echo $text_empty; ?>
+               </td>
+             </tr>
+            <?php } ?>
+
           </tbody>
         </table>
       </div>
-      <?php } else { ?>
-      <p><?php echo $text_empty; ?></p>
-      <?php } ?>
+     
       <div class="buttons clearfix">
         <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
       </div>

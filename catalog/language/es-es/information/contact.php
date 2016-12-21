@@ -1,11 +1,11 @@
 <?php
 // Heading
-$_['heading_title']  = 'Contacto';
+$_['heading_title']  = 'Informaci&oacute;n de contacto';
 
 // Text
 $_['text_location']  = 'Ubicaci&oacute;n';
 $_['text_store']     = 'Tiendas';
-$_['text_contact']   = 'Formulario de Contacto';
+$_['text_contact']   = 'Escr&iacute;benos tus dudas, comentarios o sugerencias.';
 $_['text_address']   = 'Direcci&oacute;n';
 $_['text_telephone'] = 'Tel&eacute;fono';
 $_['text_fax']       = 'Fax';
