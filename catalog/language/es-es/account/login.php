@@ -6,9 +6,9 @@ $_['heading_title']                = 'Inicio de Sesi&oacute;n';
 $_['text_account']                 = 'Cuenta';
 $_['text_login']                   = 'Iniciar Sesi&oacute;n';
 $_['text_new_customer']            = 'Regístrate';
-$_['text_register']                = 'Nuevo Cliente';
+$_['text_register']                = 'Nuevo Socio';
 $_['text_register_account']        = 'Al crear una cuenta podr&aacute;s solicitar un descuento empresarial, realizar pedidos r&aacute;pidamente, y acceder al historial de tus compras. Reg&iacute;strate para obtener grandes beneficios.';
-$_['text_returning_customer']      = 'Cliente Empresarial';
+$_['text_returning_customer']      = 'Socio existente';
 $_['text_i_am_returning_customer'] = 'Accede a tu cuenta';
 $_['text_forgotten']               = '¿Olvidaste tu contrase&ntilde;a?';
 

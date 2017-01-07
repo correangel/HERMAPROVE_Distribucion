@@ -538,7 +538,7 @@ div.required .control-label:before {
 
 .panel-body{
     border-color: #F3F3F3 !important;
-    padding: 25px 30px;
+   /* padding: 25px 30px; */
     background-color: #FBFBFA
 }
 
@@ -697,7 +697,16 @@ footer li>a>i.fa-instagram:hover{
   color: white;
   background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
   font-weight: normal;
-  border
+}
+
+footer li>a>i.fa-twitter{
+  padding: 10px 11px;
+}
+
+footer li>a>i.fa-twitter:hover{
+  color: white;
+  background-color: #1DA1F2;
+  font-weight: normal;
 }
 
 footer li>a>i
@@ -796,7 +805,7 @@ footer .list-unstyled a:hover {
 	margin: 1em 0;
 }
 .btn {
-	    padding: 9px 25px;
+	padding: 7.5px 25px;
 	font-size: 12px;
   border-radius: 0px;
 	/*border: 1px solid #cccccc;
@@ -1472,7 +1481,7 @@ h2.price {
 }
 
 .link{
-  padding: 6px 12px;
+  padding: 7.5px 12px;
   font-weight: 500;
 }
 
@@ -1502,4 +1511,16 @@ h2.price {
 
 .link_new:hover,.link_new:active,.link_new:focus{
   color: #5BA83F;
+}
+
+
+.input_litt{
+  height: 31px
+}
+
+.text-resp{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block
 }

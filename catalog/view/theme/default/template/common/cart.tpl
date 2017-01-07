@@ -59,7 +59,7 @@
         <p class="text-right">
         <a href="<?php echo $cart; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> <?php echo $text_cart; ?></a>&nbsp;&nbsp;&nbsp;
 
-        <a href="<?php echo $checkout; ?>" class="btn btn-primary"><i class="fa fa-share"></i> <?php echo $text_checkout; ?></a></p>
+        <a href="<?php echo $checkout; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> <?php echo $text_checkout; ?></a></p>
     </li>
 
 

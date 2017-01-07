@@ -374,7 +374,8 @@ class ControllerAccountRegister extends Controller {
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
-		$data['header'] = $this->load->controller('common/header');
+
+		$data['header'] = $this->load->controller('common/header',True);
 
 		$this->response->setOutput($this->load->view('account/register', $data));
 	}
@@ -395,9 +396,17 @@ class ControllerAccountRegister extends Controller {
 		if ((utf8_strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'],FILTER_VALIDATE_EMAIL)) {
 			$this->error['email'] = $this->language->get('error_email');
 		}
+		
+		if ($this->model_account_customer->getTotalCustomersByRUC($this->request->post['RUC'])) {
+			$this->error['warning'] = $this->language->get('error_exists_RUC');
+		}
 
 		if ($this->model_account_customer->getTotalCustomersByEmail($this->request->post['email'])) {
 			$this->error['warning'] = $this->language->get('error_exists');
+		}
+
+		if ($this->model_account_customer->getTotalCustomersByIdentityNumber($this->request->post['identitynumber'])) {
+			$this->error['warning'] = $this->language->get('error_exists_identitynumber');
 		}
 
 		if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {

@@ -33,6 +33,14 @@ class ControllerAccountAccount extends Controller {
 			$data['success'] = '';
 		} 
 
+		if (isset($this->session->data['error_warning'])) {
+			$data['error_warning'] = $this->session->data['error_warning'];
+
+			unset($this->session->data['error_warning']);
+		} else {
+			$data['error_warning'] = '';
+		}
+
 		$data['heading_title'] = $this->language->get('heading_title');
 
 		$data['text_my_account'] = $this->language->get('text_my_account');
@@ -98,9 +106,15 @@ class ControllerAccountAccount extends Controller {
 		if ($this->request->server['REQUEST_METHOD'] != 'POST') {
 			$data['customer_info'] = $this->model_account_customer->getCustomer($this->customer->getId());
 		}
-		
-		$data['addresses'] = $this->model_account_address->getAddresses();
 
+		$data['addresses'] = $this->model_account_address->getAddresses();
+		foreach ($data['addresses'] as $address) {
+			if( $address['address_id'] == $data['customer_info']['address_id'] ){
+				$data['razon_social']=$address['company'];
+				break;
+			}
+		}
+		
 		$data['url_edit']=$this->url->link('account/address/edit', 'address_id=', true);
 		$data['url_delete']= $this->url->link('account/address/delete', 'address_id=', true);
 

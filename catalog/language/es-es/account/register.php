@@ -6,18 +6,18 @@ $_['heading_title']        = 'Crea tu cuenta';
 $_['text_account']         = 'Cuenta';
 $_['text_register']        = 'Regístrate';
 $_['text_account_already'] = 'Si ya tienes una cuenta registrada, ingresa <a href="%s">aqu&iacute;</a>.';
-$_['text_your_details']    = 'Datos Personales';
-$_['text_your_address']    = 'Informaci&oacute;n empresarial';
+$_['text_your_details']    = 'Información de Contacto';
+$_['text_your_address']    = 'Informaci&oacute;n de la empresa';
 #$_['text_your_address']    = 'Direcci&oacute;n';
 $_['text_newsletter']      = 'Bolet&iacute;n';
 $_['text_your_password']   = 'Contrase&ntilde;a';
-$_['text_agree']           = 'He le&iacute;do y estoy de acuerdo con el <a href="%s" class="agree"> <b>% s </ b> </a>';
+$_['text_agree']           = 'He le&iacute;do y estoy de acuerdo con las <a href="%s" class="agree"> <b>% s </ b> </a>';
 
 // Entry
 $_['entry_customer_group'] = 'Tipo de Cliente';
 $_['entry_firstname']      = 'Nombre';
 $_['entry_lastname']       = 'Apellido';
-$_['entry_identitynumber'] = 'Cedula';
+$_['entry_identitynumber'] = 'C&eacute;dula de Identidad';
 $_['entry_email']          = 'Email';
 $_['entry_telephone']      = 'Tel&eacute;fono';
 $_['entry_fax']            = 'Fax';
@@ -34,8 +34,11 @@ $_['entry_password']       = 'Contrase&ntilde;a';
 $_['entry_confirm']        = 'Confirma Contrase&ntilde;a';
 
 // Error
-$_['error_exists']         = 'Email ya registrado.';
-$_['error_firstname']      = 'El Nombre debe contener entre 1 y 32 caracteres.';
+$_['error_exists']         = 'El correo electr&oacute;nico ingresado ya se encuentra registrado.';
+$_['error_exists_identitynumber']  = 'La c&eacute;dula de identidad ingresada ya se encuentra registrada.';
+$_['error_exists_RUC']     = 'El RUC ingresado ya se encuentra registrado.';
+
+$_['error_firstname']      = 'El nombre debe contener entre 1 y 32 caracteres.';
 $_['error_lastname']       = 'El Apellido debe contener entre 1 y 32 caracteres.';
 $_['error_email']          = 'Email Inv&aacute;lido.';
 $_['error_telephone']      = 'El Tel&eacute;fono debe contener entre 3 y 32 caracteres.';

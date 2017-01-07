@@ -18,6 +18,7 @@
 <meta name="keywords" content= "<?php echo $keywords; ?>" />
 <?php } ?>
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+
 <script src="catalog/view/javascript/jquery/menu-aim/jquery.menu-aim.js" type="text/javascript"></script>
 
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
@@ -36,7 +37,11 @@
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
+
+
 <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+
+
 <?php foreach ($links as $link) { ?>
 <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
 <?php } ?>
@@ -291,8 +296,8 @@
     </script>
 
 
+<?php if( (!$logged) and (!isset($registerView)) ) { ?>
 
-<?php if (!$logged) { ?>
 <!--Este modal es el que se usa en todos los productos para que cuando un usuario no ha ingresado a la sesion deba ingresar o registrarse-->
 <div class="modal fade" id="modalAddCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">

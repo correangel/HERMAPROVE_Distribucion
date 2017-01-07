@@ -1,6 +1,6 @@
 <?php
 class ControllerCommonHeader extends Controller {
-	public function index() {
+	public function index($registerView = False) {
 		// Analytics
 		$this->load->model('extension/extension');
 
@@ -210,6 +210,10 @@ class ControllerCommonHeader extends Controller {
 			$data['class'] = str_replace('/', '-', $this->request->get['route']) . $class;
 		} else {
 			$data['class'] = 'common-home';
+		}
+
+		if($registerView){
+			$data['registerView']=True;
 		}
 
 		return $this->load->view('common/header', $data);

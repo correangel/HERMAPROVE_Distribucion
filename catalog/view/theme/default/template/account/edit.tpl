@@ -18,10 +18,20 @@
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <h3><?php echo $heading_title; ?></h3>
-      <p>Edita los datos personales de tu cuenta, recuerda verificar que esten correctos para que nos podamos contactar contigo.</p>
+      <p>Edita los datos personales de tu cuenta, recuerda verificar que esten correctos para que podamos contactarte en caso de ser necesario.</p>
       <form id="form_editaccount" action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
         <fieldset>
           <legend><?php echo $text_your_details; ?></legend>
+          <div class="form-group required">
+            <label class="col-sm-3 control-label" for="input-identitynumber"><?php echo $entry_identitynumber; ?></label>
+            <div class="col-sm-6">
+              <input readonly required type="text" name="identitynumber" value="<?php echo $identitynumber; ?>" placeholder="<?php echo $entry_identitynumber; ?>" id="input-identitynumber" class="form-control" />
+              <?php if ($error_identitynumber) { ?>
+              <div class="text-danger"><?php echo $error_identitynumber; ?></div>
+              <?php } ?>
+            </div>
+          </div>
+
           <div class="form-group required">
             <label class="col-sm-3 control-label" for="input-firstname"><?php echo $entry_firstname; ?> </label>
             <div class="col-sm-6">

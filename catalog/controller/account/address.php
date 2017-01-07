@@ -107,7 +107,6 @@ class ControllerAccountAddress extends Controller {
 
 				$this->model_account_activity->addActivity('address_edit', $activity_data);
 			}
-
 			$this->response->redirect($this->url->link('account/account', '', true));
 		}
 
@@ -149,7 +148,6 @@ class ControllerAccountAddress extends Controller {
 			// Add to activity log
 			if ($this->config->get('config_customer_activity')) {
 				$this->load->model('account/activity');
-
 				$activity_data = array(
 					'customer_id' => $this->customer->getId(),
 					'name'        => $this->customer->getFirstName() . ' ' . $this->customer->getLastName()
@@ -158,8 +156,13 @@ class ControllerAccountAddress extends Controller {
 			}
 			$this->response->redirect($this->url->link('account/account', '', true));
 		}
+		//$this->getList();
 
-		$this->getList();
+		$this->session->data['error_warning'] = $this->language->get('error_default');
+		$this->response->redirect($this->url->link('account/account', '', true));
+
+		//$this->session->data['error'] = $this->language->get('error_default');
+		//$this->response->redirect($this->url->link('account/account', '', true));
 	}
 
 	protected function getList() {
@@ -188,11 +191,7 @@ class ControllerAccountAddress extends Controller {
 		$data['button_delete'] = $this->language->get('button_delete');
 		$data['button_back'] = $this->language->get('button_back');
 
-		if (isset($this->error['warning'])) {
-			$data['error_warning'] = $this->error['warning'];
-		} else {
-			$data['error_warning'] = '';
-		}
+		
 
 		if (isset($this->session->data['success'])) {
 			$data['success'] = $this->session->data['success'];
@@ -257,7 +256,7 @@ class ControllerAccountAddress extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		$this->response->setOutput($this->load->view('account/address_list', $data));
+		$this->response->setOutput($this->load->view('account/account', $data));
 	}
 
 	protected function getForm() {
@@ -535,11 +534,9 @@ class ControllerAccountAddress extends Controller {
 		if ($this->model_account_address->getTotalAddresses() == 1) {
 			$this->error['warning'] = $this->language->get('error_delete');
 		}
-
 		if ($this->customer->getAddressId() == $this->request->get['address_id']) {
 			$this->error['warning'] = $this->language->get('error_default');
 		}
-
 		return !$this->error;
 	}
 }

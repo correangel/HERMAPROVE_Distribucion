@@ -14,7 +14,7 @@ $_['text_empty']           = 'Sin direcciones en la cuenta.';
 // Entry
 $_['entry_firstname']      = 'Nombre';
 $_['entry_lastname']       = 'Apellidos';
-$_['entry_company']        = 'Empresa';
+$_['entry_company']        = 'Razón social';
 $_['entry_address_1']      = 'Direcci&oacute;n 1';
 $_['entry_address_2']      = 'Direcci&oacute;n 2';
 $_['entry_postcode']       = 'C&oacute;digo Postal';

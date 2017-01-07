@@ -479,9 +479,9 @@
         <fieldset>
           <legend><?php echo $text_your_password; ?></legend>
           <div class="form-group required">
-            <label class="col-sm-3 control-label" for="input-password2"><?php echo $entry_password; ?></label>
+            <label class="col-sm-3 control-label" for="input-password"><?php echo $entry_password; ?></label>
             <div class="col-sm-4">
-              <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password2" class="form-control" />
+              <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password" class="form-control" />
               <?php if ($error_password) { ?>
               <div class="text-danger"><?php echo $error_password; ?></div>
               <?php } ?>
@@ -576,7 +576,7 @@ $("#form_registeraccount").validate({
         rules: {
           password: "required",
           confirm: {
-            equalTo: "#input-password2",
+            equalTo: "#input-password",
           },
         },
         messages:{

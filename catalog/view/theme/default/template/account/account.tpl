@@ -8,6 +8,10 @@
   <?php if ($success) { ?>
   <div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?></div>
   <?php } ?>
+  <?php if ($error_warning) { ?>
+  <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?></div>
+  <?php } ?>
+
   <div class="row">
     <?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
@@ -22,28 +26,57 @@
       <?php echo $content_top; ?>
 
       <div class="row">
-        <div class="col-sm-12">
-          <h3 style="margin-top: 0px"><?php echo $customer_info['lastname']; ?> <?php echo $customer_info['firstname']; ?> 
-          <a class="btn link link_edit" href="<?php echo $edit; ?>"><?php echo $text_edit_info; ?></a>
-          </h3>
-          <span style="font-weight: 500"><?php echo $customer_info['email']; ?> &nbsp;</span>
-          <span><span style="color:gray">Tel&eacute;fono:</span> <?php echo $customer_info['telephone']; ?> &nbsp;&nbsp;&nbsp;<span style="color:gray">Fax:</span> <?php echo $customer_info['fax']; ?></span>
-        </div>
+        <div class="col-sm-5">
+              <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                  <dl class="">
+                        
+                        <dd><h3><?php echo $razon_social; ?></h3></dd>
+                        <dd><b>RUC:</b> <?php echo $customer_info['RUC']; ?></dd>
+                      </dl>
+                </div>
+            </div>
+        </div>   
+        <div class="col-sm-7">
 
-      </div>
-      <br>
-      <div class="row">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  INFORMACI&Oacute;N DE CONTACTO   <a class=" link_edit  pull-right" href="<?php echo $edit; ?>"><?php echo $text_edit_info; ?></a>
+               </div>
+                <!-- Default panel contents -->
+                <div class="panel-body">
+                    <dl class="dl-horizontal">
+                      <dt>Nombre</dt>
+                      <dd><?php echo $customer_info['firstname']; ?> <?php echo $customer_info['lastname']; ?> </dd>
+                      <dt>C.I. </dt>
+                      <dd><?php echo $customer_info['identitynumber']; ?></dd>
+                      <dt>Correo electr&oacute;nico </dt>
+                      <dd><?php echo $customer_info['email']; ?> </dd>
+                      <dt>Tel&eacute;fono </dt>
+                      <dd><?php echo $customer_info['telephone']; ?> </dd>
+                      <dt>Fax </dt>
+                      <dd><?php echo $customer_info['fax']; ?> </dd>
+                    </dl>
+                </div>
+              </div>
+        </div>  
+
         <div class="col-sm-12">
-          <h4 style="color:gray">Lista de direcciones <a style="margin-bottom: 10px" class="btn link link_new pull-right" href="<?php echo $url_add; ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $button_new_address ?></a>
-          <!--<a class="btn btn_editar" href="<?php echo $address_edit; ?>"><?php echo $text_address; ?></a>-->
-          </h4>
-          <table class="table" >
-                  <tr class="active direcciones_head">
+            <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                   <div class="panel-heading">LISTA DE DIRECCIONES <a class=" link_new pull-right" href="<?php echo $url_add; ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $button_new_address ?></a></div>
+                    
+                        
+
+                   <!-- Table -->
+                       <table class="table" >
+                  <tr >
                     <!--<th>Nombre</th>-->
-                    <th>Compañia</th>
-                    <th>Direcci&oacute;n</th>
-                    <th>Localidad</th>
-                    <th>Opciones</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Direcci&oacute;n</th>
+                    <th class="text-center">Localidad</th>
+                    <th class="text-center">Opciones</th>
                   </tr>
                   <?php foreach ($addresses as $address) { ?>
                       <tr>
@@ -82,10 +115,14 @@
                       </tr>
                         
                    <?php } ?> 
-          </table>
-        </div>
-      </div>
+                     </table>
+                    
+            </div>
+        </div>    
 
+
+
+      </div>
      <!-- 
     <li><a class="btn btn-primary" href="<?php echo $password; ?>"><i class="fa fa-pencil" aria-hidden="true"></i> <?php echo $text_password; ?></a></li>
 
