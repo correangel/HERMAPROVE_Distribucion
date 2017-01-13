@@ -1,8 +1,9 @@
 <?php
 // Heading
-$_['heading_title'] = 'Utilizar el C&oacute;digo del Cup&oacute;n';
+$_['heading_title'] = 'Utilizar Cup&oacute;n de descuento';
 
 // Text
+$_['text_coupon']  = 'Cupón (%s)';
 $_['text_success']  = 'Cup&oacute;n de Descuento Aplicado Exitosamente.';
 
 // Entry

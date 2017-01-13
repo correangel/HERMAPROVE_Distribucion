@@ -84,6 +84,8 @@ class ControllerCheckoutCheckout extends Controller {
 			$data['account'] = '';
 		}
 
+		$data['cart'] = $this->url->link('checkout/cart');
+
 		$data['shipping_required'] = $this->cart->hasShipping();
 
 		$data['column_left'] = $this->load->controller('common/column_left');

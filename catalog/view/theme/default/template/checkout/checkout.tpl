@@ -1,4 +1,8 @@
 <?php echo $header; ?>
+
+
+<link href="catalog/view/javascript/jquery/jquery-steps/jquery.steps.css" rel="stylesheet" media="screen" />
+
 <div class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -19,16 +23,92 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
+
+         <div id="shopping-cart">
+            
+            <h3>
+            <!--<a href="<?php echo $cart; ?>" class="btn btn-primary">-->
+                <div style="display: block;"><i class="section-icon fa fa-shopping-cart"></i></div>
+                Carro de Compras
+                <!--</a>-->      
+            </h3>
+        
+          <section>
+
+            </section>
+          <h3> <div style="display: block;"><i class="section-icon fa fa-file-text"></i></div> Facturaci&oacute;n</h3>
+          <section>
+               <?php if (!$logged && $account != 'guest') { ?>
+                    <h4 class="panel-title"><?php echo $text_checkout_account; ?></h4>
+                      <div id="collapse-payment-address">
+                        <div class="panel-body"></div>
+                      </div>
+                <?php } else { ?>
+                    <h4 class="panel-title"><?php echo $text_checkout_payment_address; ?></h4>
+                    <div id="collapse-payment-address">
+                        <div class="panel-body"></div>
+                    </div>
+                <?php } ?>
+
+
+                <h4 class="panel-title"> <?php echo $text_checkout_payment_method; ?></h4>
+          
+                  <div id="collapse-payment-method">
+                    <div class="panel-body"></div>
+                  </div>
+          </section>
+
+
+
+
+
+          <h3> <div style="display: block;"><i class="section-icon fa fa-truck"></i></div> Datos de Env&iacute;o</h3>
+          <section>
+              <?php if ($shipping_required) { ?>
+            <h4 class="panel-title"><?php echo $text_checkout_shipping_address; ?></h4>
+          
+              <div id="collapse-shipping-address">
+                <div class="panel-body"></div>
+              </div>
+
+        <!-- 4 -->
+            <h4 class="panel-title"><?php echo $text_checkout_shipping_method; ?></h4>
+          <div id="collapse-shipping-method">
+            <div class="panel-body"></div>
+          </div>
+        <?php } ?>
+
+          </section>
+
+
+
+
+          <h3> <div style="display: block;"><i class="section-icon fa fa-check-circle"></i></div> Confirmar compra</h3>
+          <section>
+                <h4 class="panel-title"><?php echo $text_checkout_confirm; ?></h4>
+            
+              <div id="collapse-checkout-confirm">
+                <div class="panel-body"></div>
+              </div>
+          </section>
+
+
+    </div>
+
+<!--
+
       <h1><?php echo $heading_title; ?></h1>
       <div class="panel-group" id="accordion">
+
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title"><?php echo $text_checkout_option; ?></h4>
+            <h4 class="panel-title"> <?php echo $text_checkout_option; ?></h4>
           </div>
           <div class="panel-collapse collapse" id="collapse-checkout-option">
             <div class="panel-body"></div>
           </div>
         </div>
+
         <?php if (!$logged && $account != 'guest') { ?>
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -48,6 +128,7 @@
           </div>
         </div>
         <?php } ?>
+
         <?php if ($shipping_required) { ?>
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -57,6 +138,7 @@
             <div class="panel-body"></div>
           </div>
         </div>
+
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title"><?php echo $text_checkout_shipping_method; ?></h4>
@@ -66,27 +148,26 @@
           </div>
         </div>
         <?php } ?>
+
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title"><?php echo $text_checkout_payment_method; ?></h4>
+            <h4 class="panel-title"> <?php echo $text_checkout_payment_method; ?></h4>
           </div>
           <div class="panel-collapse collapse" id="collapse-payment-method">
             <div class="panel-body"></div>
           </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title"><?php echo $text_checkout_confirm; ?></h4>
-          </div>
-          <div class="panel-collapse collapse" id="collapse-checkout-confirm">
-            <div class="panel-body"></div>
-          </div>
-        </div>
-      </div>
+
+       
+
+      </div> -->
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
-<script type="text/javascript"><!--
+
+
+
+<script type="text/javascript">
 $(document).on('change', 'input[name=\'account\']', function() {
 	if ($('#collapse-payment-address').parent().find('.panel-heading .panel-title > *').is('a')) {
 		if (this.value == 'register') {
@@ -795,4 +876,35 @@ $(document).delegate('#button-payment-method', 'click', function() {
     });
 });
 //--></script>
+
+
+
+
+
+<script src="catalog/view/javascript/jquery/jquery-steps/jquery.steps.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    var link=$("#stepsCart").first();
+    console.log(link);
+    link.attr("href", "<?php echo $cart; ?>" );
+
+      $("#shopping-cart").steps({
+          headerTag: "h3",
+          bodyTag: "section",
+          autoFocus: true,
+          transitionEffect: "slide",
+          titleTemplate: '#title#',
+          startIndex:1,
+          labels: {
+            cancel: "Cancelar",
+            current: "Paso actual:",
+            pagination: "Paginación",
+            finish: "Enviar compra",
+            next: "Continuar",
+            previous: "Atrás",
+            loading: "Cargando ..."
+          }
+      });
+</script>
+
 <?php echo $footer; ?>

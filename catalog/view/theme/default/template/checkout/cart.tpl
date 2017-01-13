@@ -4,11 +4,9 @@
 
 <?php echo $header; ?>
 
-
 <link href="catalog/view/javascript/jquery/tablesaw/tablesaw.css" rel="stylesheet" media="screen" />
 
 <link href="catalog/view/javascript/jquery/jquery-steps/jquery.steps.css" rel="stylesheet" media="screen" />
-
 
 <div class="container">
   <ul class="breadcrumb">
@@ -24,32 +22,40 @@
     <?php } else { ?>
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
+
+
+
+
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <div id="example-basic">
-        <h3>
-          <i class="section-icon fa fa-shopping-cart"></i>
-            <?php echo $heading_title; ?>
-            <?php if ($weight>0) { ?>
-            &nbsp;(<?php echo $weight; ?>)
+
+            <?php if ($attention) { ?>
+            <div class="alert alert-info">
+            <i class="fa fa-info-circle"></i> <?php echo $attention; ?>
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
             <?php } ?>
+
+            <?php if ($success) { ?>
+            <div class="alert alert-success">
+            <i class="fa fa-check-circle"></i> <?php echo $success; ?>
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+            <?php } ?>
+
+            <?php if ($error_warning) { ?>
+            <div class="alert alert-danger">
+            <i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+            <?php } ?>
+
+      <div id="shopping-cart">
+        <h3>
+          <div style="display: block;"><i class="section-icon fa fa-shopping-cart"></i></div>
+            <?php echo $heading_title; ?>
+
         </h3>
           <section>
-
-          <?php if ($attention) { ?>
-      <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $attention; ?>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-      </div>
-      <?php } ?>
-      <?php if ($success) { ?>
-      <div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-      </div>
-      <?php } ?>
-      <?php if ($error_warning) { ?>
-      <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-      </div>
-      <?php } ?>
 
             <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">       
                 <table class="table table-bordered tablesaw table-hover" data-tablesaw-sortable data-tablesaw-sortable-switch style="background-color:white">
@@ -96,7 +102,7 @@
                       <td ><?php echo $product['model']; ?></td>
                       <td>
                         <div class="input-group btn-block" style="width: 150px">
-                          <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" class="form-control input_litt" />
+                          <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" class="form-control input_litt quantity" />
                           <span class="input-group-btn">
                             <button type="submit" data-toggle="tooltip" title="<?php echo $button_update; ?>" class="btn link link_edit"><i class="fa fa-refresh"></i></button>
                             <button type="button" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn link link_delete" onclick="cart.remove('<?php echo $product['cart_id']; ?>');"><i class="fa fa-times-circle"></i></button>
@@ -123,6 +129,20 @@
                     <?php } ?>
                   </tbody>
                 </table>
+
+                <script type="text/javascript">
+                  $('.quantity').bind('keypress', function (event) {
+                      var charCode = event.charCode;
+                      if (charCode != 0) {
+                        if (charCode < 48 || charCode > 57) {
+                          event.preventDefault();
+                        }
+                      }
+                    });
+                  
+                </script>
+
+
 
             </form>
 
@@ -151,53 +171,54 @@
               </div>
             </div>
 
-
-
-
           </section>
-          <h3> <i class="section-icon fa fa-shopping-cart"></i> Facturaci&oacute;n</h3>
+          <h3> <div style="display: block;"><i class="section-icon fa fa-file-text"></i></div> Facturaci&oacute;n</h3>
           <section>
-              <p>Wonderful transition effects.</p>
+              <p>.</p>
           </section>
-          <h3> <i class="section-icon fa fa-shopping-cart"></i> Tipo de env&iacute;o</h3>
+          <h3> <div style="display: block;"><i class="section-icon fa fa-truck"></i></div> Datos de Env&iacute;o</h3>
           <section>
-              <p>The next and previous buttons help you to navigate through your content.</p>
+              <p>.</p>
           </section>
-          <h3> <i class="section-icon fa fa-shopping-cart"></i> Confirmar compra</h3>
+          <h3> <div style="display: block;"><i class="section-icon fa fa-check-circle"></i></div> Confirmar compra</h3>
           <section>
-              <p>The next and previous buttons help you to navigate through your content.</p>
+              <p>.</p>
           </section>
       </div>
 
-
-
-      <br />
-      
       <div class="buttons clearfix">
         <div class="pull-left"><a href="<?php echo $continue; ?>" class="btn btn-default"><?php echo $button_shopping; ?></a></div>
-        <div class="pull-right"><a href="<?php echo $checkout; ?>" class="btn btn-primary"><?php echo $button_checkout; ?></a></div>
+        
+        <div class="pull-right">
+          <a href="<?php echo $checkout; ?>" class="btn btn-primary">
+            <?php echo $button_checkout; ?>
+          </a>
+        </div>
       </div>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
 
-
-
-<?php echo $footer; ?>
-
 <script src="catalog/view/javascript/jquery/jquery-steps/jquery.steps.min.js" type="text/javascript"></script>
 
-
-
 <script type="text/javascript">
-    
-  $("#example-basic").steps({
+  $("#shopping-cart").steps({
       headerTag: "h3",
       bodyTag: "section",
-      transitionEffect: "slideLeft",
       autoFocus: true,
-      titleTemplate: '#title#'
+      transitionEffect: "slide",
+      titleTemplate: '#title#',
+      enablePagination: false,
+      labels: {
+        cancel: "Cancelar",
+        current: "Paso actual:",
+        pagination: "Paginación",
+        finish: "Enviar compra",
+        next: "Continuar",
+        previous: "Atrás",
+        loading: "Cargando ..."
+      }
   });
-
 </script>
 
+<?php echo $footer; ?>

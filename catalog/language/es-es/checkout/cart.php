@@ -10,7 +10,7 @@ $_['text_login']       = 'Se debe <a href="%s">Iniciar Sesi&oacute;n</a> o <a hr
 $_['text_items']       = 'Pedir %s item(s)';
 $_['text_points']      = 'Puntos de Recompensa: %s';
 $_['text_next']        = 'Descuentos adicionales?';
-$_['text_next_choice'] = 'Si tiene un código de descuento, un código de regalo o estimar el costo de entrega.';
+$_['text_next_choice'] = 'Ingresa aqui códigos de descuento o de regalo.';
 $_['text_empty']       = 'El Carro de Compras est&aacute; vac&iacute;o.';
 $_['text_day']         = 'd&iacute;a';
 $_['text_week']        = 'semana';
@@ -33,11 +33,11 @@ $_['column_image']          = 'Imagen';
 $_['column_name']           = 'Producto';
 $_['column_model']          = 'Modelo';
 $_['column_quantity']       = 'Cantidad';
-$_['column_price']          = 'Precio Unitario';
+$_['column_price']          = 'Precio Unit.';
 $_['column_total']          = 'Total';
 
 // Error
-$_['error_stock']            = 'Los productos marcados con *** no est&aacute;n disponibles en la cantidad deseada o no tienen stock.';
+$_['error_stock']            = 'Los productos marcados con *** no est&aacute;n disponibles en la cantidad deseada.';
 $_['error_minimum']          = 'La Cantidad m&iacute;nima de pedido para %s es %s.';
 $_['error_required']         = '%s Obligatorio.';
 $_['error_product']          = 'No hay art&iacute;culos en el Carro de Compras.';

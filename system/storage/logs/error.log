@@ -809,3 +809,4 @@
 2016-12-28 22:03:25 - PHP Notice:  Undefined variable: text_newsletter in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\account\account.tpl on line 133
 2016-12-28 22:10:13 - PHP Notice:  Undefined index: firstname in C:\wampx64\www\hermaprove\upload\catalog\model\account\address.php on line 16
 2016-12-28 22:10:13 - PHP Notice:  Undefined index: lastname in C:\wampx64\www\hermaprove\upload\catalog\model\account\address.php on line 16
+2017-01-13 21:08:20 - PHP Notice:  Undefined variable: cart in C:\wampx64\www\hermaprove\upload\catalog\view\theme\default\template\checkout\checkout.tpl on line 30

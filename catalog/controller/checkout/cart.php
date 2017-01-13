@@ -54,7 +54,6 @@ class ControllerCheckoutCart extends Controller {
 
 			if (isset($this->session->data['success'])) {
 				$data['success'] = $this->session->data['success'];
-
 				unset($this->session->data['success']);
 			} else {
 				$data['success'] = '';
@@ -192,6 +191,7 @@ class ControllerCheckoutCart extends Controller {
 				'total'  => &$total
 			);
 
+			
 			// Display prices
 
 			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
@@ -199,7 +199,6 @@ class ControllerCheckoutCart extends Controller {
 
 				$results = $this->model_extension_extension->getExtensions('total');
 
-				
 
 				foreach ($results as $key => $value) {
 					$sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
@@ -210,7 +209,7 @@ class ControllerCheckoutCart extends Controller {
 				foreach ($results as $result) {
 					if ($this->config->get($result['code'] . '_status')) {
 						$this->load->model('extension/total/' . $result['code']);
-						
+
 						// We have to put the totals in an array so that they pass by reference.
 						$this->{'model_extension_total_' . $result['code']}->getTotal($total_data);
 					}
@@ -221,9 +220,10 @@ class ControllerCheckoutCart extends Controller {
 				foreach ($totals as $key => $value) {
 					$sort_order[$key] = $value['sort_order'];
 				}
-
+				
 				array_multisort($sort_order, SORT_ASC, $totals);
 			}
+
 
 			$data['totals'] = array();
 
@@ -241,13 +241,13 @@ class ControllerCheckoutCart extends Controller {
 			$this->load->model('extension/extension');
 
 			$data['modules'] = array();
-			
+
 			$files = glob(DIR_APPLICATION . '/controller/extension/total/*.php');
 
 			if ($files) {
 				foreach ($files as $file) {
 					$result = $this->load->controller('extension/total/' . basename($file, '.php'));
-					
+
 					if ($result) {
 						$data['modules'][] = $result;
 					}
@@ -260,6 +260,7 @@ class ControllerCheckoutCart extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
+
 
 			$this->response->setOutput($this->load->view('checkout/cart', $data));
 		} else {
@@ -282,6 +283,9 @@ class ControllerCheckoutCart extends Controller {
 
 			$this->response->setOutput($this->load->view('error/not_found', $data));
 		}
+
+
+
 	}
 
 	public function add() {
