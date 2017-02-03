@@ -192,7 +192,7 @@ var cart = {
 				}, 100);
 
 				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
-					location = 'index.php?route=checkout/cart';
+					location = 'index.php?route=checkout/cart/checkout';
 				} else {
 					$('#cart > ul').load('index.php?route=common/cart/info ul li');
 				}
@@ -221,7 +221,7 @@ var cart = {
 				}, 100);
 
 				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
-					location = 'index.php?route=checkout/cart';
+					location = 'index.php?route=checkout/checkout';
 				} else {
 					$('#cart > ul').load('index.php?route=common/cart/info ul li');
 				}

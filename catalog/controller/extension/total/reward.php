@@ -67,7 +67,7 @@ class ControllerExtensionTotalReward extends Controller {
 			if (isset($this->request->post['redirect'])) {
 				$json['redirect'] = $this->url->link($this->request->post['redirect']);
 			} else {
-				$json['redirect'] = $this->url->link('checkout/cart');	
+				$json['redirect'] = $this->url->link('checkout/checkout');	
 			}
 		}
 

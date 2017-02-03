@@ -44,7 +44,7 @@ class ControllerExtensionTotalVoucher extends Controller {
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
-			$json['redirect'] = $this->url->link('checkout/cart');
+			$json['redirect'] = $this->url->link('checkout/checkout');
 		} else {
 			$json['error'] = $this->language->get('error_voucher');
 		}

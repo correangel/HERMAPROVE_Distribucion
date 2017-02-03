@@ -193,8 +193,12 @@
 .wizard > .steps .error a:hover,
 .wizard > .steps .error a:active
 {
-    background: #ff3111;
-    color: #fff;
+    color: #ff3111;
+}
+
+.wizard > .steps .error a>div>i{
+    background-color: #7d1c1c;
+    border: 1px solid #7d1c1c;    
 }
 
 .wizard > .content
@@ -202,7 +206,7 @@
    /* background: #eee; */
     display: block;
     /*margin: 0.5em;*/
-    min-height: 35em;
+    /*min-height: 35em;*/
     overflow: hidden;
     position: relative;
     width: auto;

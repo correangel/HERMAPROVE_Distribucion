@@ -12,6 +12,7 @@ class ControllerCheckoutConfirm extends Controller {
 			// Validate if shipping method has been set.
 			if (!isset($this->session->data['shipping_method'])) {
 				$redirect = $this->url->link('checkout/checkout', '', true);
+
 			}
 		} else {
 			unset($this->session->data['shipping_address']);
@@ -48,7 +49,6 @@ class ControllerCheckoutConfirm extends Controller {
 
 			if ($product['minimum'] > $product_total) {
 				$redirect = $this->url->link('checkout/cart');
-
 				break;
 			}
 		}

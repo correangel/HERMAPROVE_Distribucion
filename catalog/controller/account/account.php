@@ -107,14 +107,17 @@ class ControllerAccountAccount extends Controller {
 			$data['customer_info'] = $this->model_account_customer->getCustomer($this->customer->getId());
 		}
 
+		
 		$data['addresses'] = $this->model_account_address->getAddresses();
+		/*
 		foreach ($data['addresses'] as $address) {
 			if( $address['address_id'] == $data['customer_info']['address_id'] ){
 				$data['razon_social']=$address['company'];
 				break;
 			}
-		}
+		}*/
 		
+
 		$data['url_edit']=$this->url->link('account/address/edit', 'address_id=', true);
 		$data['url_delete']= $this->url->link('account/address/delete', 'address_id=', true);
 

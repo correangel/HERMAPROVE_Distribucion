@@ -17,7 +17,7 @@ $_['text_status']        = 'Estado:';
 $_['text_date_added']    = 'Fecha Agregado:';
 $_['text_comment']       = 'Volver a los Comentarios';
 $_['text_history']       = 'Volver al historial';
-$_['text_empty']         = 'No ha hecho ninguna Devoluci&oacute; anteriormente.';
+$_['text_empty']         = 'No ha hecho ninguna Devoluci&oacute;n hasta el momento.';
 $_['text_agree']         = 'He le&iacute;do y estoy de acuerdo con el <a href="%s" class="agree"><b>%s</b></a>';
 
 // Column

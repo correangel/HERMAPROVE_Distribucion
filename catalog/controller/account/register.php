@@ -81,6 +81,7 @@ class ControllerAccountRegister extends Controller {
 		$data['entry_fax'] = $this->language->get('entry_fax');
 		$data['entry_company'] = $this->language->get('entry_company');
 		$data['entry_RUC'] = $this->language->get('entry_RUC');
+		$data['entry_RazonSocial'] = $this->language->get('entry_RazonSocial');
 		$data['entry_address_1'] = $this->language->get('entry_address_1');
 		$data['entry_address_2'] = $this->language->get('entry_address_2');
 		$data['entry_postcode'] = $this->language->get('entry_postcode');
@@ -136,6 +137,13 @@ class ControllerAccountRegister extends Controller {
 			$data['error_RUC'] = '';
 		}
 
+
+		if (isset($this->error['RazonSocial'])) {
+			$data['error_RazonSocial'] = $this->error['RazonSocial'];
+		} else {
+			$data['error_RazonSocial'] = '';
+		}
+
 		if (isset($this->error['address_1'])) {
 			$data['error_address_1'] = $this->error['address_1'];
 		} else {
@@ -185,7 +193,7 @@ class ControllerAccountRegister extends Controller {
 		}
 
 		$data['action'] = $this->url->link('account/register', '', true);
-
+		
 		$data['customer_groups'] = array();
 
 		if (is_array($this->config->get('config_customer_group_display'))) {
@@ -254,6 +262,11 @@ class ControllerAccountRegister extends Controller {
 			$data['RUC'] = '';
 		}
 
+		if (isset($this->request->post['RazonSocial'])) {
+			$data['RazonSocial'] = $this->request->post['RazonSocial'];
+		} else {
+			$data['RazonSocial'] = '';
+		}
 
 		if (isset($this->request->post['address_1'])) {
 			$data['address_1'] = $this->request->post['address_1'];
@@ -415,6 +428,10 @@ class ControllerAccountRegister extends Controller {
 
 		if ( (utf8_strlen(trim($this->request->post['RUC'])) != 13) && (!is_numeric($this->request->post['RUC'])) ) {
 			$this->error['RUC'] = $this->language->get('error_RUC');
+		}
+
+		if ((utf8_strlen(trim($this->request->post['RazonSocial'])) < 3) || (utf8_strlen(trim($this->request->post['RazonSocial'])) > 300)) {
+			$this->error['RazonSocial'] = $this->language->get('error_RazonSocial');
 		}
 
 		if ((utf8_strlen(trim($this->request->post['address_1'])) < 3) || (utf8_strlen(trim($this->request->post['address_1'])) > 128)) {

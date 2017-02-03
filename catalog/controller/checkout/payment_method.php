@@ -4,75 +4,8 @@ class ControllerCheckoutPaymentMethod extends Controller {
 		$this->load->language('checkout/checkout');
 
 		if (isset($this->session->data['payment_address'])) {
-			// Totals
-			$totals = array();
-			$taxes = $this->cart->getTaxes();
-			$total = 0;
-
-			// Because __call can not keep var references so we put them into an array.
-			$total_data = array(
-				'totals' => &$totals,
-				'taxes'  => &$taxes,
-				'total'  => &$total
-			);
-			
-			$this->load->model('extension/extension');
-
-			$sort_order = array();
-
-			$results = $this->model_extension_extension->getExtensions('total');
-
-			foreach ($results as $key => $value) {
-				$sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
-			}
-
-			array_multisort($sort_order, SORT_ASC, $results);
-
-			foreach ($results as $result) {
-				if ($this->config->get($result['code'] . '_status')) {
-					$this->load->model('extension/total/' . $result['code']);
-					
-					// We have to put the totals in an array so that they pass by reference.
-					$this->{'model_extension_total_' . $result['code']}->getTotal($total_data);
-				}
-			}
-
 			// Payment Methods
-			$method_data = array();
-
-			$this->load->model('extension/extension');
-
-			$results = $this->model_extension_extension->getExtensions('payment');
-
-			$recurring = $this->cart->hasRecurringProducts();
-
-			foreach ($results as $result) {
-				if ($this->config->get($result['code'] . '_status')) {
-					$this->load->model('extension/payment/' . $result['code']);
-
-					$method = $this->{'model_extension_payment_' . $result['code']}->getMethod($this->session->data['payment_address'], $total);
-
-					if ($method) {
-						if ($recurring) {
-							if (property_exists($this->{'model_extension_payment_' . $result['code']}, 'recurringPayments') && $this->{'model_extension_payment_' . $result['code']}->recurringPayments()) {
-								$method_data[$result['code']] = $method;
-							}
-						} else {
-							$method_data[$result['code']] = $method;
-						}
-					}
-				}
-			}
-
-			$sort_order = array();
-
-			foreach ($method_data as $key => $value) {
-				$sort_order[$key] = $value['sort_order'];
-			}
-
-			array_multisort($sort_order, SORT_ASC, $method_data);
-
-			$this->session->data['payment_methods'] = $method_data;
+			$this->session->data['payment_methods'] = $this->payment_methods();
 		}
 
 		$data['text_payment_method'] = $this->language->get('text_payment_method');
@@ -80,7 +13,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
 		$data['text_loading'] = $this->language->get('text_loading');
 
 		$data['button_continue'] = $this->language->get('button_continue');
-
+		
 		if (empty($this->session->data['payment_methods'])) {
 			$data['error_warning'] = sprintf($this->language->get('error_no_payment'), $this->url->link('information/contact'));
 		} else {
@@ -127,12 +60,82 @@ class ControllerCheckoutPaymentMethod extends Controller {
 			$data['agree'] = '';
 		}
 
-		$this->response->setOutput($this->load->view('checkout/payment_method', $data));
+		return $this->load->view('checkout/payment_method', $data);
+	}
+
+	private function payment_methods(){
+		$totals = array();
+		$taxes = $this->cart->getTaxes();
+		$total = 0;
+
+		// Because __call can not keep var references so we put them into an array.
+		$total_data = array(
+			'totals' => &$totals,
+			'taxes'  => &$taxes,
+			'total'  => &$total
+		);
+
+		$this->load->model('extension/extension');
+
+		$sort_order = array();
+
+		$results = $this->model_extension_extension->getExtensions('total');
+
+		foreach ($results as $key => $value) {
+			$sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
+		}
+
+		array_multisort($sort_order, SORT_ASC, $results);
+
+		foreach ($results as $result) {
+			if ($this->config->get($result['code'] . '_status')) {
+				$this->load->model('extension/total/' . $result['code']);
+				
+				// We have to put the totals in an array so that they pass by reference.
+				$this->{'model_extension_total_' . $result['code']}->getTotal($total_data);
+			}
+		}
+
+		$method_data = array();
+		$this->load->model('extension/extension');
+
+		$results = $this->model_extension_extension->getExtensions('payment');
+
+		$recurring = $this->cart->hasRecurringProducts();
+
+		foreach ($results as $result) {
+			if ($this->config->get($result['code'] . '_status')) {
+				$this->load->model('extension/payment/' . $result['code']);
+
+				$method = $this->{'model_extension_payment_' . $result['code']}->getMethod($this->session->data['payment_address'], $total);
+
+				if ($method) {
+					if ($recurring) {
+						if (property_exists($this->{'model_extension_payment_' . $result['code']}, 'recurringPayments') && $this->{'model_extension_payment_' . $result['code']}->recurringPayments()) {
+							$method_data[$result['code']] = $method;
+						}
+					} else {
+						$method_data[$result['code']] = $method;
+					}
+				}
+			}
+		}
+
+		$sort_order = array();
+
+		foreach ($method_data as $key => $value) {
+			$sort_order[$key] = $value['sort_order'];
+		}
+
+		array_multisort($sort_order, SORT_ASC, $method_data);
+		return $method_data;
 	}
 
 	public function save() {
 		$this->load->language('checkout/checkout');
 
+		$this->session->data['payment_methods'] = $this->payment_methods();
+		
 		$json = array();
 
 		// Validate if payment address has been set.

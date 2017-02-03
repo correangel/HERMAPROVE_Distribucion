@@ -6,8 +6,6 @@
 
 <link href="catalog/view/javascript/jquery/tablesaw/tablesaw.css" rel="stylesheet" media="screen" />
 
-<link href="catalog/view/javascript/jquery/jquery-steps/jquery.steps.css" rel="stylesheet" media="screen" />
-
 <div class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -22,9 +20,6 @@
     <?php } else { ?>
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
-
-
-
 
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
 
@@ -49,13 +44,9 @@
             </div>
             <?php } ?>
 
-      <div id="shopping-cart">
-        <h3>
-          <div style="display: block;"><i class="section-icon fa fa-shopping-cart"></i></div>
-            <?php echo $heading_title; ?>
-
-        </h3>
-          <section>
+<h3><?php echo $heading_title; ?>
+</h3>
+    
 
             <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">       
                 <table class="table table-bordered tablesaw table-hover" data-tablesaw-sortable data-tablesaw-sortable-switch style="background-color:white">
@@ -141,25 +132,12 @@
                     });
                   
                 </script>
-
-
-
             </form>
 
+
             <div class="row">
-              <div class="col-sm-6">
-                
-                  <?php if ($modules) { ?>
-                  <h4><?php echo $text_next; ?></h4>
-                  <p><?php echo $text_next_choice; ?></p>
-                  <div class="panel-group" id="accordion">
-                    <?php foreach ($modules as $module) { ?>
-                    <?php echo $module; ?>
-                    <?php } ?>
-                  </div>
-                  <?php } ?>
-              </div>
-              <div class="col-sm-4 col-sm-offset-2">
+
+              <div class="col-sm-4 col-sm-offset-8">
                 <table class="table table-bordered" style="background-color: white">
                   <?php foreach ($totals as $total) { ?>
                   <tr>
@@ -171,19 +149,6 @@
               </div>
             </div>
 
-          </section>
-          <h3> <div style="display: block;"><i class="section-icon fa fa-file-text"></i></div> Facturaci&oacute;n</h3>
-          <section>
-              <p>.</p>
-          </section>
-          <h3> <div style="display: block;"><i class="section-icon fa fa-truck"></i></div> Datos de Env&iacute;o</h3>
-          <section>
-              <p>.</p>
-          </section>
-          <h3> <div style="display: block;"><i class="section-icon fa fa-check-circle"></i></div> Confirmar compra</h3>
-          <section>
-              <p>.</p>
-          </section>
       </div>
 
       <div class="buttons clearfix">
@@ -199,26 +164,6 @@
     <?php echo $column_right; ?></div>
 </div>
 
-<script src="catalog/view/javascript/jquery/jquery-steps/jquery.steps.min.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-  $("#shopping-cart").steps({
-      headerTag: "h3",
-      bodyTag: "section",
-      autoFocus: true,
-      transitionEffect: "slide",
-      titleTemplate: '#title#',
-      enablePagination: false,
-      labels: {
-        cancel: "Cancelar",
-        current: "Paso actual:",
-        pagination: "Paginación",
-        finish: "Enviar compra",
-        next: "Continuar",
-        previous: "Atrás",
-        loading: "Cargando ..."
-      }
-  });
-</script>
 
 <?php echo $footer; ?>

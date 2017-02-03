@@ -1,22 +1,22 @@
 <?php
 // Heading
-$_['heading_title']        = 'Lista de Direcciones';
+$_['heading_title']        = 'Lista de Establecimientos';
 
 // Text
 $_['text_account']         = 'Cuenta';
-$_['text_address_book']    = 'Lista de Direcciones';
-$_['text_edit_address']    = 'Direcci&oacute;n';
+$_['text_address_book']    = 'Lista de Establecimientos';
+$_['text_edit_address']    = 'Establecimiento';
 $_['text_add']             = 'La direcci&oacute;n se ha agregado con &eacute;xito';
 $_['text_edit']            = 'La direcci&oacute;n ha sido actualizado con &eacute;xito';
 $_['text_delete']          = 'La direcci&oacute;n se ha eliminado correctamente';
 $_['text_empty']           = 'Sin direcciones en la cuenta.';
 
 // Entry
-$_['entry_firstname']      = 'Nombre';
+$_['entry_firstname']      = 'Nombre corto';
 $_['entry_lastname']       = 'Apellidos';
-$_['entry_company']        = 'Razón social';
-$_['entry_address_1']      = 'Direcci&oacute;n 1';
-$_['entry_address_2']      = 'Direcci&oacute;n 2';
+$_['entry_company']        = 'Nombre';
+$_['entry_address_1']      = 'Direcci&oacute;n';
+$_['entry_address_2']      = 'Referencias adicionales';
 $_['entry_postcode']       = 'C&oacute;digo Postal';
 $_['entry_city']           = 'Ciudad';
 $_['entry_country']        = 'Pa&iacute;s';

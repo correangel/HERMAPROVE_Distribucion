@@ -264,6 +264,16 @@
           </div>
 
           <div class="form-group required">
+            <label class="col-sm-3 control-label" for="input-RazonSocial"><?php echo $entry_RazonSocial; ?></label>
+            <div class="col-sm-6">
+              <input maxlength="300" required type="text" name="RazonSocial" value="<?php echo $RazonSocial; ?>" placeholder="<?php echo $entry_RazonSocial; ?>" id="input-RazonSocial" class="form-control" />
+              <?php if ($error_RazonSocial) { ?>
+              <div class="text-danger"><?php echo $error_RazonSocial; ?></div>
+              <?php } ?>
+            </div>
+          </div>
+
+          <div class="form-group required">
             <label class="col-sm-3 control-label" for="input-company"><?php echo $entry_company; ?></label>
             <div class="col-sm-6">
               <input required type="text" name="company" value="<?php echo $company; ?>" placeholder="<?php echo $entry_company; ?>" id="input-company" class="form-control" />

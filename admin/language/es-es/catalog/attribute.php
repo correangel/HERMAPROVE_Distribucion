@@ -21,5 +21,5 @@ $_['entry_sort_order']      = 'Orden';
 
 // Error
 $_['error_permission']      = 'Sin permiso para modificar los Atributos.';
-$_['error_name']            = 'El Nombre del Atributo debe contener entre 3 y 64 caracteres.';
+$_['error_name']            = 'Este campo es obligatorio.';
 $_['error_product']         = 'Este Atributo no puede ser eliminado, ya que est&aacute; asignado actualmente a Productos.';

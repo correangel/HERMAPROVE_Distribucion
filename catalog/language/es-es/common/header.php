@@ -17,6 +17,6 @@ $_['text_search']        = 'Buscar';
 $_['text_all']           = 'Ver Todo';
 
 
-$_['text_company_description']	='L&Iacute;DER EN VENTA DE PRODUCTOS';
+$_['text_company_description']	='L&Iacute;DER EN PRODUCTOS PARA LA CONSTRUCCI&Oacute;N';
 $_['text_client_service']        = 'SERVICIO AL CLIENTE';
 $_['text_request_promoter']        = 'SOLICITAR ASISTENCIA';

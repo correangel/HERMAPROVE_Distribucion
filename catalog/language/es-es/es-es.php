@@ -20,7 +20,7 @@ $_['text_pagination']       = 'P&aacute;gina %d con %d productos de %d en total 
 $_['text_loading']          = 'Cargando...';
 
 // Buttons
-$_['button_address_add']    = 'Agregar Direcci&oacute;';
+$_['button_address_add']    = 'Agregar';
 $_['button_back']           = 'Retroceder';
 $_['button_continue']       = 'Continuar';
 $_['button_cart']           = 'Agregar';
@@ -34,7 +34,7 @@ $_['button_delete']         = 'Borrar';
 $_['button_download']       = 'Descarga';
 $_['button_edit']           = 'Editar';
 $_['button_filter']         = 'Refinar Busqueda';
-$_['button_new_address']    = 'Nueva Direcci&oacute;n';
+$_['button_new_address']    = 'Agregar';
 $_['button_change_address'] = 'Cambiar Direcci/oacute;n';
 $_['button_reviews']        = 'Opiniones';
 $_['button_write']          = 'Escribir Opini&oacute;n';
@@ -61,6 +61,7 @@ $_['text_store']            = 'Comercio';
 $_['text_blog_category']    = 'Categor&iacute;as del Blog';
 
 // Error
+$_['error_required']		= 'Este campo es obligatorio';
 $_['error_exception']       = 'Codigo(%s) de error: %s en %s en linea %s';
 $_['error_upload_1']        = 'El archivo escede the upload_max_filesize directiva en php.ini.';
 $_['error_upload_2']        = 'El archivo excede el MAX_FILE_SIZE directiva especificado en el HTML form.';

@@ -64,20 +64,13 @@
 
             <?php if ($logged) { ?>
 
+            <li class="hidden-xs">
+              <a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>" style="font-weight: 500"> <?php echo $text_shopping_cart; ?></a>
+            </li>
 
+            <li class="border-left hidden-xs"><a href="<?php echo $wishlist; ?>" title="<?php echo $text_wishlist; ?>"><?php echo $text_wishlist; ?></a></li>
             
 
-            <!--<li class="hidden-xs border-left"><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><?php echo $text_checkout; ?> <i class="fa fa-share"></i> </a></li>-->
-
-            <li>
-              <a href="#" style="font-weight: 500">Pedido express</a>
-            </li>
-            <li class="border-left hidden-xs">
-              <a href="#">Cotizar</a>
-            </li>
-            
-
-             
             <li class="dropdown border-left">
 
             <a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $text_account; ?><span class="fa fa-chevron-down""></span></a>
@@ -87,9 +80,6 @@
                   </li>
 
                   <li ><a href="<?php echo $order; ?>" title="<?php echo $text_order; ?>"><?php echo $text_order; ?> &nbsp;<i class="fa fa-history"></i> </a></li>
-
-                   <li><a href="<?php echo $wishlist; ?>" title="<?php echo $text_wishlist; ?>"><?php echo $text_wishlist; ?>&nbsp;<i class="fa fa-heart"></i></a></li>
-
 
                   <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?>&nbsp;<i class="fa fa-credit-card"></i></a></li>
 

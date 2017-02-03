@@ -53,8 +53,8 @@
            <ul class="list-unstyled">
           <li style="margin-top: 20px;">
             <a  target="_blank"  href="https://www.facebook.com/hermaprove/"><i class="fa fa-facebook" aria-hidden="true" style="font-size: 20px"></i> </a>
-              &nbsp;<a target="_blank"  href="#"><i class="fa fa-instagram" aria-hidden="true" style="font-size: 20px"></i></a>
-              &nbsp;<a target="_blank"  href="#"><i class="fa fa-twitter" aria-hidden="true" style="font-size: 20px"></i></a>
+              &nbsp;<a target="_blank"  href="https://www.instagram.com/hermaprove_ec/"><i class="fa fa-instagram" aria-hidden="true" style="font-size: 20px"></i></a>
+              &nbsp;<a target="_blank"  href="https://twitter.com/hermaprove"><i class="fa fa-twitter" aria-hidden="true" style="font-size: 20px"></i></a>
 
           </li>
           </ul>

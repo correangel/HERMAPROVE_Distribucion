@@ -31,8 +31,7 @@
                 <!-- Default panel contents -->
                 <div class="panel-heading">
                   <dl class="">
-                        
-                        <dd><h3><?php echo $razon_social; ?></h3></dd>
+                        <dd><h3><?php echo $customer_info['Razon_Social']; ?></h3></dd>
                         <dd><b>RUC:</b> <?php echo $customer_info['RUC']; ?></dd>
                       </dl>
                 </div>
@@ -65,7 +64,7 @@
         <div class="col-sm-12">
             <div class="panel panel-default">
                     <!-- Default panel contents -->
-                   <div class="panel-heading">LISTA DE DIRECCIONES <a class=" link_new pull-right" href="<?php echo $url_add; ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $button_new_address ?></a></div>
+                   <div class="panel-heading">LISTA DE ESTABLECIMIENTOS <a class=" link_new pull-right" href="<?php echo $url_add; ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $button_new_address ?></a></div>
                     
                         
 

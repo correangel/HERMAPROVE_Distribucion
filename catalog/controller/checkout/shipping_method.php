@@ -5,38 +5,7 @@ class ControllerCheckoutShippingMethod extends Controller {
 
 		if (isset($this->session->data['shipping_address'])) {
 			// Shipping Methods
-			$method_data = array();
-
-			$this->load->model('extension/extension');
-
-			$results = $this->model_extension_extension->getExtensions('shipping');
-
-			foreach ($results as $result) {
-				if ($this->config->get($result['code'] . '_status')) {
-					$this->load->model('extension/shipping/' . $result['code']);
-
-					$quote = $this->{'model_extension_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
-
-					if ($quote) {
-						$method_data[$result['code']] = array(
-							'title'      => $quote['title'],
-							'quote'      => $quote['quote'],
-							'sort_order' => $quote['sort_order'],
-							'error'      => $quote['error']
-						);
-					}
-				}
-			}
-
-			$sort_order = array();
-
-			foreach ($method_data as $key => $value) {
-				$sort_order[$key] = $value['sort_order'];
-			}
-
-			array_multisort($sort_order, SORT_ASC, $method_data);
-
-			$this->session->data['shipping_methods'] = $method_data;
+			$this->session->data['shipping_methods'] = $this->shipping_methods();
 		}
 
 		$data['text_shipping_method'] = $this->language->get('text_shipping_method');
@@ -69,11 +38,47 @@ class ControllerCheckoutShippingMethod extends Controller {
 			$data['comment'] = '';
 		}
 
-		$this->response->setOutput($this->load->view('checkout/shipping_method', $data));
+		return $this->load->view('checkout/shipping_method', $data);
+	}
+
+	private function shipping_methods(){
+		$method_data = array();
+
+		$this->load->model('extension/extension');
+
+		$results = $this->model_extension_extension->getExtensions('shipping');
+
+		foreach ($results as $result) {
+			if ($this->config->get($result['code'] . '_status')) {
+				$this->load->model('extension/shipping/' . $result['code']);
+
+				$quote = $this->{'model_extension_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
+
+				if ($quote) {
+					$method_data[$result['code']] = array(
+						'title'      => $quote['title'],
+						'quote'      => $quote['quote'],
+						'sort_order' => $quote['sort_order'],
+						'error'      => $quote['error']
+					);
+				}
+			}
+		}
+
+		$sort_order = array();
+
+		foreach ($method_data as $key => $value) {
+			$sort_order[$key] = $value['sort_order'];
+		}
+
+		array_multisort($sort_order, SORT_ASC, $method_data);
+		return $method_data;
 	}
 
 	public function save() {
 		$this->load->language('checkout/checkout');
+
+		$this->session->data['shipping_methods'] = $this->shipping_methods();
 
 		$json = array();
 
@@ -89,7 +94,7 @@ class ControllerCheckoutShippingMethod extends Controller {
 
 		// Validate cart has products and has stock.
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
-			$json['redirect'] = $this->url->link('checkout/cart');
+			$json['redirect'] = $this->url->link('checkout/checkout');
 		}
 
 		// Validate minimum quantity requirements.
@@ -106,7 +111,6 @@ class ControllerCheckoutShippingMethod extends Controller {
 
 			if ($product['minimum'] > $product_total) {
 				$json['redirect'] = $this->url->link('checkout/cart');
-
 				break;
 			}
 		}

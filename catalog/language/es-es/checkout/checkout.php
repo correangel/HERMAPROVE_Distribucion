@@ -4,13 +4,25 @@ $_['heading_title']                  = 'Pagar';
 
 // Text
 $_['text_cart']                      = 'Carro de Compras';
+/*
 $_['text_checkout_option']           = 'Paso 1: Opciones de Compra';
 $_['text_checkout_account']          = 'Paso 2: Datos de la Cuenta de Facturaci&oacute;n';
 $_['text_checkout_payment_address']  = 'Paso 2: Datos de Facturaci&oacute;n';
 $_['text_checkout_shipping_address'] = 'Paso 3: Datos de Entrega';
 $_['text_checkout_shipping_method']  = 'Paso 4: M&eacute;todo de Env&iacute;o';
 $_['text_checkout_payment_method']   = 'Paso 5: M&eacute;todo de Pago';
-$_['text_checkout_confirm']          = 'Paso 6: Confirmar Compra';
+$_['text_checkout_confirm']          = 'Paso 6: Confirmar Compra';*/
+
+$_['text_checkout_option']           = 'Opciones de Compra';
+$_['text_checkout_account']          = 'Datos de la Cuenta de Facturaci&oacute;n';
+$_['text_checkout_payment_address']  = 'Datos de Facturaci&oacute;n';
+$_['text_checkout_shipping_address'] = 'Datos de Entrega';
+$_['text_checkout_shipping_method']  = 'M&eacute;todo de Env&iacute;o';
+$_['text_checkout_payment_method']   = 'M&eacute;todo de Pago';
+$_['text_checkout_confirm']          = 'Confirmar Compra';
+
+
+
 $_['text_modify']                    = 'Modificar &raquo;';
 $_['text_new_customer']              = 'Nuevo Cliente';
 $_['text_returning_customer']        = 'Cliente Registrado';
@@ -52,15 +64,15 @@ $_['entry_email_address']            = 'Direcci&oacute;n de Email';
 $_['entry_email']                    = 'Email';
 $_['entry_password']                 = 'Contrase&ntilde;a';
 $_['entry_confirm']                  = 'Confirmar Contrase&ntilde;a';
-$_['entry_firstname']                = 'Nombre';
+$_['entry_firstname']                = 'Nombre corto de referencia';
 $_['entry_lastname']                 = 'Apellido';
 $_['entry_telephone']                = 'Tel&eacute;fono';
 $_['entry_fax']                      = 'Fax';
 $_['entry_address']                  = 'Seleccionar Direcci&oacute;n';
-$_['entry_company']                  = 'Empresa';
+$_['entry_company']                  = 'Nombre establecimiento';
 $_['entry_customer_group']           = 'Tipo de Cliente';
-$_['entry_address_1']                = 'Direcci&oacute;n 1';
-$_['entry_address_2']                = 'Direcci&oacute;n 2';
+$_['entry_address_1']                = 'Direcci&oacute;n';
+$_['entry_address_2']                = 'Referencias adicionales';
 $_['entry_postcode']                 = 'C&oacute;digo Postal';
 $_['entry_city']                     = 'Ciudad';
 $_['entry_country']                  = 'Pa&iacute;s';
@@ -73,13 +85,14 @@ $_['error_warning']                  = 'Hubo un problema al tratar de procesar e
 $_['error_login']                    = 'Acceso Incorrecto.';
 $_['error_approved']                 = 'La Cuenta requiere Aprobaci&oacute;n para poder Iniciar Sesi&oacute;n.';
 $_['error_exists']                   = 'Email ya Registrado.';
+$_['error_company']                = 'El nombre del establecimiento debe contener entre 1 y 32 caracteres.';
 $_['error_firstname']                = 'El Nombre debe contener entre 1 y 32 caracteres.';
 $_['error_lastname']                 = 'El Apellido debe contener entre 1 y 32 caracteres.';
 $_['error_email']                    = 'Email Inv&aacute;lido.';
 $_['error_telephone']                = 'El Tel&eacute;fono debe contener entre 3 y 32 caracteres.';
 $_['error_password']                 = 'La Contrase&ntilde;a debe contener entre 3 y 20 caracteres.';
 $_['error_confirm']                  = 'La Contrase&ntilde;a y su Confirmaci&oacute;n no coinciden.';
-$_['error_address_1']                = 'La Direcci&oacute;n 1 debe contener entre 3 y 128 caracteres.';
+$_['error_address_1']                = 'La Direcci&oacute;n debe contener entre 3 y 128 caracteres.';
 $_['error_city']                     = 'La Ciudad debe contener entre 2 y 128 caracteres.';
 $_['error_postcode']                 = 'El C&oacute;digo Postal debe contener entre 2 y 10 caracteres.';
 $_['error_country']                  = 'Seleccionar Pa&iacute;s.';

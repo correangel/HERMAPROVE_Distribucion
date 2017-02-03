@@ -65,7 +65,11 @@ class ControllerCheckoutShippingAddress extends Controller {
 			$data['shipping_address_custom_field'] = array();
 		}
 
-		$this->response->setOutput($this->load->view('checkout/shipping_address', $data));
+		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+			$this->response->setOutput($this->load->view('checkout/shipping_address', $data));
+		}
+
+		return $this->load->view('checkout/shipping_address', $data);
 	}
 
 	public function save() {
@@ -85,7 +89,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 
 		// Validate cart has products and has stock.
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
-			$json['redirect'] = $this->url->link('checkout/cart');
+			$json['redirect'] = $this->url->link('checkout/checkout');
 		}
 
 		// Validate minimum quantity requirements.
@@ -101,7 +105,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 			}
 
 			if ($product['minimum'] > $product_total) {
-				$json['redirect'] = $this->url->link('checkout/cart');
+				$json['redirect'] = $this->url->link('checkout/checkout');
 
 				break;
 			}
@@ -127,12 +131,12 @@ class ControllerCheckoutShippingAddress extends Controller {
 					unset($this->session->data['shipping_methods']);
 				}
 			} else {
+				if ((utf8_strlen(trim($this->request->post['company'])) < 1) || (utf8_strlen(trim($this->request->post['company'])) > 32)) {
+					$json['error']['company'] = $this->language->get('error_company');
+				}
+				
 				if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
 					$json['error']['firstname'] = $this->language->get('error_firstname');
-				}
-
-				if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
-					$json['error']['lastname'] = $this->language->get('error_lastname');
 				}
 
 				if ((utf8_strlen(trim($this->request->post['address_1'])) < 3) || (utf8_strlen(trim($this->request->post['address_1'])) > 128)) {

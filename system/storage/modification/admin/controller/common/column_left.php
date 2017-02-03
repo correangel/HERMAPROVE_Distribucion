@@ -208,6 +208,15 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 					
+//karapuz (ka_extensions.ocmod.xml) 
+			if ($this->user->hasPermission('access', 'extension/modification')) {
+				$extension[] = array(
+					'name'	   => 'Ka Extensions',
+					'href'     => $this->url->link('extension/ka_extensions', 'token=' . $this->session->data['token'], true),
+					'children' => array()		
+				);
+			}
+///karapuz (ka_extensions.ocmod.xml) 
 			if ($this->user->hasPermission('access', 'extension/modification')) {
 				$extension[] = array(
 					'name'	   => $this->language->get('text_modification'),
@@ -652,6 +661,17 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 			
+//karapuz (ka_csv_product_import.ocmod.xml) 
+			if ($this->user->hasPermission('access', 'tool/ka_product_import')) {
+				if (method_exists($this->db, 'isKaInstalled') && $this->db->isKaInstalled('ka_product_import')) {
+					$tool[] = array(
+						'name'	   => KaGlobal::t('CSV Product Import'),
+						'href'     => $this->url->link('tool/ka_product_import', 'token=' . $this->session->data['token'], true),
+						'children' => array()		
+					);
+				}
+			}
+///karapuz (ka_csv_product_import.ocmod.xml) 
 			if ($this->user->hasPermission('access', 'tool/log')) {
 				$tool[] = array(
 					'name'	   => $this->language->get('text_log'),

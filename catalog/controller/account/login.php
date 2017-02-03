@@ -56,6 +56,8 @@ class ControllerAccountLogin extends Controller {
 			// Default Shipping Address
 			$this->load->model('account/address');
 
+			$this->session->data['config']=$this->config->get('config_tax_customer');
+
 			if ($this->config->get('config_tax_customer') == 'payment') {
 				$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());
 			}

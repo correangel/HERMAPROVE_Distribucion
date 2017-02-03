@@ -1,10 +1,14 @@
 <?php
 class ControllerCheckoutCheckout extends Controller {
 	public function index() {
-		// Validate cart has products and has stock.
-		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
-			$this->response->redirect($this->url->link('checkout/cart'));
+		if (!$this->customer->isLogged()) {
+			$this->session->data['redirect'] = $this->url->link('checkout/checkout', '', true);
+
+			$this->response->redirect($this->url->link('account/login', '', true));
 		}
+		
+		// Validate cart has products and has stock.
+		//if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 
 		// Validate minimum quantity requirements.
 		$products = $this->cart->getProducts();
@@ -22,6 +26,7 @@ class ControllerCheckoutCheckout extends Controller {
 				$this->response->redirect($this->url->link('checkout/cart'));
 			}
 		}
+
 
 		$this->load->language('checkout/checkout');
 
@@ -94,6 +99,13 @@ class ControllerCheckoutCheckout extends Controller {
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
+
+		$data['cart']=$this->load->controller('checkout/cart/cart_checkout');
+		$data['payment_address']=$this->load->controller('checkout/payment_address');
+		$data['payment_method']=$this->load->controller('checkout/payment_method');
+		$data['shipping_address']=$this->load->controller('checkout/shipping_address');
+		$data['shipping_method']=$this->load->controller('checkout/shipping_method');
+		//$data['checkout_confirm']=$this->load->controller('checkout/shipping_method');
 
 		$this->response->setOutput($this->load->view('checkout/checkout', $data));
 	}

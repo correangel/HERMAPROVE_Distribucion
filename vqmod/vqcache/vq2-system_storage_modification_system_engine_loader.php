@@ -4,6 +4,13 @@ final class Loader {
 
 	public function __construct($registry) {
 		$this->registry = $registry;
+//karapuz (ka_extensions.ocmod.xml) 
+		if (class_exists('KaGlobal')) {
+			KaGlobal::init($registry);
+		} else {
+			error_log("KaGlobal class is required, but it was not found.");
+		}
+///karapuz (ka_extensions.ocmod.xml) 
 	}
 	
 	public function controller($route, $data = array()) {
@@ -46,14 +53,25 @@ final class Loader {
 			$class = 'Model' . preg_replace('/[^a-zA-Z0-9]/', '', $route);
 			
 			if (is_file($file)) {
+//karapuz (ka_extensions.ocmod.xml) 
+				if (!class_exists($class))
+///karapuz (ka_extensions.ocmod.xml) 
 				include_once(\VQMod::modCheck(modification($file), $file));
 	
+//karapuz (ka_extensions.ocmod.xml) 
+			if (empty($GLOBALS['is_proxy_disabled'])) {
+///karapuz (ka_extensions.ocmod.xml) 
 				$proxy = new Proxy();
 				
 				foreach (get_class_methods($class) as $method) {
 					$proxy->{$method} = $this->callback($this->registry, $route . '/' . $method);
 				}
 				
+//karapuz (ka_extensions.ocmod.xml) 
+			} else {
+				$proxy = new $class ($this->registry);
+			}
+///karapuz (ka_extensions.ocmod.xml) 
 				$this->registry->set('model_' . str_replace(array('/', '-', '.'), array('_', '', ''), (string)$route), $proxy);
 			} else {
 				throw new \Exception('Error: Could not load model ' . $route . '!');
@@ -131,6 +149,13 @@ final class Loader {
 		$this->registry->get('event')->trigger('config/' . $route . '/after', array(&$route));
 	}
 
+//karapuz (ka_extensions.ocmod.xml) 
+	public function kamodel($route) {
+		$GLOBALS['is_proxy_disabled'] = true;
+		$this->model($route);
+		$GLOBALS['is_proxy_disabled'] = false;
+	}
+///karapuz (ka_extensions.ocmod.xml) 
 	public function language($route) {
 		$output = null;
 		
