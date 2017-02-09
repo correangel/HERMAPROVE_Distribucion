@@ -10,6 +10,7 @@ class Customer {
 	private $fax;
 	private $newsletter;
 	private $address_id;
+	private $created_at;
 
 	public function __construct($registry) {
 		$this->config = $registry->get('config');
@@ -30,6 +31,7 @@ class Customer {
 				$this->fax = $customer_query->row['fax'];
 				$this->newsletter = $customer_query->row['newsletter'];
 				$this->address_id = $customer_query->row['address_id'];
+				$this->created_at = $customer_query->row['date_added'];
 
 				$this->db->query("UPDATE " . DB_PREFIX . "customer SET language_id = '" . (int)$this->config->get('config_language_id') . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 
@@ -63,6 +65,7 @@ class Customer {
 			$this->fax = $customer_query->row['fax'];
 			$this->newsletter = $customer_query->row['newsletter'];
 			$this->address_id = $customer_query->row['address_id'];
+			$this->created_at = $customer_query->row['date_added'];
 
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET language_id = '" . (int)$this->config->get('config_language_id') . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 
@@ -84,6 +87,7 @@ class Customer {
 		$this->fax = '';
 		$this->newsletter = '';
 		$this->address_id = '';
+		$this->created_at = '';
 	}
 
 	public function isLogged() {
@@ -116,6 +120,10 @@ class Customer {
 
 	public function getFax() {
 		return $this->fax;
+	}
+
+	public function getCreated(){
+		return $this->created_at;
 	}
 
 	public function getNewsletter() {

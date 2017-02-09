@@ -76,7 +76,10 @@ class ControllerTltBlogTltBlog extends Controller {
 			}
 			$data['created_at']=  date_format(date_create($tltblog_info['created_at']),'d/m/y H:m');
 			$data['author']= $tltblog_info['firstname']." ".$tltblog_info['lastname'];
+			$data['intro'] = html_entity_decode($tltblog_info['intro'], ENT_QUOTES, 'UTF-8');
+
 			$data['description'] = html_entity_decode($tltblog_info['description'], ENT_QUOTES, 'UTF-8');
+
 			$data['button_cart'] = $this->language->get('button_cart');
 			$data['button_wishlist'] = $this->language->get('button_wishlist');
 			$data['button_compare'] = $this->language->get('button_compare');

@@ -20,7 +20,6 @@
         <h4 style="font-size: 13px">Por <?php echo $author; ?> el <?php echo $created_at; ?></h4>
 
         <?php if ($tags) { ?>
-          
           <?php echo $text_tags; ?>&nbsp;
             <?php for ($i = 0; $i < count($tags); $i++) { ?>
               <?php if ($i < (count($tags) - 1)) { ?>
@@ -33,13 +32,20 @@
         
         <hr style="margin-top: 10px;">
         
-        <div class="col-sm-12 text-center">
-          <p><img class="img-thumbnail " src="<?php echo $blog_image; ?>"></p>
+
+        <div class="col-sm-12 text_justify">
+          <img class="img-thumbnail col-sm-6" style="float: right; margin-left: 20px; margin-bottom: 15px" src="<?php echo $blog_image; ?>">
+          <?php echo $intro; ?>           
         </div>
+
+          <div class="col-sm-12">
+            <div class="text_justify">
+              <?php echo $description; ?>        
+            </div>
+          </div>
+
         
-      	<div class="text_justify">
-          <?php echo $description; ?>        
-        </div>
+        
 
       <?php if ($products) { ?>
       <br>

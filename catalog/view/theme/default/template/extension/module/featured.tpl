@@ -54,10 +54,6 @@
               <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
               <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
             </div>
-        <?php } else{?>
-              <div class="button-group-nolog">
-                <button id="add_cart" type="button" data-toggle="modal" data-target="#modalAddCart"><i class="fa fa-shopping-cart"></i> <span><?php echo $button_cart; ?></span></button>
-              </div>
         <?php } ?>
       </div>     
 

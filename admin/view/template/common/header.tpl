@@ -29,8 +29,12 @@
 <?php foreach ($scripts as $script) { ?>
 <script type="text/javascript" src="<?php echo $script; ?>"></script>
 <?php } ?>
+
+<!--Intercom-->
+
 </head>
 <body>
+
 <div id="container">
 <header id="header" class="navbar navbar-static-top">
   <div class="navbar-header">

@@ -66,6 +66,8 @@ class ControllerExtensionModuleTltBlog extends Controller {
 				}
 								
 				foreach ($results as $result) {
+
+					
 					if ($result['image']) {
 						$image = $this->model_tool_image->resize($result['image'], $setting['width'], $setting['height']);
 					} else {
@@ -82,7 +84,7 @@ class ControllerExtensionModuleTltBlog extends Controller {
 							'intro'       		=> html_entity_decode($result['intro'], ENT_QUOTES, 'UTF-8'),
 							'show_description' 	=> $result['show_description'],
 							'show_author'		=> $user['firstname']." ".$user['lastname'],
-							'created_at'		=> date_create($result['created_at'])->format('d/m/y H:i'),
+							'created_at'		=> date_create($result['created_at'])->format('d/m/y'),
 							'href'        		=> $this->url->link('tltblog/tltblog', 'tltpath=' . $path . '&tltblog_id=' . $result['tltblog_id'])
 						);
 					} else {

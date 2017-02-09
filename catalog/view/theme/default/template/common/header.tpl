@@ -51,6 +51,23 @@
 <?php foreach ($analytics as $analytic) { ?>
 <?php echo $analytic; ?>
 <?php } ?>
+
+ <?php if ($logged) { ?>
+<script>
+//alert("<?php echo $customer['name'] ?>")
+  window.intercomSettings = {
+    app_id: "mt5er0x6",
+    name: "<?php echo $customer['name'] ?>", // Full name
+    email: "<?php echo $customer['email'] ?>", // Email address
+    created_at: "<?php echo strtotime($customer['created_at']) ?>",
+    user_hash: "<?php echo hash_hmac('sha256', $customer['email'],'n1hsmgeJN_uQmjzEQpUhep2iAhSbTmwOxXaxn5mm');?>"
+  };
+</script>
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/mt5er0x6';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
+<?php } ?>  
+
+
 </head>
 <body class="<?php echo $class; ?>">
 
@@ -145,13 +162,20 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-9">      
-
-      <nav id="menu" class="navbar">
-        <div class="navbar-header"><span id="category" class="visible-xs"></span>
-          <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-menu"><i class="fa fa-bars"></i></button>
+    <div class="col-sm-12 col-md-9">     
+      <nav id="menu" class="navbar navbar-default">
+         <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed"  data-toggle="collapse" data-target=".navbar-collapse-menu" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand visible-xs">Menú Principal</span>
         </div>
-        <div class="collapse navbar-collapse navbar-collapse-menu">
+
+
+        <div class="collapse navbar-collapse navbar-collapse-menu" style="padding-left: 0px;">
           <ul class="nav navbar-nav">
             <li class="hidden-xs"><a href="<?php echo $home; ?>" style="padding-left: 0px">Inicio</a></li>
             <li class="visible-xs"><a href="<?php echo $home; ?>">Inicio</a></li>
@@ -170,7 +194,7 @@
 
                     <li data-submenu-id="submenu-<?php echo $category['name']; ?>">
                         <a class="hidden-xs"><span class="menucat_span"><?php echo $category['name']; ?></span><span class="fa fa-chevron-right"></span></a>
-                        <a class="visible-xs"><?php echo $category['name']; ?></a>
+                        <a href="<?php echo $category['href']; ?>" class="visible-xs" style="cursor:pointer"><?php echo $category['name']; ?></a>
 
                         <div id="submenu-<?php echo $category['name']; ?>" class="container hidden-xs popover" style="
   background-image: url('image/<?php echo $category['image']; ?>');">
@@ -215,25 +239,18 @@
       </nav>
 
     </div>
-    <div class="col-sm-12 col-md-3">
-      <div class="row">
-        <div class="col-sm-12" id="contacto_telefono">
-        <div class="pull-right">
-          <a href="<?php echo $contact; ?>">
-            <img src="image/icon_call.png" alt="<?php echo $telephone; ?>" title="<?php echo $telephone; ?>">
-            </a>          
-            <span class="colorGrayDarkDarkHermaprove" style="font-size: 11px">
-              <?php echo $text_client_service; ?>:
-            </span> 
-            <span class="colorBlue h5" >
-              <solid><?php echo $telephone; ?> </solid>
-            </span>
-        </div>
-            
-        </div>
-                 
-        
-      </div>      
+    <div class="col-sm-12 col-md-3" id="contacto_telefono">
+      <div class="pull-right" style="padding-bottom: 10px">
+        <a href="<?php echo $contact; ?>">
+          <img src="image/icon_call.png" alt="<?php echo $telephone; ?>" title="<?php echo $telephone; ?>">
+          </a>          
+          <span class="colorGrayDarkDarkHermaprove" style="font-size: 11px">
+            <?php echo $text_client_service; ?>:
+          </span> 
+          <span class="colorBlue h5" >
+            <solid><?php echo $telephone; ?> </solid>
+          </span>
+      </div>       
     </div>
   
   </div>

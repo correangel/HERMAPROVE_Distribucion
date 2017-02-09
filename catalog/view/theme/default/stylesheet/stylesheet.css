@@ -255,7 +255,7 @@ div.required .control-label:before {
 }
 
 
-/*
+
 #top .dropdown-menu a,#top #dropdown-languages>li>button {
   text-shadow: none;
   margin:0px;
@@ -426,6 +426,8 @@ div.required .control-label:before {
 
 #menu {
   min-height: 40px;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 #menu li a:hover {
@@ -433,8 +435,27 @@ div.required .control-label:before {
   background-color: transparent; /*Color de los a del dropdown-menu del  menu principal*/
 }
 
-#menu>.collapse{
-  padding-left: 0px
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #74B65E;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #F1F1F1;
+    color: #51A525;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+     background-color: #F1F1F1;
+    color: #51A525;
+}
+
+.navbar-default .navbar-brand,.navbar-default .navbar-brand:hover{
+    color: #5F4828;
+    cursor:pointer;
 }
 
 #menu_categorias{
@@ -449,6 +470,9 @@ div.required .control-label:before {
 #menu_categorias>li>a>.fa{
   color:#EAEAEA;
 }
+
+
+
 
 @media (min-width:768px) {
   #menu_categorias{
@@ -480,6 +504,7 @@ div.required .control-label:before {
 #menu_categorias > li > a:active,#menu_categorias > li > a:focus{
   background-color: transparent;
 }
+
 
 #menu_categorias > li> .popover{
   border-radius: 0px;
@@ -582,10 +607,15 @@ div.required .control-label:before {
 }
 
 .blogHome_intro>p,.blogHome_intro>p>span{
+  display: none;
+}
+
+.blogHome_intro>p:first-child,.blogHome_intro>p:first-child>span{
     white-space: nowrap; 
     width: 100%; 
     overflow: hidden;
     text-overflow: ellipsis;
+    display: block;
 }
 
 .blogHome_created{
@@ -595,7 +625,7 @@ div.required .control-label:before {
 
 .blogHome_card{
   margin: 5px;
-  padding:40px 30px;
+  padding:35px 25px;
   background-color: white;
   -webkit-box-shadow: 0 6px 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 6px 5px rgba(0, 0, 0, 0.2);  
