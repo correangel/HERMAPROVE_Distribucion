@@ -20,7 +20,7 @@
           <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
           
           <li><a href="">Promociones <i class="fa fa-star" aria-hidden="true" style="color:#efef00;background:#303030 "></i></a></li>
-          <li><a href="<?php echo $blog; ?>">Novedades</a></li>
+          <li><a href="<?php echo $blog[0]['href']; ?>"><?php echo $blog[0]['href']; ?></a></li>
         </ul>
       </div>
       <!--<div class="col-sm-3">

@@ -8,7 +8,6 @@
         $('.blog_card_title').dotdotdot();
       });
 </script>
-
 <div class="container">
 	<ul class="breadcrumb">
     	<?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -26,8 +25,11 @@
     	<?php } ?>
     	<div id="content" class="<?php echo $class; ?>">
     		<?php echo $content_top; ?>
-      		<h3 class="blog_title"><?php echo $heading_title; ?></h3>
-          <hr>
+      		<div class="row">
+            <div class="col-sm-12 text-center">
+              <h4 class="general_title"><?php echo $heading_title; ?></h4>
+            </div>
+          </div>
             <div class="row tltblog">
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <?php $rowcounter = 0; ?>
@@ -35,44 +37,45 @@
                 <?php $sizetltblog = sizeof($tltblogs); ?>
 
                 <div class="row tltblog">
-                <?php foreach ($tltblogs as $tltblog) { ?>
-                    <div class="<?php echo $class_cols; ?>">
-                      <div class="row blogHome_card" style="height: 180px">
+
+
+
+                  <?php foreach ($tltblogs as $tltblog) { ?>
+                    <div class="<?php echo $class_cols; ?>" >
+                        <div class="row blogHome_card">
                           <?php if ($show_image) { ?>
-                              <div class="col-sm-3 col-xs-3">
-                              <?php if ($tltblog['show_description']) { ?>
-                                  <a href="<?php echo $tltblog['href']; ?>"><img src="<?php echo $tltblog['thumb']; ?>" alt="<?php echo $tltblog['title']; ?>" title="<?php echo $tltblog['title']; ?>" class="img-thumbnail"/></a>
-                              <?php } else { ?>
-                                  <a><img src="<?php echo $tltblog['thumb']; ?>" alt="<?php echo $tltblog['title']; ?>" title="<?php echo $tltblog['title']; ?>" class="img-thumbnail"/></a>
-                              <?php } ?>
+                              <div class="col-xs-12" style=" text-align: justify;">
+                                    <h4><a href="<?php echo $tltblog['href']; ?>" class="blogHome_cardTitle"><?php echo $tltblog['title']; ?></a></h4>
+                                    <p>Por <?php echo $tltblog['show_author']; ?> el <?php echo $tltblog['created_at']; ?></p>
                               </div>
-                              <div class="col-sm-9" style="padding: 0">
-                              <?php if ($tltblog['show_description']) { ?>
-                                  <h4 class="blog_card_title"><a  title="<?php echo $tltblog['title']; ?>" href="<?php echo $tltblog['href']; ?>"><?php echo $tltblog['title']; ?></a></h4>
-                              <?php } else { ?>
-                                  <h4 class="blog_card_title"><a title="<?php echo $tltblog['title']; ?>"><?php echo $tltblog['title']; ?></a></h4>
-                              <?php } ?>
-                                  <div class="box blog_card_intro" ><?php echo $tltblog['intro']; ?><a href="<?php echo $tltblog['href']; ?>" class="readmore">Leer m&aacute;s &raquo;</a></div>
+                              <div class="text-center col-xs-12">
+                                      <a href="<?php echo $tltblog['href']; ?>"><img src="<?php echo $tltblog['thumb']; ?>" alt="<?php echo $tltblog['title']; ?>" title="<?php echo $tltblog['title']; ?>" class="img-responsive text-center" /></a>
+                              </div>
+                              <div class="col-xs-12">
+                                <a href="<?php echo $tltblog['href']; ?>" class="pull-right"> Leer artículo...</a>
                               </div>
                           <?php } else { ?>
-                              <div class="col-sm-12">
-                              <?php if ($tltblog['show_description']) { ?>
-                                  <h4><a href="<?php echo $tltblog['href']; ?>"><?php echo $tltblog['title']; ?></a></h4>
-                              <?php } else { ?>
-                                  <h4><a ><?php echo $tltblog['title']; ?></a></h4>
-                              <?php } ?>
-                                  <div id="blog_card_intro" class="box"><?php echo $tltblog['intro']; ?><a href="<?php echo $tltblog['href']; ?>" class="readmore">Leer m&aacute;s &raquo;</a></div>
+                              <div class="col-xs-12">
+                                  <?php if ($tltblog['show_description']) { ?>
+                                      <h4><a href="<?php echo $tltblog['href']; ?>"><?php echo $tltblog['title']; ?></a></h4>
+                                  <?php } else { ?>
+                                      <h4><a><?php echo $tltblog['title']; ?></a></h4>
+                                  <?php } ?>
+                                  <a href="<?php echo $tltblog['href']; ?>" class="pull-right"> Leer artículo...</a>
                               </div>
                           <?php } ?>
-                      </div>
+                        </div>
                     </div>
                     <?php $rowcounter++; ?>
-                    <?php if (($rowcounter == $num_columns) && $sizetltblog>3 ) { ?>
-                    	</div>
-                    	<div class="row tltblog">
-                    	<?php $rowcounter = 0; ?>
+                    <?php if ($rowcounter == $num_columns) { ?>
+                      </div>
+                      <div class="row tltblog">
+                      <?php $rowcounter = 0; ?>
                     <?php } ?>
                 <?php } ?>
+
+                
+
                 </div>
               </div>
             </div>

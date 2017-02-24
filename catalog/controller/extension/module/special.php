@@ -24,6 +24,8 @@ class ControllerExtensionModuleSpecial extends Controller {
 			'limit' => $setting['limit']
 		);
 
+		$data['logged'] = $this->customer->isLogged();
+
 		$results = $this->model_catalog_product->getProductSpecials($filter_data);
 
 		if ($results) {
@@ -64,6 +66,7 @@ class ControllerExtensionModuleSpecial extends Controller {
 					'name'        => $result['name'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
+					'manufacturer'=> $result['manufacturer'],
 					'special'     => $special,
 					'tax'         => $tax,
 					'rating'      => $rating,

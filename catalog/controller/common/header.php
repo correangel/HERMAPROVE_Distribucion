@@ -93,6 +93,9 @@ class ControllerCommonHeader extends Controller {
 		$data['telephone'] = $this->config->get('config_telephone');
 
 		/*
+		BLOG
+		*/
+
 		if (isset($this->request->get['tltpath'])) {
 			$path = $this->request->get['tltpath'];
 		} elseif ($this->config->has('tltblog_path')) {
@@ -101,9 +104,33 @@ class ControllerCommonHeader extends Controller {
 			$path = 'blogs';
 		}
 		
-		*/
+		$data['show_path'] = $this->config->get('tltblog_show_path');
 
-		$data['blog'] = $this->url->link('tltblog/tlttag');
+		if ($data['show_path']) {
+			if ($this->config->has('tltblog_path_title')) {
+				$tmp_title = $this->config->get('tltblog_path_title');
+				$root_title = $tmp_title[$this->config->get('config_language_id')]['path_title'];
+			} else {
+				$root_title = $this->language->get('text_title');
+			}
+			
+			$data['blog'] = array("text" => $root_title,
+    			"href" => $this->url->link('tltblog/tlttag', 'tltpath=' . $path)
+			);
+		}
+
+		//MARCAS ASOCIADAS
+
+		$marcasAsociadas=$this->model_catalog_information->getInformation(9);
+		$data['marcas_Asociadas']=array(
+			'text'=>$marcasAsociadas['title'], 
+			'href'=>$this->url->link('information/information', 'information_id=' . 9));
+		
+		//Promociones
+		$promociones=$this->model_catalog_information->getInformation(11);
+		$data['promociones']=array(
+			'text'=>$promociones['title'], 
+			'href'=>$this->url->link('information/information', 'information_id=' . 11));
 
 		// Menu
 		$this->load->model('catalog/category');

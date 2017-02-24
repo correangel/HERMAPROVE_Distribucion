@@ -14,7 +14,11 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"> <?php echo $content_top; ?>
-      <h3><?php echo $text_edit_address; ?></h3>
+      <div class="row">
+            <div class="col-sm-12 text-center">
+              <h4 class="general_title"><?php echo $text_edit_address; ?></h4>
+            </div>
+          </div>
       <p>Escribe la informaci&oacute;n de un establecimiento en el que podamos hacerte entrega de tus pedidos.</p>
       <form action="<?php echo $action; ?>" id="form_editaddress" method="post" enctype="multipart/form-data" class="form-horizontal">
         <fieldset>

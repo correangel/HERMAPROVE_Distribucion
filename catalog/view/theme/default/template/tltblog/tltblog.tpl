@@ -5,7 +5,7 @@
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>
-  <div class="row"><?php echo $column_left; ?>
+  <div class="row" style="margin-bottom: 50px"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
     <?php $class = 'col-sm-6'; ?>
     <?php } elseif ($column_left || $column_right) { ?>
@@ -15,7 +15,11 @@
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>" style="padding:0px 40px">
     	<?php echo $content_top; ?>
-        <h3 style="color:#5F4828"><?php echo $heading_title; ?></h3>
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <h4 class="general_title" style="color:green"><?php echo $heading_title; ?></h4>
+          </div>
+        </div>
         
         <h4 style="font-size: 13px">Por <?php echo $author; ?> el <?php echo $created_at; ?></h4>
 
@@ -109,11 +113,6 @@
         <?php } ?>
 
       </div>
-
-
-
-
-
         </div>
         <?php if (($column_left && $column_right) && ($i % 2 == 0)) { ?>
         <div class="clearfix visible-md visible-sm"></div>

@@ -171,33 +171,22 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <span class="navbar-brand visible-xs">Menú Principal</span>
+          <span class="navbar-brand visible-xs">Menú</span>
         </div>
-
-
         <div class="collapse navbar-collapse navbar-collapse-menu" style="padding-left: 0px;">
           <ul class="nav navbar-nav">
-            <li class="hidden-xs"><a href="<?php echo $home; ?>" style="padding-left: 0px">Inicio</a></li>
-            <li class="visible-xs"><a href="<?php echo $home; ?>">Inicio</a></li>
-
-
 
         <?php if ($categories) { ?>
-            <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Cat&aacute;logo de productos&nbsp;&nbsp; <span class="fa fa-chevron-down"></span></a>
-
+            <li  class="dropdown">
+            <a href="#" class="dropdown-toggle padleft-menu" data-toggle="dropdown" aria-expanded="true">Cat&aacute;logo de productos&nbsp;&nbsp; <span class="fa fa-chevron-down"></span></a>
                 <ul id="menu_categorias" class="dropdown-menu" role="menu">
-
                    <?php foreach ($categories as $category) { ?>
-
                     <?php if ($category['children']) { ?>
-
                     <li data-submenu-id="submenu-<?php echo $category['name']; ?>">
                         <a class="hidden-xs"><span class="menucat_span"><?php echo $category['name']; ?></span><span class="fa fa-chevron-right"></span></a>
                         <a href="<?php echo $category['href']; ?>" class="visible-xs" style="cursor:pointer"><?php echo $category['name']; ?></a>
 
-                        <div id="submenu-<?php echo $category['name']; ?>" class="container hidden-xs popover" style="
-  background-image: url('image/<?php echo $category['image']; ?>');">
+                        <div id="submenu-<?php echo $category['name']; ?>" class="container hidden-xs popover" style="background-image: url('image/<?php echo $category['image']; ?>');">
                             <a class="popover-title h3" href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
                             <div class="popover-content">
                              <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
@@ -226,10 +215,10 @@
           <?php } ?>
 
           
-            <li><a href="">Promociones <i class="fa fa-star" aria-hidden="true" style="color:#efef00"></i></a>
+            <li><a href="<?php echo $promociones['href']; ?>"><?php echo $promociones['text']; ?> <i class="fa fa-star" aria-hidden="true" style="color:#efef00"></i></a>
             </li>
-
-            <li><a href="<?php echo $blog; ?>">Novedades</a></li>
+            <li><a href="<?php echo $marcas_Asociadas['href']; ?>"><?php echo $marcas_Asociadas['text']; ?></a></li>
+            <li><a href="<?php echo $blog['href']; ?>"><?php echo $blog['text']; ?></a></li>
 
             <!--<li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a>
             </li>-->

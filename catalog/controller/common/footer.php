@@ -33,6 +33,8 @@ class ControllerCommonFooter extends Controller {
 			}
 		}
 
+		var_dump($data['informations']);
+
 		$data['contact'] = $this->url->link('information/contact');
 		$data['return'] = $this->url->link('account/return/add', '', true);
 		$data['sitemap'] = $this->url->link('information/sitemap');
@@ -66,7 +68,29 @@ class ControllerCommonFooter extends Controller {
 		$data['email'] = $this->config->get('config_email');
 
 
-		$data['blog'] = $this->url->link('tltblog/tlttag');
+		if (isset($this->request->get['tltpath'])) {
+			$path = $this->request->get['tltpath'];
+		} elseif ($this->config->has('tltblog_path')) {
+			$path = $this->config->get('tltblog_path');
+		} else {
+			$path = 'blogs';
+		}
+
+		$data['show_path'] = $this->config->get('tltblog_show_path');
+
+		if ($data['show_path']) {
+			if ($this->config->has('tltblog_path_title')) {
+				$tmp_title = $this->config->get('tltblog_path_title');
+				$root_title = $tmp_title[$this->config->get('config_language_id')]['path_title'];
+			} else {
+				$root_title = $this->language->get('text_title');
+			}
+			
+			$data['blog'][] = array(
+				'text' => $root_title,
+				'href' => $this->url->link('tltblog/tlttag', 'tltpath=' . $path)
+			);
+		}
 
 		// Whos Online
 		if ($this->config->get('config_customer_online')) {

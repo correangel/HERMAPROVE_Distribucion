@@ -19,7 +19,11 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h3><?php echo $heading_title; ?></h3>
+      <div class="row">
+            <div class="col-sm-12 text-center">
+              <h4 class="general_title"><?php echo $heading_title; ?></h4>
+            </div>
+          </div>
       
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
