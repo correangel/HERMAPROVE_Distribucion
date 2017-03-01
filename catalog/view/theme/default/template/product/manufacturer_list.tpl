@@ -14,7 +14,11 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?></h1>
+      <div class="row">
+          <div class="col-sm-12 text-center">
+            <h3 class="general_title"><?php echo $heading_title; ?></h3>
+          </div>
+        </div>
       <?php if ($categories) { ?>
       <p><strong><?php echo $text_index; ?></strong>
         <?php foreach ($categories as $category) { ?>

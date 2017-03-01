@@ -18,8 +18,8 @@
           <li><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li>
           <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
           
-          <li><a href="">Promociones <i class="fa fa-star" aria-hidden="true" style="color:#efef00;background:#303030 "></i></a></li>
-          <li><a href="<?php echo $blog; ?>">Novedades</a></li>
+          <li><a href="<?php echo $promociones['href']; ?>"><?php echo $promociones['text']; ?> <i class="fa fa-star" aria-hidden="true" style="color:#efef00;background:#303030 "></i></a></li>
+          <li><a href="<?php echo $blog['href']; ?>"><?php echo $blog['text']; ?></a></li>
         </ul>
       </div>
 

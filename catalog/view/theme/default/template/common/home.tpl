@@ -1,9 +1,7 @@
 <?php echo $header; ?>
 <div class="container">
     <div class="row">
-            <?php echo $column_left; ?>
-
-             
+        <?php echo $column_left; ?>
                     <?php if ($column_left && $column_right) { ?>
                         <?php $class = 'col-sm-5'; ?>
                     <?php } elseif ($column_left || $column_right) { ?>
@@ -23,7 +21,7 @@
                 </div>
             
 
-         <?php echo $column_right; ?>
+        <?php echo $column_right; ?>
 
     </div>
 </div>

@@ -1,10 +1,10 @@
 <?php if ($show_title) { ?>
 
-<h4 class="text-center blog_title"><?php echo $heading_title; ?></h4>
+<h4 class="text-center general_title"><?php echo $heading_title; ?></h4>
 <?php } ?>
 <div class="row tltblog">
 <div class="col-sm-offset-1 col-sm-10 col-xs-12">
-  <?php $class_cols = 'col-lg-' . 12 / $num_columns . ' col-md-' . 12 / $num_columns . ' col-sm-12 col-xs-12'; ?>
+  <?php $class_cols = 'col-lg-' . 12 / $num_columns . ' col-md-' . 12 / $num_columns . ' col-sm-6 col-xs-12'; ?>
   <?php $rowcounter = 0; ?>
   <div class="row tltblog">
   <?php foreach ($tltblogs as $tltblog) { ?>

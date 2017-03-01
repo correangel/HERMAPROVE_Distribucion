@@ -215,6 +215,7 @@ class ControllerProductManufacturer extends Controller {
 					'price'       => $price,
 					'special'     => $special,
 					'tax'         => $tax,
+					'manufacturer'=> $result['manufacturer'],
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
 					'href'        => $this->url->link('product/product', 'manufacturer_id=' . $result['manufacturer_id'] . '&product_id=' . $result['product_id'] . $url)
@@ -358,6 +359,8 @@ class ControllerProductManufacturer extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
+
+			$data['logged'] = $this->customer->isLogged();
 
 			$this->response->setOutput($this->load->view('product/manufacturer_info', $data));
 		} else {

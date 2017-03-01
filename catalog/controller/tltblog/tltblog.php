@@ -20,6 +20,8 @@ class ControllerTltBlogTltBlog extends Controller {
 			'href' => $this->url->link('common/home')
 		);
 
+
+
 		if (isset($this->request->get['tltpath'])) {
 			$path = $this->request->get['tltpath'];
 		} elseif ($this->config->has('tltblog_path')) {

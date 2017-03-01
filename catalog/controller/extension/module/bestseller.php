@@ -15,6 +15,8 @@ class ControllerExtensionModuleBestSeller extends Controller {
 
 		$this->load->model('tool/image');
 
+		$data['logged'] = $this->customer->isLogged();
+
 		$data['products'] = array();
 
 		$results = $this->model_catalog_product->getBestSellerProducts($setting['limit']);
@@ -57,6 +59,7 @@ class ControllerExtensionModuleBestSeller extends Controller {
 					'name'        => $result['name'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
+					'manufacturer'=> $result['manufacturer'],
 					'special'     => $special,
 					'tax'         => $tax,
 					'rating'      => $rating,

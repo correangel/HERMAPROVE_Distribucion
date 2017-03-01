@@ -1,7 +1,12 @@
-<div class="row" style="margin-top: 15px" id="blog_SiteMap">
+<div class="row" id="blog_SiteMap">
     <div class="col-sm-12">
     <?php if ($show_path) { ?>
-    <h4 class="blog_title"><?php echo $path_title; ?></h4>
+    <div class="row">
+  <div class="col-sm-12 text-center">
+    <h4 class="general_title"><?php echo $path_title; ?></h4>
+  </div>
+</div>
+
     <?php } ?>
     <?php if ($type == 'blogs') { ?>
         <ul>
