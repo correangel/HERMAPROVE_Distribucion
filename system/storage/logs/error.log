@@ -1154,3 +1154,18 @@
 2017-02-09 19:09:43 - PHP Notice:  Undefined variable: username in C:\wampx64\www\hermaprove\admin\view\template\common\column_left.tpl on line 5
 2017-02-09 19:09:59 - PHP Notice:  Undefined variable: username in C:\wampx64\www\hermaprove\admin\view\template\common\column_left.tpl on line 5
 2017-02-09 19:10:03 - PHP Notice:  Undefined variable: username in C:\wampx64\www\hermaprove\admin\view\template\common\column_left.tpl on line 5
+2017-02-10 11:40:06 - PHP Warning:  imagepng(/opt/bitnami/apache2/htdocs/image/cache/catalog/banners/version2_hermaprove-03-900x330.png): failed to open stream: No such file or directory in /opt/bitnami/apache2/htdocs/system/library/image.php on line 66
+2017-02-10 11:40:06 - PHP Warning:  imagepng(/opt/bitnami/apache2/htdocs/image/cache/catalog/banners/version2_hermaprove-05-900x330.png): failed to open stream: No such file or directory in /opt/bitnami/apache2/htdocs/system/library/image.php on line 66
+2017-02-10 11:40:06 - PHP Warning:  imagepng(/opt/bitnami/apache2/htdocs/image/cache/catalog/banners/version2_hermaprove-04-900x330.png): failed to open stream: No such file or directory in /opt/bitnami/apache2/htdocs/system/library/image.php on line 66
+2017-02-10 11:40:06 - PHP Warning:  imagepng(/opt/bitnami/apache2/htdocs/image/cache/catalog/productos/plastigama/PLASTIGAMA-PLA0290CAD-001-150x170.png): failed to open stream: No such file or directory in /opt/bitnami/apache2/htdocs/system/library/image.php on line 66
+2017-02-10 11:40:06 - PHP Warning:  imagepng(/opt/bitnami/apache2/htdocs/image/cache/catalog/productos/plastigama/PLASTIGAMA-VAR0166ADH-001-150x170.png): failed to open stream: No such file or directory in /opt/bitnami/apache2/htdocs/system/library/image.php on line 66
+2017-02-10 11:40:07 - PHP Warning:  imagepng(/opt/bitnami/apache2/htdocs/image/cache/catalog/banners/version2_hermaprove-03-300x105.png): failed to open stream: No such file or directory in /opt/bitnami/apache2/htdocs/system/library/image.php on line 66
+2017-02-10 11:40:07 - PHP Warning:  imagepng(/opt/bitnami/apache2/htdocs/image/cache/catalog/banners/version2_hermaprove-05-300x105.png): failed to open stream: No such file or directory in /opt/bitnami/apache2/htdocs/system/library/image.php on line 66
+2017-02-10 11:40:07 - PHP Warning:  imagepng(/opt/bitnami/apache2/htdocs/image/cache/catalog/banners/version2_hermaprove-03-300x105.png): failed to open stream: No such file or directory in /opt/bitnami/apache2/htdocs/system/library/image.php on line 66
+2017-02-10 11:40:07 - PHP Warning:  imagepng(/opt/bitnami/apache2/htdocs/image/cache/catalog/LOGO HERMAPROVE - Copy-268x50.png): failed to open stream: No such file or directory in /opt/bitnami/apache2/htdocs/system/library/image.php on line 66
+2017-02-21 12:45:17 - PHP Notice:  Undefined variable: username in /opt/bitnami/apache2/htdocs/admin/view/template/common/column_left.tpl on line 5
+2017-02-21 12:45:28 - PHP Notice:  Undefined variable: username in /opt/bitnami/apache2/htdocs/admin/view/template/common/column_left.tpl on line 5
+2017-02-21 12:45:30 - PHP Notice:  Undefined variable: username in /opt/bitnami/apache2/htdocs/admin/view/template/common/column_left.tpl on line 5
+2017-02-21 12:45:36 - PHP Notice:  Undefined variable: username in /opt/bitnami/apache2/htdocs/admin/view/template/common/column_left.tpl on line 5
+2017-02-21 15:01:29 - PHP Notice:  Undefined variable: username in /opt/bitnami/apache2/htdocs/admin/view/template/common/column_left.tpl on line 5
+2017-02-23 6:46:08 - PHP Notice:  Undefined variable: username in /opt/bitnami/apache2/htdocs/admin/view/template/common/column_left.tpl on line 5
