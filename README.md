@@ -1,6 +1,6 @@
 # HERMAPROVE
 
-##Plataforma de Gestión de pedidos 
+## Plataforma de Gestión de pedidos 
 
 La plataforma para “Hermaprove” que busca impulsar la presencia en línea de la empresa, y además mejorar la relación con los clientes al momento de realizar sus pedidos. 
 
@@ -21,22 +21,22 @@ Los objetivos del proyecto son los siguientes:.
 
 ### Requerimientos específicos
 
-####PROCESO DE TOMA DE PEDIDOS
+#### PROCESO DE TOMA DE PEDIDOS
 •	El pedido debería ser del cliente de distribución directo a una nota de pedido.
 
 •	Los vendedores de Hermaprove usarán la plataforma como soporte de ventas. Explotando los beneficios de un catálogo en línea con la información general y técnica de los productos.
 
 •	Mejorar la toma de pedidos, planificando que los clientes de distribución sean quienes se empoderen de la plataforma. Ellos tendrán la debida capacitación por parte de los vendedores en los tres o cuatro primeros pedidos. Se espera que en el futuro los clientes sean capaces de realizar los pedidos sin asistencia.
 
-####INFORMAR SOBRE OFERTAS, PROMOCIONES O REMATES
+#### INFORMAR SOBRE OFERTAS, PROMOCIONES O REMATES
 •	Los clientes de distribución al estar interesados en un producto, deben poder “Solicitar mejor precio”. Podrán adjuntar comentarios (e.g. La competencia me está ofreciendo X valor). Los jefes de ventas deben aprobar las negociaciones.
 
 •	Debe existir la posibilidad de ingresar una oferta del día. Las ofertas deberían llegar por correo a los clientes posiblemente interesados.
 
-####CATÁLOGO
+#### CATÁLOGO
 •	Existe actualmente la tendencia de vendedores a ofrecer un solo tipo de producto. Se les debe recomendar productos que son igual de importantes, o que en pedidos similares son solicitados.
 
-####PUBLICIDAD
+#### PUBLICIDAD
 •	Se deben recopilar los logos de las marcas de los productos que vende Hermaprove, para mostrarlas en una sección de la plataforma.
 
 ### Herramientas de desarrollo 
@@ -55,3 +55,4 @@ Módulos o librerias de PHP requeridas:
 - Mbstrings
 - Xml
 
+En php debe estar activado el mod_rewrite para usar el seo de opencart
