@@ -31,8 +31,6 @@ class ControllerExtensionModuleManufacturer extends Controller {
 
 		$manufacturers = $this->model_catalog_manufacturer->getManufacturers(0);
 
-		var_dump($manufacturers);
-
 		foreach ($manufacturers as $manufacturer) {
 
 			$filter_data = array(
