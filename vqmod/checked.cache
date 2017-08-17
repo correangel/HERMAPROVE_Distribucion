@@ -1187,3 +1187,6 @@ admin/language/en-gb/catalog/attribute.php
 admin/language/es-es/catalog/attribute.php
 admin/view/template/catalog/attribute_list.tpl
 admin/model/catalog/url_alias.php
+catalog/controller/account/success.php
+catalog/language/en-gb/account/success.php
+catalog/language/es-es/account/success.php

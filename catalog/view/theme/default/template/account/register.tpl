@@ -52,7 +52,7 @@
               <?php } ?>
             </div>
           </div>
-          
+
           <div class="form-group required">
             <label class="col-sm-3 control-label" for="input-firstname"><?php echo $entry_firstname; ?></label>
             <div class="col-sm-6">
@@ -91,12 +91,12 @@
               <?php } ?>
             </div>
           </div>
-          <!--<div class="form-group">
-            <label class="col-sm-2 control-label" for="input-fax"><?php echo $entry_fax; ?></label>
-            <div class="col-sm-6">
-              <input type="text" name="fax" value="<?php echo $fax; ?>" placeholder="<?php echo $entry_fax; ?>" id="input-fax" class="form-control" />
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="input-fax"><?php echo $entry_fax; ?></label>
+            <div class="col-sm-4">
+              <input maxlength="32" type="tel" name="fax" value="<?php echo $fax; ?>" placeholder="<?php echo $entry_fax; ?>" id="input-fax" class="form-control" />
             </div>
-          </div>-->
+          </div>
           <?php foreach ($custom_fields as $custom_field) { ?>
           <?php if ($custom_field['location'] == 'account') { ?>
           <?php if ($custom_field['type'] == 'select') { ?>
@@ -279,7 +279,7 @@
               <input required type="text" name="company" value="<?php echo $company; ?>" placeholder="<?php echo $entry_company; ?>" id="input-company" class="form-control" />
             </div>
           </div>
-          
+
           <div class="form-group required">
             <label class="col-sm-3 control-label" for="input-address-1"><?php echo $entry_address_1; ?></label>
             <div class="col-sm-6">
@@ -534,25 +534,38 @@
         -->
         <?php echo $captcha; ?>
         <?php if ($text_agree) { ?>
+		<style>
+		.visibledevice {display:none;}
+		.visibledesktop {display:display;}
+		.visibledevice_pull_right{float: parent;}
+
+		@media (max-width : 320px) {
+		.visibledevice {display:block;}
+		.visibledevice_pull_right {float: right;}
+		}
+		</style>
         <div class="buttons">
-          <div class="pull-right"><?php echo $text_agree; ?>
+          <div class="pull-left"><?php echo $text_agree; ?>
             <?php if ($agree) { ?>
             <input type="checkbox" name="agree" value="1" checked="checked" />
             <?php } else { ?>
             <input type="checkbox" name="agree" value="1" />
             <?php } ?>
             &nbsp;
-            <input type="submit" value="<?php echo $button_continue; ?>" class="btn btn-primary" />
+			<div class="visibledevice" style="clear:both;"></div>
+            <input style="margin:5px;margin-bottom:10px;" type="submit" value="<?php echo $button_continue; ?>" class="btn btn-primary visibledevice_pull_right" />
           </div>
         </div>
         <?php } else { ?>
+		<div style="clear:both;"></div>
         <div class="buttons">
-          <div class="pull-right">
+          <div class="pull-left">
             <input type="submit" value="<?php echo $button_continue; ?>" class="btn btn-primary" />
           </div>
         </div>
         <?php } ?>
       </form>
+	  <div style="clear:both;"></div>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
@@ -573,7 +586,7 @@
 
 
 
-$('#input-telephone,#input-RUC,#input-identitynumber').bind('keypress', function (event) {
+$('#input-telephone,#input-RUC,#input-identitynumber,#input-fax').bind('keypress', function (event) {
   var charCode = event.charCode;
     if (charCode != 0) {
     if (charCode < 48 || charCode > 57) {
