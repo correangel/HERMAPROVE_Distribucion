@@ -134,7 +134,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 				if ((utf8_strlen(trim($this->request->post['company'])) < 1) || (utf8_strlen(trim($this->request->post['company'])) > 32)) {
 					$json['error']['company'] = $this->language->get('error_company');
 				}
-				
+
 				if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
 					$json['error']['firstname'] = $this->language->get('error_firstname');
 				}
