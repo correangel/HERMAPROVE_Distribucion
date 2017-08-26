@@ -164,6 +164,17 @@ function enviarform_paymentAddress(form) {
                     success: function(html) {
                         $('#collapse-payment-address .panel-body').html(html);
                         $('html, body').animate({ scrollTop: 0 }, 'slow');
+						$.ajax({
+							url: 'index.php?route=checkout/shipping_address',
+							dataType: 'html',
+							success: function(html) {
+								$('#collapse-shipping-address .panel-body').html(html);
+								$('html, body').animate({ scrollTop: 0 }, 'slow');
+							},
+							error: function(xhr, ajaxOptions, thrownError) {
+								alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+							}
+						});
                     },
                     error: function(xhr, ajaxOptions, thrownError) {
                         alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
