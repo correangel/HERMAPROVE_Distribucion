@@ -1,6 +1,7 @@
 <?php
 class ControllerCheckoutCheckout extends Controller {
 	public function index() {
+
 		if (!$this->customer->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('checkout/checkout', '', true);
 
@@ -88,7 +89,6 @@ class ControllerCheckoutCheckout extends Controller {
 		} else {
 			$data['account'] = '';
 		}
-
 		$data['cart'] = $this->url->link('checkout/cart');
 
 		$data['shipping_required'] = $this->cart->hasShipping();
@@ -100,6 +100,9 @@ class ControllerCheckoutCheckout extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
+		if (isset($this->session->data['payment_address'])) {
+			$this->session->data['shipping_address'] = $this->session->data['payment_address'];
+		}
 		$data['cart']=$this->load->controller('checkout/cart/cart_checkout');
 		$data['payment_address']=$this->load->controller('checkout/payment_address');
 		$data['payment_method']=$this->load->controller('checkout/payment_method');

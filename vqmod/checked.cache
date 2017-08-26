@@ -1205,3 +1205,12 @@ catalog/view/theme/default/template/account/newsletter.tpl
 catalog/language/en-gb/account/password.php
 catalog/language/es-es/account/password.php
 catalog/view/theme/default/template/account/password.tpl
+catalog/language/en-gb/mail/order.php
+catalog/language/es-es/mail/order.php
+catalog/view/theme/default/template/mail/order.tpl
+catalog/controller/checkout/success.php
+catalog/language/en-gb/checkout/success.php
+catalog/language/es-es/checkout/success.php
+catalog/controller/extension/payment/cod.php
+catalog/view/theme/default/template/extension/payment/cod.tpl
+catalog/view/theme/default/template/account/order_info.tpl

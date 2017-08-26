@@ -71,7 +71,7 @@
                     <legend><?php echo $text_checkout_shipping_method; ?>
                     </legend>
                      <div id="collapse-shipping-method">
-                        <div class="panel-body" style="background-color: transparent;padding-top: 0px"><?php echo $shipping_method ?></div>
+                        <div id="div-shipping-method" class="panel-body" style="background-color: transparent;padding-top: 0px"><?php echo $shipping_method ?></div>
                       </div>
                 </fieldset>
 
@@ -324,7 +324,7 @@ var divSteps = $("#shopping-process");
                                 url: 'index.php?route=checkout/payment_method/save',
                                 type: 'post',
                                 data: $('#collapse-payment-method input[type=\'radio\']:checked, #collapse-payment-method input[type=\'checkbox\']:checked, #collapse-payment-method textarea'),
-                                dataType: 'text',
+                                dataType: 'json',
                                 beforeSend: function() {
                                     $('#button-payment-method').button('loading');
                                 },
@@ -333,7 +333,7 @@ var divSteps = $("#shopping-process");
 
                                     if (json['redirect']) {
                                         location = json['redirect'];
-                                    } else if (json['error']) {
+                                    }else if (json['error']) {
                                         $('#button-payment-method').button('reset');
                                         if (json['error']['warning']) {
                                             $('#collapse-payment-method .panel-body').prepend('<div class="alert alert-danger">' + json['error']['warning'] +'</div>');

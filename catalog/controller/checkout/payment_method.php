@@ -131,41 +131,6 @@ class ControllerCheckoutPaymentMethod extends Controller {
 		return $method_data;
 	}
 
-	private function shipping_methods(){
-		$method_data = array();
-
-		$this->load->model('extension/extension');
-
-		$results = $this->model_extension_extension->getExtensions('shipping');
-
-
-		foreach ($results as $result) {
-			if ($this->config->get($result['code'] . '_status')) {
-				$this->load->model('extension/shipping/' . $result['code']);
-
-				$quote = $this->{'model_extension_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
-
-				if ($quote) {
-					$method_data[$result['code']] = array(
-						'title'      => $quote['title'],
-						'quote'      => $quote['quote'],
-						'sort_order' => $quote['sort_order'],
-						'error'      => $quote['error']
-					);
-				}
-			}
-		}
-
-		$sort_order = array();
-
-		foreach ($method_data as $key => $value) {
-			$sort_order[$key] = $value['sort_order'];
-		}
-
-		array_multisort($sort_order, SORT_ASC, $method_data);
-		return $method_data;
-	}
-
 	public function save() {
 		$this->load->language('checkout/checkout');
 
@@ -225,15 +190,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
 			$this->session->data['comment'] = strip_tags($this->request->post['comment']);
 		}
 
-		if (isset($this->session->data['shipping_address'])) {
-			// Shipping Methods
-			$this->session->data['shipping_methods'] = $this->shipping_methods();
-			$this->response->setOutput($this->load->controller('checkout/shipping_method'));
-		}
-
-		//$this->response->setOutput(print_r(json_encode($json)));
-
-		//$this->response->addHeader('Content-Type: application/json');
-		//$this->response->setOutput(json_encode($json));*/
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
 	}
 }
