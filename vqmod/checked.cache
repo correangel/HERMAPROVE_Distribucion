@@ -404,3 +404,8 @@ catalog/view/theme/default/template/extension/payment/cod.tpl
 admin/controller/extension/payment/cod.php
 catalog/controller/account/address.php
 catalog/view/theme/default/template/account/order_info.tpl
+catalog/language/en-gb/mail/customer.php
+catalog/language/es-es/mail/customer.php
+catalog/controller/account/success.php
+catalog/language/en-gb/account/success.php
+catalog/language/es-es/account/success.php

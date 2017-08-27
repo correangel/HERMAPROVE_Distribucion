@@ -390,12 +390,9 @@ class ControllerAccountRegister extends Controller {
 
 		$data['header'] = $this->load->controller('common/header',True);
 
-		$data['tesitng'] = $this->sendingEmail();
-		print_r($data);
-
 		$this->response->setOutput($this->load->view('account/register', $data));
 	}
-	
+
 
 	private function validate() {
 		if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
