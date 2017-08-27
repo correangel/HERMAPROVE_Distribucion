@@ -189,10 +189,10 @@ class ModelCustomerCustomer extends Model {
 			$language->load('mail/customer');
 
 			$message  = sprintf($language->get('text_approve_welcome'), html_entity_decode($store_name, ENT_QUOTES, 'UTF-8')) . "\n\n";
-			$message .= $language->get('text_approve_login') . "\n";
-			$message .= $store_url . "\n\n";
-			$message .= $language->get('text_approve_services') . "\n\n";
-			$message .= $language->get('text_approve_thanks') . "\n";
+			$message .= $language->get('text_approve_login') . "\n"."<br>";
+			$message .= "<a href=".$store_url.">".$store_url."</a>". "\n\n"."<br>";
+			$message .= $language->get('text_approve_services') . "\n\n"."<br>";
+			$message .= $language->get('text_approve_thanks') . "\n"."<br>";
 			$message .= html_entity_decode($store_name, ENT_QUOTES, 'UTF-8');
 
 			// $mail = new Mail();

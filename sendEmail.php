@@ -22,8 +22,13 @@ function sendingEmailTest($data){
 	$mail->isHTML(true);
 
 	$mail->Subject = $data["subject"];
-	$mail->Body    = $data["body"];
-	$mail->AltBody = $data["body"];
+	if(array_key_exists('text', $data)){
+		$mail->Body = $data["body"] ."<br>". $data["text"];
+		$mail->AltBody = $data["body"] ."<br>". $data["text"];
+	}else{
+		$mail->Body = $data["body"];
+		$mail->AltBody = $data["body"];
+	}
 
 	if(!$mail->send()) {
 	    return 'Mailer Error: ' . $mail->ErrorInfo;
