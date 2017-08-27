@@ -241,7 +241,7 @@ class ModelCheckoutOrder extends Model {
 		}
 	}
 
-	public function addOrderHistory($order_id, $order_status_id, $comment = '', $notify = false, $override = false) {
+	public function addOrderHistory($order_id, $order_status_id, $comment = '', $notify = false, $override = false, $notify_customer = false) {
 		$order_info = $this->getOrder($order_id);
 		include($this->config->get('DIR_SCRIPT'));
 
@@ -768,10 +768,6 @@ class ModelCheckoutOrder extends Model {
 					// $mail->setText($text);
 					// $mail->send();
 
-					print_r("holi2");
-					print_r($info);
-					throw new Exception("Error Processing Request", 1);
-
 					$info = array();
 					$info["body"] = $this->load->view('mail/order', $data);
 					$info["text"] = $text;
@@ -780,6 +776,7 @@ class ModelCheckoutOrder extends Model {
 					$info["from"] = $this->config->get('config_email');
 					$info["to"] = $this->config->get('config_email');
 
+					$output = sendingEmailTest($info);
 
 
 					// Send to additional alert emails
@@ -802,24 +799,24 @@ class ModelCheckoutOrder extends Model {
 
 				$subject = sprintf($language->get('text_update_subject'), html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'), $order_id);
 
-				$message  = $language->get('text_update_order') . ' ' . $order_id . "\n";
-				$message .= $language->get('text_update_date_added') . ' ' . date($language->get('date_format_short'), strtotime($order_info['date_added'])) . "\n\n";
+				$message  = $language->get('text_update_order') . ' ' . $order_id . "\n"."<br>";
+				$message .= $language->get('text_update_date_added') . ' ' . date($language->get('date_format_short'), strtotime($order_info['date_added'])) . "\n\n"."<br>";
 
 				$order_status_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_status WHERE order_status_id = '" . (int)$order_status_id . "' AND language_id = '" . (int)$order_info['language_id'] . "'");
 
 				if ($order_status_query->num_rows) {
-					$message .= $language->get('text_update_order_status') . "\n\n";
-					$message .= $order_status_query->row['name'] . "\n\n";
+					$message .= $language->get('text_update_order_status') . "\n\n"."<br>";
+					$message .= $order_status_query->row['name'] . "\n\n"."<br>";
 				}
 
 				if ($order_info['customer_id']) {
-					$message .= $language->get('text_update_link') . "\n";
+					$message .= $language->get('text_update_link') . "\n"."<br>";
 					$message .= $order_info['store_url'] . 'index.php?route=account/order/info&order_id=' . $order_id . "\n\n";
 				}
 
 				if ($comment) {
-					$message .= $language->get('text_update_comment') . "\n\n";
-					$message .= strip_tags($comment) . "\n\n";
+					$message .= $language->get('text_update_comment') . "\n\n"."<br>";
+					$message .= strip_tags($comment) . "\n\n"."<br>";
 				}
 
 				$message .= $language->get('text_update_footer');
@@ -841,6 +838,7 @@ class ModelCheckoutOrder extends Model {
 				// $mail->setText($message);
 				// $mail->send();
 
+
 				$info = array();
 				$info["body"] = $message;
 				$info["subject"] = html_entity_decode($subject, ENT_QUOTES, 'UTF-8');
@@ -850,6 +848,46 @@ class ModelCheckoutOrder extends Model {
 
 				$output = sendingEmailTest($info);
 
+			}
+
+			if($order_info && $order_status_id && $notify_customer){
+
+				$language = new Language($order_info['language_code']);
+				$language->load($order_info['language_code']);
+				$language->load('mail/order');
+
+				$subject = sprintf($language->get('text_update_subject'), html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'), $order_id);
+
+				$message  = $language->get('text_update_order') . ' ' . $order_id . "\n"."<br>";
+				$message .= $language->get('text_update_date_added') . ' ' . date($language->get('date_format_short'), strtotime($order_info['date_added'])) . "\n\n"."<br>";
+
+				$order_status_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_status WHERE order_status_id = '" . (int)$order_status_id . "' AND language_id = '" . (int)$order_info['language_id'] . "'");
+
+				if ($order_status_query->num_rows) {
+					$message .= $language->get('text_update_order_status') . "\n\n"."<br>";
+					$message .= $order_status_query->row['name'] . "\n\n"."<br>";
+				}
+
+				if ($order_info['customer_id']) {
+					$message .= $language->get('text_update_link') . "\n"."<br>";
+					$message .= "<a href=".$order_info['store_url'] . 'index.php?route=account/order/info&order_id=' . $order_id ." >".$order_info['store_url'] . 'index.php?route=account/order/info&order_id=' . $order_id . "\n\n"."</a><br>";
+				}
+
+				if ($comment) {
+					$message .= $language->get('text_update_comment') . "\n\n"."<br>";
+					$message .= strip_tags($comment) . "\n\n"."<br>";
+				}
+
+				$message .= $language->get('text_update_footer');
+
+				$info = array();
+				$info["body"] = $message;
+				$info["subject"] = html_entity_decode($subject, ENT_QUOTES, 'UTF-8');
+				$info["sender"] = html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8');
+				$info["from"] = $this->config->get('config_email');
+				$info["to"] = $order_info['email'];
+
+				$output = sendingEmailTest($info);
 			}
 		}
 	}
