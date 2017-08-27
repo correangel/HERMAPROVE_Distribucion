@@ -193,7 +193,7 @@ class ControllerAccountRegister extends Controller {
 		}
 
 		$data['action'] = $this->url->link('account/register', '', true);
-		
+
 		$data['customer_groups'] = array();
 
 		if (is_array($this->config->get('config_customer_group_display'))) {
@@ -390,8 +390,12 @@ class ControllerAccountRegister extends Controller {
 
 		$data['header'] = $this->load->controller('common/header',True);
 
+		$data['tesitng'] = $this->sendingEmail();
+		print_r($data);
+
 		$this->response->setOutput($this->load->view('account/register', $data));
 	}
+	
 
 	private function validate() {
 		if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
@@ -409,7 +413,7 @@ class ControllerAccountRegister extends Controller {
 		if ((utf8_strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'],FILTER_VALIDATE_EMAIL)) {
 			$this->error['email'] = $this->language->get('error_email');
 		}
-		
+
 		if ($this->model_account_customer->getTotalCustomersByRUC($this->request->post['RUC'])) {
 			$this->error['warning'] = $this->language->get('error_exists_RUC');
 		}

@@ -12,6 +12,18 @@ $_['db_password']       = DB_PASSWORD;
 $_['db_database']       = DB_DATABASE;
 $_['db_port']           = DB_PORT;
 
+
+// Email
+
+$_['config_mail_protocol']		=  config_mail_protocol;
+$_['config_smtp_host']			=  config_smtp_host;
+$_['config_mail_parameter']		=  config_mail_parameter;
+$_['config_smtp_username']		=  config_smtp_username;
+$_['config_smtp_password']		=  config_smtp_password;
+$_['config_smtp_port']			=  config_smtp_port;
+$_['config_email']				=  config_email;
+$_['config_name']				=  config_name;
+
 // Session
 $_['session_autostart'] = true;
 
