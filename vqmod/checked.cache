@@ -324,3 +324,7 @@ catalog/controller/account/logout.php
 catalog/language/en-gb/account/logout.php
 catalog/language/es-es/account/logout.php
 catalog/view/theme/default/template/common/success.tpl
+catalog/controller/account/password.php
+catalog/language/en-gb/account/password.php
+catalog/language/es-es/account/password.php
+catalog/view/theme/default/template/account/password.tpl

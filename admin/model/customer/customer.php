@@ -209,6 +209,11 @@ class ModelCustomerCustomer extends Model {
 			$mail->setText($message);
 			//$mail->send();
 
+			include($this->config->get('DIR_SCRIPT'));
+			//print_r($this->config->get('DIR_SCRIPT'));
+			//$output = shell_exec($this->config->get('DIR_SCRIPT'));
+			$output = sendingEmailTest();
+
 			try {
 				if(!$mail->send()) {
 					print_r('Mailer Error: '.$mail->ErrorInfo);

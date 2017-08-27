@@ -24,6 +24,8 @@ $_['config_smtp_port']			=  config_smtp_port;
 $_['config_email']				=  config_email;
 $_['config_name']				=  config_name;
 
+$_['DIR_SCRIPT']				=  DIR_SCRIPT;
+
 // Session
 $_['session_autostart'] = true;
 
