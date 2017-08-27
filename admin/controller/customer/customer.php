@@ -213,7 +213,7 @@ class ControllerCustomerCustomer extends Controller {
 
 
 			$this->model_customer_customer->approve($this->request->get['customer_id']);
-			
+
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -263,6 +263,7 @@ class ControllerCustomerCustomer extends Controller {
 
 		$this->getList();
 	}
+
 
 	public function unlock() {
 		$this->load->language('customer/customer');

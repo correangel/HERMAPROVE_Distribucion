@@ -328,3 +328,7 @@ catalog/controller/account/password.php
 catalog/language/en-gb/account/password.php
 catalog/language/es-es/account/password.php
 catalog/view/theme/default/template/account/password.tpl
+admin/controller/common/login.php
+admin/language/en-gb/common/login.php
+admin/language/es-es/common/login.php
+admin/view/template/common/login.tpl

@@ -185,7 +185,8 @@ class ModelCustomerCustomer extends Model {
 
 			$language = new Language($language_code);
 			$language->load($language_code);
-			//$language->load('mail/customer');
+			//$this->language->load('mail/customer');
+			$language->load('mail/customer');
 
 			$message  = sprintf($language->get('text_approve_welcome'), html_entity_decode($store_name, ENT_QUOTES, 'UTF-8')) . "\n\n";
 			$message .= $language->get('text_approve_login') . "\n";
@@ -194,39 +195,33 @@ class ModelCustomerCustomer extends Model {
 			$message .= $language->get('text_approve_thanks') . "\n";
 			$message .= html_entity_decode($store_name, ENT_QUOTES, 'UTF-8');
 
-			$mail = new Mail();
-			$mail->protocol = $this->config->get('config_mail_protocol');
-			$mail->smtp_hostname = $this->config->get('config_smtp_host');
-			$mail->smtp_username = $this->config->get('config_smtp_username');
-			$mail->smtp_password = html_entity_decode($this->config->get('config_smtp_password'), ENT_QUOTES, 'UTF-8');
-			$mail->smtp_port = $this->config->get('config_smtp_port');
-			//$mail->smtp_timeout = $this->config->get('config_smtp_timeout');
+			// $mail = new Mail();
+			// $mail->protocol = $this->config->get('config_mail_protocol');
+			// $mail->smtp_hostname = $this->config->get('config_smtp_host');
+			// $mail->smtp_username = $this->config->get('config_smtp_username');
+			// $mail->smtp_password = html_entity_decode($this->config->get('config_smtp_password'), ENT_QUOTES, 'UTF-8');
+			// $mail->smtp_port = $this->config->get('config_smtp_port');
+			// //$mail->smtp_timeout = $this->config->get('config_smtp_timeout');
+			//
+			// $mail->setTo($customer_info['email']);
+			// $mail->setFrom($this->config->get('config_email'));
+			// $mail->setSender(html_entity_decode($store_name, ENT_QUOTES, 'UTF-8'));
+			// $mail->setSubject(sprintf($language->get('text_approve_subject'), html_entity_decode($store_name, ENT_QUOTES, 'UTF-8')));
+			// $mail->setText($message);
+			// //$mail->send();
 
-			$mail->setTo($customer_info['email']);
-			$mail->setFrom($this->config->get('config_email'));
-			$mail->setSender(html_entity_decode($store_name, ENT_QUOTES, 'UTF-8'));
-			$mail->setSubject(sprintf($language->get('text_approve_subject'), html_entity_decode($store_name, ENT_QUOTES, 'UTF-8')));
-			$mail->setText($message);
-			//$mail->send();
+			$data = array();
+			$data["body"] = $message;
+			$data["subject"] = sprintf($language->get('text_approve_subject'), html_entity_decode($store_name, ENT_QUOTES, 'UTF-8'));
+			$data["sender"] = html_entity_decode($store_name, ENT_QUOTES, 'UTF-8');
+			$data["from"] = $this->config->get('config_email');
+			$data["to"] = $customer_info['email'];
+
 
 			include($this->config->get('DIR_SCRIPT'));
-			//print_r($this->config->get('DIR_SCRIPT'));
 			//$output = shell_exec($this->config->get('DIR_SCRIPT'));
-			$output = sendingEmailTest();
+			$output = sendingEmailTest($data);
 
-			try {
-				if(!$mail->send()) {
-					print_r('Mailer Error: '.$mail->ErrorInfo);
-					print_r($mail);
-
-				} else {
-					print_r('Message has been sent: ');
-					print_r($mail);
-				}
-			} catch (Exception $e) {
-				print_r($e->getMessage());
-				//throw new Exception($e->getMessage(), 1);
-			}
 		}
 	}
 

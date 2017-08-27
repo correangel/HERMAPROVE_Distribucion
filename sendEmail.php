@@ -1,32 +1,33 @@
 <?php
 require 'PHPMailerAutoload.php';
 
-function sendingEmailTest(){
+function sendingEmailTest($data){
 	$mail = new PHPMailer;
 
-	$mail->SMTPDebug = 3;                               // Enable verbose debug output
+	//$mail->SMTPDebug = 3;
 
-	$mail->isSMTP();                                      // Set mailer to use SMTP
-	$mail->Host = 'smtp.zoho.com';  // Specify main and backup SMTP servers
-	$mail->SMTPAuth = true;                               // Enable SMTP authentication
-	$mail->Username = 'fmora@passeapp.com';                 // SMTP username
-	$mail->Password = 'fausto123';                           // SMTP password
-	$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-	$mail->Port = 465;                                    // TCP port to connect to
+	$mail->isSMTP();
+	$mail->Host = 'smtp.zoho.com';
+	$mail->SMTPAuth = true;
+	$mail->Username = 'fmora@passeapp.com';
+	$mail->Password = 'fausto123';
+	$mail->SMTPSecure = 'ssl';
+	$mail->Port = 465;
 
-	$mail->setFrom('fmora@passeapp.com', 'Mailer');
-	$mail->addAddress('faanmora@espol.edu.ec', 'Fausto Mora');     // Add a recipient
-	$mail->isHTML(true);                                  // Set email format to HTML
+	$mail->setFrom('fmora@passeapp.com',$data["sender"]);
+	$mail->addAddress($data["to"]);
+	$mail->addCustomHeader('X-Priority','Medium');
+	$mail->addCustomHeader('User-Agent','Zoho Mail');
+	$mail->addCustomHeader('X-Mailer','Zoho Mail');
+	$mail->isHTML(true);
 
-	$mail->Subject = 'Here is the subject';
-	$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-	$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+	$mail->Subject = $data["subject"];
+	$mail->Body    = $data["body"];
+	$mail->AltBody = $data["body"];
 
 	if(!$mail->send()) {
 	    return 'Mailer Error: ' . $mail->ErrorInfo;
 	} else {
-	    return 'Message has been sent';
+	    return $mail;
 	}
 }
-
-//echo sendingEmailTest();
