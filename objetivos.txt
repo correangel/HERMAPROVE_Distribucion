@@ -1,28 +1,28 @@
-1. Verificar que el registro del cliente se cree correctamente.
+(Listo)1. Verificar que el registro del cliente se cree correctamente.
 
-2. Enviar un correo cuando el cliente se registre:
+(Listo)2. Enviar un correo cuando el cliente se registre:
 	El mensaje debe decir que su registro se ha completado exitosamente pero que
 	deberá esperar a que su cuenta sea aprobada por un administrador.
 
-3. Enviar un correo al administrador:
+(Listo)3. Enviar un correo al administrador:
 	Un cliente nuevo se ha registrado exitosamente, por favor ingrese al panel de administración para verificar los datos y aprobar, en caso de algun inconveniente en los datos, comunicarse con el cliente.
 
-3. Permitir registrar un cliente desde el administrador:
+(Listo)3. Permitir registrar un cliente desde el administrador:
 	Actualmente da error, corregir.
 
-4. Arreglar el css del registro en responsive el boton de registrar se esconde
-5. Arreglar el css del botonsito del carrito de compras que los colores y el tamaño se ve extraño.
+(Listo)4. Arreglar el css del registro en responsive el boton de registrar se esconde
+(Listo)5. Arreglar el css del botonsito del carrito de compras que los colores y el tamaño se ve extraño.
 
 
 Hacer una prueba integral
-1. Cliente se registra
-2. Envia correo exitosamente a cliente
-3. Envia correo exitosamente a administrador
-3. Administrador aprueba la cuenta
-4. El cliente se loguea
-5. El cliente ingresa pedidos al carrito de compras.
-6. El cliente va al carrito de compras
-7. El cliente envia pedido
-8. El administrador recibe un correo de que un nuevo pedido ha sido realizado por el cliente ___  y que ingrese a la plataforma para revisar.
-9. El administrador aprueba el pedido
-10. El cliente recibe un correo al cliente de que su pedido a sido aprobado exitosamente.
+(Listo)1. Cliente se registra
+(Listo)2. Envia correo exitosamente a cliente
+(Listo)3. Envia correo exitosamente a administrador
+(Listo)3. Administrador aprueba la cuenta
+(Listo)4. El cliente se loguea
+(Listo)5. El cliente ingresa pedidos al carrito de compras.
+(Listo)6. El cliente va al carrito de compras
+(Listo)7. El cliente envia pedido
+(Listo)8. El administrador recibe un correo de que un nuevo pedido ha sido realizado por el cliente ___  y que ingrese a la plataforma para revisar.
+(Listo)9. El administrador aprueba el pedido
+(Listo)10. El cliente recibe un correo al cliente de que su pedido a sido aprobado exitosamente.

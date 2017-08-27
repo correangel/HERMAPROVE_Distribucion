@@ -17,6 +17,50 @@ class ModelCustomerCustomer extends Model {
 			}
 		}
 
+		include($this->config->get('DIR_SCRIPT'));
+
+		$this->load->language('mail/customer');
+
+		$subject = sprintf($this->language->get('text_subject'), html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
+
+		$message = sprintf($this->language->get('text_welcome'), html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8')) . "\n\n"."<br>";
+
+		if (!$customer_group_info['approval']) {
+			$message .= $this->language->get('text_login') . "\n"."<br>";
+		} else {
+			$message .= $this->language->get('text_approval') . "\n"."<br>";
+		}
+
+		$message .= "<a href=".$this->url->link('account/login', '', true) ." >".$this->url->link('account/login', '', true) . "\n\n"."</a><br>";
+		$message .= $this->language->get('text_services') . "\n\n"."<br>";
+		$message .= $this->language->get('text_thanks') . "\n"."<br>";
+		$message .= html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8');
+
+		// $mail = new Mail();
+		// $mail->protocol = $this->config->get('config_mail_protocol');
+		// $mail->parameter = $this->config->get('config_mail_parameter');
+		// $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+		// $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+		// $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+		// $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+		// $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+
+		// $mail->setTo($data['email']);
+		// $mail->setFrom($this->config->get('config_email'));
+		// $mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
+		// $mail->setSubject($subject);
+		// $mail->setText($message);
+		// $mail->send();
+
+		$info = array();
+		$info["body"] = $message;
+		$info["subject"] = $subject;
+		$info["sender"] = html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8');
+		$info["from"] = $this->config->get('config_email');
+		$info["to"] = $data['email'];
+
+		$output = sendingEmailTest($info);
+
 		return $customer_id;
 	}
 
