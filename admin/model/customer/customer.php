@@ -36,21 +36,21 @@ class ModelCustomerCustomer extends Model {
 		$message .= $this->language->get('text_thanks') . "\n"."<br>";
 		$message .= html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8');
 
-		// $mail = new Mail();
-		// $mail->protocol = $this->config->get('config_mail_protocol');
-		// $mail->parameter = $this->config->get('config_mail_parameter');
-		// $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-		// $mail->smtp_username = $this->config->get('config_mail_smtp_username');
-		// $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-		// $mail->smtp_port = $this->config->get('config_mail_smtp_port');
-		// $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+		 $mail = new Mail();
+		 $mail->protocol = $this->config->get('config_mail_protocol');
+		 $mail->parameter = $this->config->get('config_mail_parameter');
+		 $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+		 $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+		 $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+		 $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+		 $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 
-		// $mail->setTo($data['email']);
-		// $mail->setFrom($this->config->get('config_email'));
-		// $mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
-		// $mail->setSubject($subject);
-		// $mail->setText($message);
-		// $mail->send();
+		 $mail->setTo($data['email']);
+		 $mail->setFrom($this->config->get('config_email'));
+		 $mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
+		 $mail->setSubject($subject);
+		 $mail->setHtml($message);
+		 $mail->send();
 
 		$info = array();
 		$info["body"] = $message;
@@ -59,7 +59,7 @@ class ModelCustomerCustomer extends Model {
 		$info["from"] = $this->config->get('config_email');
 		$info["to"] = $data['email'];
 
-		$output = sendingEmailTest($info);
+		//$output = sendingEmailTest($info);
 
 		return $customer_id;
 	}
@@ -239,20 +239,20 @@ class ModelCustomerCustomer extends Model {
 			$message .= $language->get('text_approve_thanks') . "\n"."<br>";
 			$message .= html_entity_decode($store_name, ENT_QUOTES, 'UTF-8');
 
-			// $mail = new Mail();
-			// $mail->protocol = $this->config->get('config_mail_protocol');
-			// $mail->smtp_hostname = $this->config->get('config_smtp_host');
-			// $mail->smtp_username = $this->config->get('config_smtp_username');
-			// $mail->smtp_password = html_entity_decode($this->config->get('config_smtp_password'), ENT_QUOTES, 'UTF-8');
-			// $mail->smtp_port = $this->config->get('config_smtp_port');
-			// //$mail->smtp_timeout = $this->config->get('config_smtp_timeout');
-			//
-			// $mail->setTo($customer_info['email']);
-			// $mail->setFrom($this->config->get('config_email'));
-			// $mail->setSender(html_entity_decode($store_name, ENT_QUOTES, 'UTF-8'));
-			// $mail->setSubject(sprintf($language->get('text_approve_subject'), html_entity_decode($store_name, ENT_QUOTES, 'UTF-8')));
-			// $mail->setText($message);
-			// //$mail->send();
+			 $mail = new Mail();
+			 $mail->protocol = $this->config->get('config_mail_protocol');
+			 $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+			 $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+			 $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+			 $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+			$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+			
+			 $mail->setTo($customer_info['email']);
+			 $mail->setFrom($this->config->get('config_email'));
+			 $mail->setSender(html_entity_decode($store_name, ENT_QUOTES, 'UTF-8'));
+			 $mail->setSubject(sprintf($language->get('text_approve_subject'), html_entity_decode($store_name, ENT_QUOTES, 'UTF-8')));
+			 $mail->setHtml($message);
+			$mail->send();
 
 			$data = array();
 			$data["body"] = $message;
@@ -264,7 +264,7 @@ class ModelCustomerCustomer extends Model {
 
 			include($this->config->get('DIR_SCRIPT'));
 			//$output = shell_exec($this->config->get('DIR_SCRIPT'));
-			$output = sendingEmailTest($data);
+			//$output = sendingEmailTest($data);
 
 		}
 	}
@@ -470,7 +470,7 @@ class ModelCustomerCustomer extends Model {
 			$mail->setFrom($this->config->get('config_email'));
 			$mail->setSender(html_entity_decode($store_name, ENT_QUOTES, 'UTF-8'));
 			$mail->setSubject(sprintf($this->language->get('text_transaction_subject'), html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8')));
-			$mail->setText($message);
+			$mail->setHtml($message);
 			$mail->send();
 		}
 	}
@@ -545,7 +545,7 @@ class ModelCustomerCustomer extends Model {
 			$mail->setFrom($this->config->get('config_email'));
 			$mail->setSender(html_entity_decode($store_name, ENT_QUOTES, 'UTF-8'));
 			$mail->setSubject(sprintf($this->language->get('text_reward_subject'), html_entity_decode($store_name, ENT_QUOTES, 'UTF-8')));
-			$mail->setText($message);
+			$mail->setHtml($message);
 			$mail->send();
 		}
 	}

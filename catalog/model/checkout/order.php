@@ -657,25 +657,25 @@ class ModelCheckoutOrder extends Model {
 				$info["from"] = $this->config->get('config_email');
 				$info["to"] = $order_info['email'];
 
-				$output = sendingEmailTest($info);
+				//$output = sendingEmailTest($info);
 
 				// Este email se envia al customer
-				// $mail = new Mail();
-				// $mail->protocol = $this->config->get('config_mail_protocol');
-				// $mail->parameter = $this->config->get('config_mail_parameter');
-				// $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-				// $mail->smtp_username = $this->config->get('config_mail_smtp_username');
-				// $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-				// $mail->smtp_port = $this->config->get('config_mail_smtp_port');
-				// $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-				//
-				// $mail->setTo($order_info['email']);
-				// $mail->setFrom($this->config->get('config_email'));
-				// $mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
-				// $mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
-				// $mail->setHtml($this->load->view('mail/order', $data));
-				// $mail->setText($text);
-				// $mail->send();
+				 $mail = new Mail();
+				 $mail->protocol = $this->config->get('config_mail_protocol');
+				 $mail->parameter = $this->config->get('config_mail_parameter');
+				 $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+				 $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+				 $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+				 $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+				 $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+				
+				$mail->setTo($order_info['email']);
+				 $mail->setFrom($this->config->get('config_email'));
+				 $mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
+				 $mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
+				 $mail->setHtml($this->load->view('mail/order', $data));
+				 $mail->setHtml($text);
+				 $mail->send();
 
 
 				// Admin Alert Mail
@@ -751,22 +751,22 @@ class ModelCheckoutOrder extends Model {
 
 
 					// Este email se envia al admin
-					// $mail = new Mail();
-					// $mail->protocol = $this->config->get('config_mail_protocol');
-					// $mail->parameter = $this->config->get('config_mail_parameter');
-					// $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-					// $mail->smtp_username = $this->config->get('config_mail_smtp_username');
-					// $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-					// $mail->smtp_port = $this->config->get('config_mail_smtp_port');
-					// $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-					//
-					// $mail->setTo($this->config->get('config_email'));
-					// $mail->setFrom($this->config->get('config_email'));
-					// $mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
-					// $mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
-					// $mail->setHtml($this->load->view('mail/order', $data));
-					// $mail->setText($text);
-					// $mail->send();
+					$mail = new Mail();
+					$mail->protocol = $this->config->get('config_mail_protocol');
+					 $mail->parameter = $this->config->get('config_mail_parameter');
+				 $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+					 $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+					 $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+					 $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+					 $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+					
+					 $mail->setTo($this->config->get('config_email'));
+				$mail->setFrom($this->config->get('config_email'));
+					 $mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
+					 $mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
+					 $mail->setHtml($this->load->view('mail/order', $data));
+					 $mail->setHtml($text);
+					 $mail->send();
 
 					$info = array();
 					$info["body"] = $this->load->view('mail/order', $data);
@@ -776,18 +776,18 @@ class ModelCheckoutOrder extends Model {
 					$info["from"] = $this->config->get('config_email');
 					$info["to"] = $this->config->get('config_email');
 
-					$output = sendingEmailTest($info);
+					//$output = sendingEmailTest($info);
 
 
 					// Send to additional alert emails
-					// $emails = explode(',', $this->config->get('config_alert_email'));
-					//
-					// foreach ($emails as $email) {
-					// 	if ($email && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-					// 		$mail->setTo($email);
-					// 		$mail->send();
-					// 	}
-					// }
+					 $emails = explode(',', $this->config->get('config_alert_email'));
+
+					 foreach ($emails as $email) {
+					 	if ($email && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+					 		$mail->setTo($email);
+					 		$mail->send();
+					 	}
+					 }
 				}
 			}
 
@@ -822,21 +822,21 @@ class ModelCheckoutOrder extends Model {
 				$message .= $language->get('text_update_footer');
 
 				// Este email se envia al customer
-				// $mail = new Mail();
-				// $mail->protocol = $this->config->get('config_mail_protocol');
-				// $mail->parameter = $this->config->get('config_mail_parameter');
-				// $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-				// $mail->smtp_username = $this->config->get('config_mail_smtp_username');
-				// $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-				// $mail->smtp_port = $this->config->get('config_mail_smtp_port');
-				// $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-				//
-				// $mail->setTo($order_info['email']);
-				// $mail->setFrom($this->config->get('config_email'));
-				// $mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
-				// $mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
-				// $mail->setText($message);
-				// $mail->send();
+				 $mail = new Mail();
+				 $mail->protocol = $this->config->get('config_mail_protocol');
+				 $mail->parameter = $this->config->get('config_mail_parameter');
+				 $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+				 $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+				 $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+				 $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+				 $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+				
+				 $mail->setTo($order_info['email']);
+				 $mail->setFrom($this->config->get('config_email'));
+				 $mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
+				 $mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
+				 $mail->setHtml($message);
+				 $mail->send();
 
 
 				$info = array();
@@ -846,7 +846,7 @@ class ModelCheckoutOrder extends Model {
 				$info["from"] = $this->config->get('config_email');
 				$info["to"] = $order_info['email'];
 
-				$output = sendingEmailTest($info);
+				//$output = sendingEmailTest($info);
 
 			}
 
@@ -887,7 +887,7 @@ class ModelCheckoutOrder extends Model {
 				$info["from"] = $this->config->get('config_email');
 				$info["to"] = $order_info['email'];
 
-				$output = sendingEmailTest($info);
+				//$output = sendingEmailTest($info);
 			}
 		}
 	}
