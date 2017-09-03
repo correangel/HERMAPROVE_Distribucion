@@ -100,7 +100,7 @@ class ControllerCheckoutPaymentAddress extends Controller {
 			}
 		}
 
-		if (!$json) {
+		if (!$json) { //si $json esta vacio
 			if (isset($this->request->post['payment_address']) && $this->request->post['payment_address'] == 'existing') {
 				$this->load->model('account/address');
 
@@ -115,15 +115,15 @@ class ControllerCheckoutPaymentAddress extends Controller {
 					$this->load->model('account/address');
 
 					$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->request->post['address_id']);
+					$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->request->post['address_id']);
 
 					unset($this->session->data['payment_method']);
 					unset($this->session->data['payment_methods']);
 				}
-			} else {
-
+			} else { //nuevo payment_address
 				if ((utf8_strlen(trim($this->request->post['company'])) < 1) || (utf8_strlen(trim($this->request->post['company'])) > 32)) {
 					$json['error']['company'] = $this->language->get('error_company');
-				}				
+				}
 
 				if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
 					$json['error']['firstname'] = $this->language->get('error_firstname');

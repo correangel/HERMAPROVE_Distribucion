@@ -15,6 +15,19 @@ $_['db_password']      = DB_PASSWORD;
 $_['db_database']      = DB_DATABASE;
 $_['db_port']          = DB_PORT;
 
+
+// Email
+$_['config_mail_protocol']		=  config_mail_protocol;
+$_['config_smtp_host']			=  config_smtp_host;
+$_['config_mail_parameter']		=  config_mail_parameter;
+$_['config_smtp_username']		=  config_smtp_username;
+$_['config_smtp_password']		=  config_smtp_password;
+$_['config_smtp_port']			=  config_smtp_port;
+$_['config_email']				=  config_email;
+$_['config_name']				=  config_name;
+
+$_['DIR_SCRIPT']				=  DIR_SCRIPT;
+
 // Session
 $_['session_autostart'] = false;
 
@@ -36,7 +49,7 @@ $_['action_pre_action'] = array(
 // Action Events
 $_['action_event'] = array(
 	'view/*/before'                         => 'event/theme',
-	
+
 	'model/extension/analytics/*/before'    => 'event/compatibility/beforeModel',
 	'model/extension/captcha/*/before'      => 'event/compatibility/beforeModel',
 	'model/extension/credit_card/*/before'  => 'event/compatibility/beforeModel',
@@ -48,7 +61,7 @@ $_['action_event'] = array(
 	'model/extension/shipping/*/before'     => 'event/compatibility/beforeModel',
 	'model/extension/theme/*/before'        => 'event/compatibility/beforeModel',
 	'model/extension/total/*/before'        => 'event/compatibility/beforeModel',
-	 	
+
 	'model/analytics/*/after'               => 'event/compatibility/afterModel',
 	'model/captcha/*/after'                 => 'event/compatibility/afterModel',
 	'model/credit_card/*/after'             => 'event/compatibility/afterModel',
@@ -60,7 +73,7 @@ $_['action_event'] = array(
 	'model/shipping/*/after'                => 'event/compatibility/afterModel',
 	'model/theme/*/after'                   => 'event/compatibility/afterModel',
 	'model/total/*/after'                   => 'event/compatibility/afterModel',
-	
+
 	//'language/extension/*/before'         => 'event/translation',
 	'language/extension/analytics/*/before' => 'event/compatibility/language',
 	'language/extension/captcha/*/before'   => 'event/compatibility/language',
@@ -71,8 +84,8 @@ $_['action_event'] = array(
 	'language/extension/recurring/*/before' => 'event/compatibility/language',
 	'language/extension/shipping/*/before'  => 'event/compatibility/language',
 	'language/extension/theme/*/before'     => 'event/compatibility/language',
-	'language/extension/total/*/before'     => 'event/compatibility/language'	
-	
+	'language/extension/total/*/before'     => 'event/compatibility/language'
+
 	//'controller/*/before'                 => 'event/debug/before',
 	//'controller/*/after'                  => 'event/debug/after'
 );

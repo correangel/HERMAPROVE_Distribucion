@@ -1,0 +1,16 @@
+---------- Date: 2017-08-27 07:52:02 ~ IP : ::1 ----------
+REQUEST URI : /hermaprove/index.php?route=account/register
+MOD DETAILS:
+   modFile   : /var/www/html/hermaprove/vqmod/xml/k6-free-smtp-fix.xml
+   id        : Key-Six, s.r.o. - Free SMTP Fix for OpenCart 2.0.2.0
+   version   : 1.1
+   vqmver    : 2.5.0
+   author    : Key-Six, s.r.o. | info@key-six.sk
+VQModObject::parseMods - Could not resolve path for [admin/model/sale/customer.php] (SKIPPED)
+VQModObject::parseMods - Could not resolve path for [catalog/model/checkout/voucher.php] (SKIPPED)
+VQModObject::parseMods - Could not resolve path for [catalog/model/openbay/ebay_order.php] (SKIPPED)
+VQModObject::parseMods - Could not resolve path for [system/library/ebay.php] (SKIPPED)
+
+----------------------------------------------------------------------
+
+

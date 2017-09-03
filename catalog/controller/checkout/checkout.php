@@ -1,12 +1,13 @@
 <?php
 class ControllerCheckoutCheckout extends Controller {
 	public function index() {
+
 		if (!$this->customer->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('checkout/checkout', '', true);
 
 			$this->response->redirect($this->url->link('account/login', '', true));
 		}
-		
+
 		// Validate cart has products and has stock.
 		//if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 
@@ -65,13 +66,13 @@ class ControllerCheckoutCheckout extends Controller {
 		$data['text_checkout_payment_address'] = sprintf($this->language->get('text_checkout_payment_address'), 2);
 		$data['text_checkout_shipping_address'] = sprintf($this->language->get('text_checkout_shipping_address'), 3);
 		$data['text_checkout_shipping_method'] = sprintf($this->language->get('text_checkout_shipping_method'), 4);
-		
+
 		if ($this->cart->hasShipping()) {
 			$data['text_checkout_payment_method'] = sprintf($this->language->get('text_checkout_payment_method'), 5);
 			$data['text_checkout_confirm'] = sprintf($this->language->get('text_checkout_confirm'), 6);
 		} else {
 			$data['text_checkout_payment_method'] = sprintf($this->language->get('text_checkout_payment_method'), 3);
-			$data['text_checkout_confirm'] = sprintf($this->language->get('text_checkout_confirm'), 4);	
+			$data['text_checkout_confirm'] = sprintf($this->language->get('text_checkout_confirm'), 4);
 		}
 
 		if (isset($this->session->data['error'])) {
@@ -88,7 +89,6 @@ class ControllerCheckoutCheckout extends Controller {
 		} else {
 			$data['account'] = '';
 		}
-
 		$data['cart'] = $this->url->link('checkout/cart');
 
 		$data['shipping_required'] = $this->cart->hasShipping();
@@ -100,6 +100,9 @@ class ControllerCheckoutCheckout extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
+		if (isset($this->session->data['payment_address'])) {
+			$this->session->data['shipping_address'] = $this->session->data['payment_address'];
+		}
 		$data['cart']=$this->load->controller('checkout/cart/cart_checkout');
 		$data['payment_address']=$this->load->controller('checkout/payment_address');
 		$data['payment_method']=$this->load->controller('checkout/payment_method');

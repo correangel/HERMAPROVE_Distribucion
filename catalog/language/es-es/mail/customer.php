@@ -14,3 +14,12 @@ $_['text_firstname']      = 'Nombre:';
 $_['text_lastname']       = 'Apellido:';
 $_['text_email']          = 'Email:';
 $_['text_telephone']      = 'Tel&eacute;fono:';
+
+
+$_['text_order_admin_subject'] = '% s - Pedido Realizado.';
+$_['text_order_admin_message'] = 'Se ha realido un nuevo pedido que necesita de tu aprobaci&oacute;n';
+$_['text_order_admin_thanks'] = 'Gracias,';
+
+$_['text_order_approve_subject'] = '% s - Estado de Pedido Actualizado.';
+$_['text_order_approve_message'] = 'El pedido No. %s ha sido aprobado por el administrador. Puede ver sus pedidos desde el perfil de su cuenta o desde la siguiente URL:';
+$_['text_order_approve_thanks'] = 'Gracias,';

@@ -17,9 +17,9 @@
         <?php foreach ($products as $product) { ?>
         <tr class="active">
           <td class="text-center"><?php if ($product['thumb']) { ?>
-            <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" /></a>
+            <a href="<?php echo $product['href']; ?>" style="margin:0px;padding:0px;"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" /></a>
             <?php } ?></td>
-          <td class="text-left"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+          <td class="text-left"><a href="<?php echo $product['href']; ?>" style="padding:0px;"><?php echo $product['name']; ?></a>
             <?php if ($product['option']) { ?>
             <?php foreach ($product['option'] as $option) { ?>
             <br />
@@ -59,7 +59,8 @@
         <p class="text-right">
         <!--<a href="<?php echo $cart; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> <?php echo $text_cart; ?></a>&nbsp;&nbsp;&nbsp;-->
 
-        <a href="<?php echo $checkout; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> <?php echo $text_checkout; ?></a></p>
+        <a href="<?php echo $checkout; ?>" class="btn btn-primary" style="padding-right:20px;"><i class="fa fa-shopping-cart"></i> <?php echo $text_checkout; ?></a>
+		</p>
     </li>
 
     <?php } else { ?>

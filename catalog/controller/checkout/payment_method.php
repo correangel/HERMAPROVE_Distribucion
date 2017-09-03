@@ -13,7 +13,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
 		$data['text_loading'] = $this->language->get('text_loading');
 
 		$data['button_continue'] = $this->language->get('button_continue');
-		
+
 		if (empty($this->session->data['payment_methods'])) {
 			$data['error_warning'] = sprintf($this->language->get('error_no_payment'), $this->url->link('information/contact'));
 		} else {
@@ -90,7 +90,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
 		foreach ($results as $result) {
 			if ($this->config->get($result['code'] . '_status')) {
 				$this->load->model('extension/total/' . $result['code']);
-				
+
 				// We have to put the totals in an array so that they pass by reference.
 				$this->{'model_extension_total_' . $result['code']}->getTotal($total_data);
 			}
@@ -134,8 +134,9 @@ class ControllerCheckoutPaymentMethod extends Controller {
 	public function save() {
 		$this->load->language('checkout/checkout');
 
+
 		$this->session->data['payment_methods'] = $this->payment_methods();
-		
+
 		$json = array();
 
 		// Validate if payment address has been set.

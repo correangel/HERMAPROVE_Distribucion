@@ -31,9 +31,9 @@
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
 
          <div id="shopping-process">
-            
+
             <h3><div style="display: block;"><i class="section-icon fa fa-shopping-cart"></i></div>1. Carro de Compras</h3>
-        
+
             <section>
                 <div id="collapse-cart-shopping">
                     <?php echo $cart; ?>
@@ -41,7 +41,7 @@
             </section>
 
           <h3> <div style="display: block;"><i class="section-icon fa fa-file-text"></i></div> 2. Facturaci&oacute;n</h3>
-          <section>   
+          <section>
                 <fieldset>
                     <legend><?php echo $text_checkout_payment_address; ?></legend>
                      <div id="collapse-payment-address">
@@ -59,22 +59,22 @@
            <?php if ($shipping_required) { ?>
           <h3> <div style="display: block;"><i class="section-icon fa fa-truck"></i></div>3. Datos de Env&iacute;o</h3>
           <section>
-           
+
                 <fieldset>
                 <legend><?php echo $text_checkout_shipping_address; ?></legend>
                 <div id="collapse-shipping-address">
                     <div class="panel-body" style="background-color: transparent;padding-top: 0px"><?php echo $shipping_address ?></div>
                   </div>
                 </fieldset>
-                  
+
                 <fieldset>
-                    <legend><?php echo $text_checkout_shipping_method; ?>                       
+                    <legend><?php echo $text_checkout_shipping_method; ?>
                     </legend>
                      <div id="collapse-shipping-method">
-                        <div class="panel-body" style="background-color: transparent;padding-top: 0px"><?php echo $shipping_method ?></div>
+                        <div id="div-shipping-method" class="panel-body" style="background-color: transparent;padding-top: 0px"><?php echo $shipping_method ?></div>
                       </div>
                 </fieldset>
-            
+
           </section>
           <?php } ?>
 
@@ -88,7 +88,7 @@
                         <div class="col-sm-12" id="loading-gif" style="display: none; text-align: center">
                             <img src="image/loading.gif" alt="Loading" title="Loading">
                         </div>
-                        
+
                         </div>
                         <div class="col-sm-12" id="loading-gif2" style="display: none; text-align: right">
                             <img src="image/loading.gif" width="25px" alt="Loading" title="Loading">
@@ -164,13 +164,24 @@ function enviarform_paymentAddress(form) {
                     success: function(html) {
                         $('#collapse-payment-address .panel-body').html(html);
                         $('html, body').animate({ scrollTop: 0 }, 'slow');
+						$.ajax({
+							url: 'index.php?route=checkout/shipping_address',
+							dataType: 'html',
+							success: function(html) {
+								$('#collapse-shipping-address .panel-body').html(html);
+								$('html, body').animate({ scrollTop: 0 }, 'slow');
+							},
+							error: function(xhr, ajaxOptions, thrownError) {
+								alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+							}
+						});
                     },
                     error: function(xhr, ajaxOptions, thrownError) {
                         alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
                     }
                 });
             }
-           
+
         },
         error: function(xhr, ajaxOptions, thrownError) {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -212,7 +223,7 @@ function enviarform_shippingAddress(form) {
 				// Highlight any found errors
 				$('.text-danger').parent().parent().addClass('has-error');
             } else {
-                
+
                 $.ajax({
                     url: 'index.php?route=checkout/shipping_address',
                     dataType: 'html',
@@ -226,7 +237,7 @@ function enviarform_shippingAddress(form) {
                     }
                 });
             }
-            
+
         },
         error: function(xhr, ajaxOptions, thrownError) {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -274,7 +285,7 @@ var divSteps = $("#shopping-process");
     onStepChanging: function (event, currentIndex, newIndex)
     {
         $('.actions').attr('style', 'display:block');
-         
+
         if((newIndex==3 && currentIndex==0) || (newIndex==3 && currentIndex==1)){
            $('.actions').attr('style', 'display:none');
             enviarform_confirmCheckout();
@@ -333,7 +344,7 @@ var divSteps = $("#shopping-process");
 
                                     if (json['redirect']) {
                                         location = json['redirect'];
-                                    } else if (json['error']) {
+                                    }else if (json['error']) {
                                         $('#button-payment-method').button('reset');
                                         if (json['error']['warning']) {
                                             $('#collapse-payment-method .panel-body').prepend('<div class="alert alert-danger">' + json['error']['warning'] +'</div>');
@@ -345,7 +356,7 @@ var divSteps = $("#shopping-process");
                                 }
                             });
                         }
-                        
+
                     },
                     error: function(xhr, ajaxOptions, thrownError) {
                         alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -422,7 +433,7 @@ var divSteps = $("#shopping-process");
                                         }
                                     });
                             }
-                            
+
                         },
                         error: function(xhr, ajaxOptions, thrownError) {
                             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
